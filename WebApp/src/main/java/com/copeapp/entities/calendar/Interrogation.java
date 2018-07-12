@@ -18,16 +18,14 @@ import java.util.List;
 public class Interrogation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="eventsGenerator")
-    @SequenceGenerator(name="eventsGenerator", sequenceName="events_sequence", allocationSize = 1, initialValue = 50)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="interrogationGenerator")
+    @SequenceGenerator(name="interrogationGenerator", sequenceName="events_sequence", allocationSize = 1, initialValue = 50)
     private Integer interrogationId;
 
     @NonNull
-    @ManyToMany
     private Classe classe;
 
     @NonNull
-    @ManyToMany
     private Subject subject;
 
     @NonNull

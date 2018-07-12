@@ -26,7 +26,7 @@ public class InterrogationDAO {
         return !(student.retainAll(interrogation.getStudentsInterrogated())); //TODO dovrebbe andare
     }
 
-    public static boolean canCreateInterrogation(User user, Classe classe, Subject subject){
+    public static boolean canCreateInterrogation(User user, Classe classe){
         List<Role> roles = user.getRoles();
         if (MiscUtilities.isAdmin(roles)){
             return true;
@@ -35,7 +35,7 @@ public class InterrogationDAO {
             return (s.getClasse().equals(classe) && UserDAO.isRappresentanteByClass(s,classe));
         } else if (MiscUtilities.isRole(roles,"prof")){
             Teacher t = (Teacher) user;
-            return (t.getClassi().contains(classe) && t.getSubjects().contains(subject));
+            return (t.getClassi().contains(classe));
         } else {
             //TODO solo return false oppure errore?
             return false;

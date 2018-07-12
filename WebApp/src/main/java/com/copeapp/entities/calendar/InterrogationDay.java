@@ -20,10 +20,6 @@ public class InterrogationDay extends Event {
     private List<Student> studentsInterrogated;
 
     @NonNull
-    @ManyToMany
-    private Subject subject;
-
-    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "interrogationId")
     private Interrogation interrogation;
