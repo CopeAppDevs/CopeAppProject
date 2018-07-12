@@ -1,0 +1,20 @@
+<div ng-controller="MainCtrl" layout="column">
+	<md-toolbar class="md-hue-2 md-toolbar-tools" 
+				layout="row" 
+				ng-controller="MainHeaderCtrl" 
+				ng-include="'main/header/header.html'">
+	</md-toolbar>
+	<md-sidenav class="md-sidenav-left" 
+				md-component-id="leftSidenav" 
+				id="leftSidenav"
+				md-whiteframe="4" 
+				ng-controller="MainSidenavCtrl" 
+				ng-include="'main/sidenav/sidenav.html'" 
+				layout="column" 
+				mode="over">
+	</md-sidenav>
+	
+	<md-content style="padding: 0px" ui-view>
+		
+	</md-content>
+</div>

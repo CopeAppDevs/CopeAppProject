@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+	<configuration>
+		<stop-on-errors>true</stop-on-errors>
+		<date-format>dd/MM/yyyy HH:mm:ss</date-format>
+		<wildcard>true</wildcard>
+	</configuration>
+	<mapping map-null="true" map-empty-string="true" type="bi-directional">
+		<class-a>com.copeapp.entities.survey.Answer</class-a>
+		<class-b>com.copeapp.dto.survey.AnswerDTO</class-b>
+	</mapping>
+	<mapping type="one-way" map-null="true" map-empty-string="true">
+		<class-a>com.copeapp.dto.survey.SurveyDTO</class-a>
+		<class-b>com.copeapp.entities.survey.Survey</class-b>
+		<field-exclude type="one-way">
+			<a>surveyId</a>
+			<b>surveyId</b>
+		</field-exclude>
+		<field-exclude type="one-way">
+			<a>voters</a>
+			<b>voters</b>
+		</field-exclude>
+	</mapping>
+	<mapping type="one-way" map-null="true" map-empty-string="true">
+		<class-a>com.copeapp.entities.survey.Survey</class-a>
+		<class-b>com.copeapp.dto.survey.SurveyMiniDTO</class-b>
+	</mapping>
+	<mapping type="one-way" stop-on-errors="true" map-null="true"
+		map-empty-string="true">
+		<class-a>com.copeapp.entities.survey.Survey</class-a>
+		<class-b>com.copeapp.dto.survey.SurveyDTO</class-b>
+	</mapping>
+	<mapping type="bi-directional" map-null="true"
+		map-empty-string="true">
+		<class-a>com.copeapp.entities.common.Role</class-a>
+		<class-b>com.copeapp.dto.commons.RoleDTO</class-b>
+	</mapping>
+
+	<mapping type="one-way">
+		<class-a>com.copeapp.dto.survey.AnswerContentDTO</class-a>
+		<class-b>com.copeapp.entities.survey.AnswerContent</class-b>
+		<field-exclude>
+			<a>answerContentId</a>
+			<b>answerContentId</b>
+		</field-exclude>
+	</mapping>
+	<mapping type="one-way">
+		<class-a>com.copeapp.entities.survey.AnswerContent</class-a>
+		<class-b>com.copeapp.dto.survey.AnswerContentDTO</class-b>
+	</mapping>
+	<mapping type="bi-directional">
+		<class-a>com.copeapp.entities.calendar.Interrogation</class-a>
+		<class-b>com.copeapp.dto.calendar.InterrogationDTO</class-b>
+	</mapping>
+	<mapping type="bi-directional">
+		<class-a>com.copeapp.entities.calendar.InterrogationDay</class-a>
+		<class-b>com.copeapp.dto.calendar.InterrogationDayDTO</class-b>
+	</mapping>
+	<mapping type="bi-directional">
+		<class-a>com.copeapp.entities.calendar.Event</class-a>
+		<class-b>com.copeapp.dto.calendar.EventDTO</class-b>
+	</mapping>
+</mappings>

@@ -1,0 +1,142 @@
+<md-content layout="column" style="padding: 0px" ng-controller="AccountSettingsCtrl">
+	<form id="accountSettingsForm" ng-submit="sendAccountDatas()" name="accountSettingsForm">
+		<section>
+			<md-subheader>Informazioni generali</md-subheader>
+			<md-content layout-padding layout="column">
+				<md-card flex>
+			        <md-card-title>
+				        <md-card-title-media>
+				        	<div class="md-media-lg card-media">
+				        		<ng-letter-avatar data="{{user.imageUrl}}" dynamic="true"></ng-letter-avatar>
+				        	</div>
+				        </md-card-title-media>
+			        </md-card-title>
+			        <md-card-actions layout="row" layout-align="end center">
+				        <md-button class="" ng-click="loadImage()">
+				        	<md-icon class="material-icons">create</md-icon>
+				        	Modifica
+				        </md-button>
+				        <input style="display: none; visibility: hidden;" id="imageUploader" type="file" nv-file-select uploader="fileUploader"/>
+				        <md-button class="md-warn">
+				        	<md-icon class="material-icons">delete</md-icon>
+				        	Rimuovi
+				        </md-button>
+			        </md-card-actions>
+				</md-card>
+				<md-card flex>
+			        <md-card-content>
+			        	<md-input-container class="md-block">
+							<label>Nome</label>
+<!-- 							<md-icon class="material-icons" style="color: white;">person_outline</md-icon> -->
+							<input md-no-asterisk type="text" name="firstname" ng-model="user.firstname">
+							<div ng-messages="accountSettingsForm.firstname.$error">
+			        			<div ng-message="required">Il nome è obbligatorio</div>
+			        		</div>
+						</md-input-container>
+			        	<md-input-container class="md-block">
+							<label>Cognome</label>
+							<input md-no-asterisk type="text" name="lastname" ng-model="user.lastname">
+							<div ng-messages="accountSettingsForm.lastname.$error">
+			        			<div ng-message="required">Il cognome è obbligatorio</div>
+			        		</div>
+						</md-input-container>
+						<div layout="row">
+							<md-input-container>
+	            				<label>Classe</label>
+	            				<md-select name="classe" md-no-asterisk ng-model="user.classe">
+		              				<md-option value="1">
+		                				1
+		              				</md-option>
+		              				<md-option value="2">
+		                				2
+		              				</md-option>
+		              				<md-option value="3">
+		                				3
+		              				</md-option>
+		              				<md-option value="4">
+		                				4
+		              				</md-option>
+		              				<md-option value="5">
+		                				5
+		              				</md-option>
+	            				</md-select>
+	            				<div ng-messages="accountSettingsForm.classe.$error">
+			        				<div ng-message="required">Scegli una classe</div>
+			        			</div>
+	          				</md-input-container>
+	          				<md-input-container class="md-block">
+								<label>Sezione</label>
+								<input md-no-asterisk md-maxlength="2" type="text" name="sezione" ng-model="user.sezione">
+								<div ng-messages="accountSettingsForm.sezione.$error">
+			        				<div ng-message="required">Inserisci una sezione</div>
+			        				<div ng-message="md-maxlength">La sezione non deve essere più lunga di 2</div>
+			        			</div>
+							</md-input-container>
+          				</div>
+			        </md-card-content>
+				</md-card>
+			</md-content>
+		</section>
+		<section>
+			<md-subheader>Informazioni account</md-subheader>
+			<md-card>
+				<md-card-content>
+					<md-input-container class="md-block">
+						<label>Email</label>
+						<input md-no-asterisk type="text" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/" name="mail" ng-model="user.mail">
+						<div ng-messages="accountSettingsForm.mail.$error">
+			        		<div ng-message="required">La mail è obbligatoria</div>
+			        		<div ng-message="pattern">La mail inserita non è valida</div>
+			        	</div>
+					</md-input-container>
+					<md-input-container class="md-block">
+						<label>Username</label>
+						<input md-no-asterisk type="text" name="username" ng-model="user.username">
+						<div ng-messages="accountSettingsForm.username.$error">
+			        		<div ng-message="required">Lo username è obbligatorio</div>
+			        	</div>
+					</md-input-container>
+				</md-card-content>
+			</md-card>
+			<md-card>
+				<md-card-content>
+					<md-input-container class="md-block">
+						<label>Vecchia password</label>
+						<input md-no-asterisk md-minlength="8" type="password" name="oldPassword" ng-model="oldPassword">
+						<div ng-messages="accountSettingsForm.oldPassword.$error">
+			        		<div ng-message="required">La password è obbligatoria</div>
+							<div ng-message="match">La password non è corretta</div>
+			        	</div>
+					</md-input-container>
+					<md-input-container class="md-block">
+						<label>Nuova password</label>
+						<input md-no-asterisk ng-minlength="8" type="password" name="newPassword" ng-model="newPassword">
+						<div ng-messages="accountSettingsForm.newPassword.$error">
+			        		<div ng-message="required">La password è obbligatoria</div>
+			        		<div ng-message="minlength">La password deve essere lunga almeno 8 caratteri</div>
+			        		<div ng-message="equal">Le password non corrispondono</div>
+			        	</div>
+					</md-input-container>
+					<md-input-container class="md-block">
+						<label>Ripeti nuova password</label>
+						<input md-no-asterisk ng-minlength="8" type="password" name="newPasswordRepeated" ng-model="newPasswordRepeated">
+						<div ng-messages="accountSettingsForm.newPasswordRepeated.$error">
+			        		<div ng-message="required">La password è obbligatoria</div>
+			        		<div ng-message="minlength">La password deve essere lunga almeno 8 caratteri</div>
+							<div ng-message="equal">Le password non corrispondono</div>
+			        	</div>
+					</md-input-container>
+				</md-card-content>
+			</md-card>
+		</section>
+		<div layout="row" layout-align="end center" style="padding-bottom: 5px">
+			<md-button class="md-primary md-raised" type="submit" ng-disabled=accountSettingsForm.$invalid>
+				<md-icon class="material-icons">backup</md-icon>
+				Save
+			</md-button>
+			<md-button class="md-warn md-icon-button" style="margin-left: 0px">
+				<md-icon class="material-icons">cancel</md-icon>
+			</md-button>
+		</div>
+	</form>
+</md-content>
