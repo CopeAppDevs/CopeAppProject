@@ -1,7 +1,6 @@
 package com.copeapp.entities.calendar;
 
 import com.copeapp.entities.common.Student;
-import com.copeapp.entities.common.Subject;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,11 +17,6 @@ public class InterrogationDay extends Event {
     @NonNull
     @ManyToMany
     private List<Student> studentsInterrogated;
-
-    @NonNull
-//    @ManyToMany
-    @Transient
-    private Subject subject;
 
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)

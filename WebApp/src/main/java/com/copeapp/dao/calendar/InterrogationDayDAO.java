@@ -34,7 +34,6 @@ public class InterrogationDayDAO {
                                                           Interrogation interrogation, Integer minInterrogated, Integer maxInterrogated){
         InterrogationDay interrogationDay = new InterrogationDay();
         interrogationDay.setInsertUser(insertUser);
-        interrogationDay.setSubject(subject);
         interrogationDay.setInterrogation(interrogation);
         interrogationDay.setInsertDate(new Date());
         interrogationDay.setType("interrogationday");
@@ -78,7 +77,7 @@ public class InterrogationDayDAO {
             if (!(interrogationDay.getStudentsInterrogated().contains(student))
                     && interrogationDay.getStudentsInterrogated().size()<interrogationDay.getMaxInterrogated() && isDayOpen(interrogationDay)
                     && student.getClasse().equals(interrogationDay.getInterrogation().getClasse())){
-                if (InterrogationDAO.canCreateInterrogation(currentUser, interrogationDay.getInterrogation().getClasse(), interrogationDay.getSubject())
+                if (InterrogationDAO.canCreateInterrogation(currentUser, interrogationDay.getInterrogation().getClasse(), interrogationDay.getInterrogation().getSubject())
                         || student.equals(currentUser)) { //TODO i rappresentanti possono aggiungere?
                     EntityManagerGlobal.getEntityManager().remove(savedInterrogationDay);
                     interrogationDay.setEventId(null);

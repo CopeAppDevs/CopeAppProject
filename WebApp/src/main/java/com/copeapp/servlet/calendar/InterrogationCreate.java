@@ -17,7 +17,6 @@ import com.copeapp.utilities.HttpStatusUtility;
 import com.copeapp.utilities.MessageUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +26,7 @@ import java.util.List;
 
 public class InterrogationCreate extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         User currentUser = UserDAO.selectByBasicAuthTokenException(request.getHeader("Authorization"));
         ObjectMapper om = new ObjectMapper();
