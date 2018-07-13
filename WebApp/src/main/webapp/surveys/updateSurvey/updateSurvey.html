@@ -33,12 +33,12 @@
 		        		<div layout="column" layout-padding>
 			        		<md-checkbox ng-checked="isChecked(selectedVoters)"
 			                         md-indeterminate="isIndeterminate(selectedVoters)"
-			                         ng-click="toggleAll(selectedVoters)">
+			                         ng-click="toggleAllVoters()">
 			            		<span ng-if="isChecked(selectedVoters)">Deseleziona tutto</span><span ng-if="!isChecked(selectedVoters)">Seleziona tutto</span>
 			            	</md-checkbox>
 					        <div layout="row" layout-wrap>
 					        	<div flex="50" ng-repeat="role in roles">
-				              		<md-checkbox ng-checked="exists(role, selectedVoters)" ng-click="toggle(role, selectedVoters)">
+				              		<md-checkbox ng-checked="exists(role, selectedVoters)" ng-click="toggleVoters(role)">
 				                	{{ role.role }}
 				              		</md-checkbox>
 				            	</div>
@@ -49,12 +49,12 @@
 		        		<div layout="column" layout-padding>
 				        	<md-checkbox ng-checked="isChecked(selectedViewers)"
 				                         md-indeterminate="isIndeterminate(selectedViewers)"
-				                         ng-click="toggleAll(selectedViewers)">
+				                         ng-click="toggleAllViewers()">
 				            	<span ng-if="isChecked(selectedViewers)">Deseleziona tutto</span><span ng-if="!isChecked(selectedViewers)">Seleziona tutto</span>
 				            </md-checkbox>
 					        <div layout="row" layout-wrap>
 					        	<div flex="50" ng-repeat="role in roles">
-				              		<md-checkbox ng-checked="exists(role, selectedViewers)" ng-click="toggle(role, selectedViewers)">
+				              		<md-checkbox ng-checked="exists(role, selectedViewers)" ng-click="toggleViewers(role)">
 				                	{{ role.role }}
 				              		</md-checkbox>
 				            	</div>
