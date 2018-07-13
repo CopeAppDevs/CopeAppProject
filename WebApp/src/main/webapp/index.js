@@ -116,16 +116,16 @@ function IndexCtrl($scope, $state, $moment, $mdToast, localStorageService, $mdSi
 	}
 	
 	//gestione login
-	$scope.loggedIn = false; //mettere per attivare la login
-//	$scope.loggedIn = true; //togliere per attivare la login
+//	$scope.loggedIn = false; //mettere per attivare la login
+	$scope.loggedIn = true; //togliere per attivare la login
 	$scope.getLoggedIn = function() {return $scope.loggedIn}
 	$scope.setLoggedIn = function(set) {$scope.loggedIn = set}
 	
 	//gestione user
-	$scope.user;  //mettere per attivare la login
-//	UserService.login("FabioTex", "VincioGay").then(function(response) {
-//		$scope.user = response.data.user;
-//	}, $scope.serverErrorCallback);
+//	$scope.user;  //mettere per attivare la login
+	UserService.login("FabioTex", "VincioGay").then(function(response) {
+		$scope.user = response.data.user;
+	}, $scope.serverErrorCallback);
 //	$scope.user = {"userId":50,"mail":"cerammerda@gioli.it","firstname":"Fabio","lastname":"Tessaro","username":"FabioTex","classe":"5","sezione":"F","password":"VincioGay","roles":[{"roleId":1,"role":"studente","description":"Studente"},{"roleId":2,"role":"prof","description":"Professore"},{"roleId":3,"role":"moderatore","description":"Moderatore"},{"roleId":4,"role":"admin","description":"Amministratore"},{"roleId":5,"role":"redattore","description":"Redattore"},{"roleId":6,"role":"rappresentante","description":"Rappresentante"}],"imageUrl":"Fabio.tessaro.porta@gmail.com","wallpaper":"default","firstEntry":false};
 	$scope.getUser = function() {return $scope.user}
 	$scope.setUser = function(set) {$scope.user = set}
