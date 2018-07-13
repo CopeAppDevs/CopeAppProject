@@ -44,20 +44,49 @@ function CreateSurveyCtrl($scope, $moment, surveyService, commonsService, $mdMen
 	$scope.isIndeterminate = function(selected) {
 		return (selected.length !== 0 && selected.length !== $scope.roles.length);
 	};
-	$scope.toggleAll = function(selected) {
-		if (selected.length === $scope.roles.length) {
-			selected.length = 0;
-		} else if (selected.length === 0 || selected.length > 0) {
-			selected.length = 0;
-			selected.push(...$scope.roles);
+	
+	$scope.toggleAllVoters = function() {
+		if ($scope.selectedVoters.length === $scope.roles.length) {
+			$scope.selectedVoters.length = 0;
+		} else {
+			$scope.selectedVoters.length = 0;
+			$scope.selectedVoters.push(...$scope.roles);
+			$scope.selectedViewers.lenght = 0;
+			$scope.selectedViewers.push(...$scope.roles);
 		}
 	};
-	$scope.toggle = function(item, list) {
-		var idx = list.indexOf(item);
-		if (idx > -1) {
-			list.splice(idx, 1);
+	
+	$scope.toggleAllViewers = function() {
+		if ($scope.selectedViewers.length === $scope.roles.length) {
+			$scope.selectedViewers.length = 0;
+			$scope.selectedViewers = $scope.selectedVoters.slice();
 		} else {
-			list.push(item);
+			$scope.selectedViewers.length = 0;
+			$scope.selectedViewers.push(...$scope.roles);
+		}
+	};
+	
+	$scope.toggleVoters = function(item) {
+		var idx = $scope.selectedVoters.indexOf(item);
+		if (idx > -1) {
+			$scope.selectedVoters.splice(idx, 1);
+		} else {
+			$scope.selectedVoters.push(item);
+			if($scope.selectedViewers.indexOf(item) == -1) {
+				$scope.selectedViewers.push(item);
+			}	
+		}	
+	};
+	
+	
+	$scope.toggleViewers = function(item) {
+		var idx = $scope.selectedViewers.indexOf(item);
+		if (idx > -1) {
+			if($scope.selectedVoters.indexOf(item) == -1) {
+				$scope.selectedViewers.splice(idx, 1);
+			}
+		} else {
+			$scope.selectedViewers.push(item);
 		}
 	};
 
