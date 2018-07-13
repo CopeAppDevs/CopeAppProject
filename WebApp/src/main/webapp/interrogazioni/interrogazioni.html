@@ -1,5 +1,5 @@
 <div ng-controller="InterrogazioniCtrl">
-	<md-cool-calendar calendar-events="events" lock-view-type="false" open-event="openEvent" calendar-span="5">
+	<md-cool-calendar id="calendar" calendar-events="events" lock-view-type="false" open-event="openEvent" rest-for-events="'localhost:8080/rest/getYearEvents'">
 		
 	</md-cool-calendar>
 </div>

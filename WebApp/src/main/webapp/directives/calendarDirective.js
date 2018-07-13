@@ -1,6 +1,6 @@
-app.directive('mdCoolCalendar', ["$moment", mdCoolCalendar]);
+app.directive('mdCoolCalendar', ["$moment", "$anchorScroll", "$timeout", mdCoolCalendar]);
 
-function mdCoolCalendar($moment) {
+function mdCoolCalendar($moment, $anchorScroll, $timeout) {
 	var directive = {};
 
     directive.restrict = 'E'; /* restrict this directive to elements */
@@ -9,7 +9,7 @@ function mdCoolCalendar($moment) {
     	events: "=calendarEvents",
     	lockViewType: "=",
     	openEvent: "&",
-    	calendarSpan: "="
+    	rest: "=restForEvents"
     }
     directive.link = function($scope, element, attrs) {
     	
@@ -41,12 +41,17 @@ function mdCoolCalendar($moment) {
     		}
     	}
     	
+    	$scope.scrollToToday = function() {
+    		 $anchorScroll("day-"+$moment(new Date()).subtract(1, "d").format("DD/MM/YYYY"));
+    	}
+    	
     	$scope.calendar = [];
     	for (var day = startDate; day.isBefore(endDate); day = day.add(1, "day")) {
     		if (day.date() == 1) { //se è il primo di un mese allora aggiungi la header del mese
     			$scope.calendar.push({
     				type: "month",
-    				name: $moment(day).format("MMMM")
+    				name: $moment(day).format("MMMM"),
+    				year: $moment(day).format("YYYY")
     			})
     		}
     		$scope.calendar.push({
@@ -56,7 +61,7 @@ function mdCoolCalendar($moment) {
     		})
     		//trovare eventi per questa girnata
     	}
+    	$timeout($scope.scrollToToday);
     }
-    
     return directive;
 }

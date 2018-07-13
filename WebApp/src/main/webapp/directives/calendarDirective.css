@@ -1,0 +1,8 @@
+.md-subheader-inner {
+	padding: 5px !important;
+}
+#toTodayFab {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+}

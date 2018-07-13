@@ -5,7 +5,7 @@ app.config(function($stateProvider){
 	})
 });
 app.controller("InterrogazioniCtrl", InterrogazioniCtrl);
-function InterrogazioniCtrl($scope){
+function InterrogazioniCtrl($scope, $moment, $anchorScroll){
 	
 	$scope.events = [{
 			date: new Date(1529432645),
