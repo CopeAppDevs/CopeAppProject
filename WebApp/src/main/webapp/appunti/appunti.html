@@ -1,1 +1,59 @@
-<h2>ciao</h2>
+<div ng-controller="AppuntiCtrl" layout="column">
+	<md-tabs md-dynamic-height md-border-bottom layout="column">
+	
+		<md-tab label="Cerca">
+			<md-content layout-padding>
+				<md-input-container float>
+			     <md-icon class="material-icons" ng-click="search()">search</md-icon>
+			      <input ng-model="noteName" type="text" placeholder="Cerca appunto" ng-style="searchBar">
+			    </md-input-container>
+			
+			
+			<!--  lavoro per Hu
+				<md-card style="padding: 0px;" ng-repeat="activeSurvey in activeSurveys">
+					<md-card-content layout-padding style="max-height: 40vh" ng-bind-html="activeSurvey.question|trustAsHtml" ng-click="showSurveyDetails($event, activeSurvey.surveyId, $index)">
+					</md-card-content>
+					<md-card-actions style="margin: 0px; padding: 8px; border-top-width: 1px; border-top-style: solid; border-top-color: #00000042" layout="row" child-align="end center">
+						<md-icon class="material-icons" style="margin-right: 8px;">how_to_vote</md-icon>
+						<p class="md-subhead"  layout="row" layout-align="start start" style="color: #0000008a;" flex md-truncate> 
+								{{activeSurvey.voters}}
+						</p>
+						<p class="md-subhead md-warn">  
+								{{calculateExpireDate(activeSurvey.closeSurveyDate, activeSurvey.openSurveyDate)}}
+						</p>
+						<md-button style="margin: auto;" ng-if="checkRoles('admin')" class="md-icon-button md-warn" ng-click="deleteSurvey(activeSurvey.surveyId)" >
+							<md-icon class="material-icons">delete_forever</md-icon>
+						</md-button>
+					</md-card-actions>
+				</md-card> -->
+			</md-content>
+			<md-button ng-if="appuntiLista.length != 0" ng-click="search()">Carica altro</md-button>	
+		</md-tab>
+		
+		
+		<md-tab label="Materie">
+			<md-content layout-padding>
+			
+				<md-card style="text-align:center" ng-repeat="subject in subjects">
+					<md-card-content layout-padding style="max-height: 40vh" ng-click="onClickMateria()">
+						<md-card-action style="margin: 0px; padding: 8px;layout="row" child-align="center">{{subject.displayName}}
+						</md-card-action>
+					</md-card-content>
+					
+					
+				</md-card>
+			</md-content>
+		</md-tab>
+		
+		
+		<md-tab label="I miei" layout="column">
+			<md-subheader>Carica appunti
+				<md-button style="margin: auto;" ng-click="goto('caricaAppunti')" class="md-icon-button">
+					<md-icon class="material-icons">add</md-icon>
+				</md-button>
+			</md-subheader>
+			
+			<md-button ng-if="miaListaAppunti != 0" ng-click="refreshMine()">Aggiorna</md-button>
+		</md-tab>
+	</md-tabs>
+</div>
