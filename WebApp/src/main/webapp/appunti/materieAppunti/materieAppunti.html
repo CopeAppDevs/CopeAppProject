@@ -1,1 +1,7 @@
-categories
+<div ng-controller="materieAppuntiCtrl">
+	<md-card style="text-align:center" ng-repeat="subject in subjects">
+	<md-card-content layout-padding style="max-height: 40vh"
+		ng-click="onClickMateria()"> <md-card-action
+		style="margin: 0px; padding: 8px;layout=" row" child-align="center">{{subject.displayName}}</md-card-action>
+	</md-card-content> </md-card>
+</div>

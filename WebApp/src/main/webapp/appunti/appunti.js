@@ -19,27 +19,18 @@ function AppuntiCtrl($scope){
 		console.log("Funzia");
 	}
 	
-	$scope.subjects = [
-		{displayName: "Matematica", subjectId : '1'},
-		{displayName: "Geografia", subjectId: '2'},
-		{displayName: "Italiano", subjectId: '3'},
-		{displayName: "Informatica", subjectId: '4'}
-		];
-	// riccio's work
-	$scope.onClickMateria = function(){
-		console.log("Il click di materia funzia :D");
-	}
-	//kama's work
-	/*
-	 * un appunto ha 
-	 * id
-	 * owner
-	 * subject
-	 * formato
-	 * tag
-	 * professore
-	 * 
+	/* COLLEGAMENTO AL SERVICE PER TIRARE FUORI LE MATERIE non va :(
+	$scope.materieLista = null;
+	$scope.materia = function (){
+//		 console.log("ciao dalla search");
+		var materiaProm = appuntiService.getMaterie();
+		materiaProm.then(function onSuccess(searchResponse){
+			$scope.materieLista = searchResponse.data.materia;
+		},
+				$scope.serverErrorCallbackToast);
+	 }
 	 */
+	
 	$scope.miaListaAppunti = [];
 	$scope.uploadFile = function(){
 		console.log("ciao da i miei");

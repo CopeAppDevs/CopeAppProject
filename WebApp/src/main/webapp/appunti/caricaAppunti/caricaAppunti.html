@@ -1,1 +1,25 @@
-shish
+
+<md-subheader>Carica appunti <md-button
+	style="margin: auto;" ng-click="goto('caricaAppunti')"
+	class="md-icon-button"> <md-icon class="material-icons">add</md-icon>
+</md-button> </md-subheader>
+
+<md-button ng-if="miaListaAppunti != 0" ng-click="refreshMine()">Aggiorna</md-button>
+
+
+<!-- 
+<div ng-controller="CreateSurveyCtrl">
+	<form name="surveyCreateForm">
+		<md-card layout="column"> <md-card-header>
+		<h3 style="">CARICA APPUNTI</h3>
+		</md-card-header> <md-input-container class="md-block"> <label>Titolo
+			dell'appunto</label> <input md-maxlength="40" required md-no-asterisk
+			name="titolo" ng-model="titolo">
+		<div ng-messages="titolo.$error">
+			<div ng-message="required">Mi serve un titolo.</div>
+			<div ng-message="md-maxlength">Titolo troppo lungo</div>
+		</div>
+		</md-input-container> </md-card>
+	</form>
+</div>
+ -->
