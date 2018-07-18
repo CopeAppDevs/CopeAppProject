@@ -4,7 +4,10 @@
 			style="margin: auto;" ng-click="goto('caricaAppunti')"
 			class="md-icon-button"> <md-icon class="material-icons">add</md-icon>
 		</md-button> </md-subheader>
+		
+		<md-card ng-include="'appunti/components/cardcomponent.htm'" ng-repeat="appunto in laMiaLista">
+		</md-card>
 
-		<md-button ng-if="miaListaAppunti != 0" ng-click="refreshMine()">Aggiorna</md-button>
+		<md-button ng-if="laMiaLista != 0" ng-click="refreshMine()">Aggiorna</md-button>
 	</div>
 </div>
