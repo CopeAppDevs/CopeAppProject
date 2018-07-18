@@ -11,6 +11,7 @@ function appuntiService($q, $http) {
 							appuntoId : '0',
 							titolo : 'riccio molesto',
 							descrizione: "Una testo moltooooo lungo da scrivere",
+							ownerId: '51',
 							prof: 'Galletto',
 							materia: 'Italiano',
 							data: new Date()
@@ -19,6 +20,7 @@ function appuntiService($q, $http) {
 							appuntoId : '1',
 							titolo : 'cinese molesto',
 							descrizione: "Una testo moltooooo lungo da scrivere",
+							ownerId: '52',
 							prof: 'Maria',
 							materia: 'Matematica',
 							data: new Date()
@@ -29,6 +31,24 @@ function appuntiService($q, $http) {
 				reject("Errore interno al server");
 			}
 		});
+	}
+	
+	this.getAppunto = function(id){
+		return $q(function(resolve, reject) {
+			resolve({ 
+				data: {
+					appunto:[{
+						appuntoId : '0',
+						titolo : 'riccio molesto',
+						descrizione: "Una testo moltooooo lungo da scrivere",
+						ownerId: '51',
+						prof: 'Galletto',
+						materia: 'Italiano',
+						data: new Date()
+					}]
+			}});
+		});
+		
 	}
 	/*	TIRA FUORI LE MATERIE PER LA SEZIONE MATERIE... NON WORKA PERCHE' DICE CHE NON È UNA FUNZIONE :(
 	this.getMaterie = function() { 
