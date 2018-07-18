@@ -7,8 +7,8 @@ function IndexCtrl($scope, $state, $moment, $mdToast, localStorageService, $mdSi
 	}
 	
 	//funzione globale cambio stato
-	$scope.goto = function(state){
-		$state.go(state);
+	$scope.goto = function(state, stateParams){
+		$state.go(state, stateParams);
 	}
 	
 	//configurazione moment

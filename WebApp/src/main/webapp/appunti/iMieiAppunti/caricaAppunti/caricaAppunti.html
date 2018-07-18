@@ -1,14 +1,4 @@
 <div ng-controller="caricaAppuntiCtrl">
-	<div>
-		<md-subheader>Carica appunti <md-button
-			style="margin: auto;" ng-click="goToLoading()"
-			class="md-icon-button"> <md-icon class="material-icons">add</md-icon>
-		</md-button> </md-subheader>
-
-		<md-button ng-if="miaListaAppunti != 0" ng-click="refreshMine()">Aggiorna</md-button>
-	</div>
-<!-- 	
-<div>
 	<form>
 		<md-card layout="column"> <md-card-header><md-card-header-text> <span class="md-title">
 		Informazioni
@@ -23,9 +13,10 @@
 					50 caratteri.</div>
 			</div>
 		</div>
-		</md-input-container> <input
-			type="file" nv-file-select uploader="fileUploader" /> <md-button class="md-icon-button"> <md-icon
-			class="material-icons">add</md-icon> </md-button></md-input-container>
+		<input style="display: none; visibility: hidden;" id="imageUploader" type="file" nv-file-select uploader="fileUploader"/>
+		     			<md-button class="md-icon-button" ng-click="loadImage()">
+		     				<md-icon class="material-icons">add</md-icon>
+		     			</md-button>
 
 <div>
   <md-input-container class="md-block" flex-gt-sm>
@@ -62,4 +53,3 @@
 </md-card>
 </form>
 </div>
- -->
