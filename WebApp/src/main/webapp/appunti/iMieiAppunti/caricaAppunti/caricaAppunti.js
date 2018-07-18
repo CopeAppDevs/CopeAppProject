@@ -2,19 +2,20 @@ app.config(function($stateProvider){
 	$stateProvider.state("caricaAppunti", {
 		url:"/caricaAppunti",
 		templateUrl:"appunti/iMieiAppunti/caricaAppunti/caricaAppunti.html",
-		params: {
-			idMateria: null
-		}
 	})
 });
 
 app.controller("caricaAppuntiCtrl", caricaAppuntiCtrl);
 
-function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $stateParams){
-	console.log($stateParams.idMateria);
+function caricaAppuntiCtrl($scope, appuntiService, FileUploader){
 	
-	$scope.compiling = false
-		
+	$scope.title = "";
+	$scope.description = "";
+	$scope.subject = "";
+	$scope.prof = "";
+	$scope.loader = "";
+	
+	
 	$scope.goToLoading = function (){
 		compile = true;
 		goto('caricaAppunti');
@@ -62,6 +63,21 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $stateParams){
 			$scope.answers[$scope.currentImageIndex].answerContent.answerImage = output;
 			$scope.showSimpleToast("Immagine caricata con successo", "bottom right", 2500);
 		}
+	}
+	$scope.exit = function() {
+		$scope.showActionToast("Vuoi uscire? Perderai le modifiche.", "bottom right", 3000, "OK", function(response) {
+			if (response=="ok") {
+				$scope.goto("iMieiAppunti");
+			}
+		});
+	}
+	
+	$scope.resetAll = function () {
+		$scope.title = "";
+		$scope.description = "";
+		$scope.subject = "";
+		$scope.prof = "";
+		$scope.loader = "";
 	}
              
 }
