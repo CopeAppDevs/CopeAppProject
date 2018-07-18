@@ -4,43 +4,9 @@
 		<input	ng-keydown="$event.keyCode === 13 && search()" ng-model="text" type="text" placeholder="Cerca appunto"
 				ng-style="searchBar"> </md-input-container>
 	
-	<!-- <md-card style="padding: 0px;" ng-repeat="appunto in appuntiLista">
-		<md-card-action>
-			<md-card-title style="padding-top: 4%;">
-				<md-card-title-text style="text-align: right;">
-					<span>{{appunto.titolo}}</span>
-				</md-card-title-text>
-			</md-card-title>
-			<md-card-content style="float: right;">
-				<span>{{appunto.descrizione}}</span>
-			</md-card-content>
-		</md-card-action>
-	</md-card> -->
-	
-	
-	<md-card style="padding: 0px;" ng-repeat="appunto in appuntiLista" ng-include="'appunti/components/cardcomponent.htm'">
+	<md-card style="padding: 0px;" ng-repeat="appunto in appuntiLista" ng-include="'appunti/components/cardcomponent.htm'" ng-click="goto('paginaAppunti', [{'idAppunto' : '0'}])">
         
     </md-card>
 	
-	
-	
-	
-	
-				<!-- <md-card style="padding: 0px;" ng-repeat="appunti in appuntiLista">
-					<md-card-content layout-padding style="max-height: 40vh" ng-bind="appunti.title">
-					</md-card-content>
-					<md-card-actions style="margin: 0px; padding: 8px; border-top-width: 1px; border-top-style: solid; border-top-color: #00000042" layout="row" child-align="end center">
-						<md-icon class="material-icons" style="margin-right: 8px;">how_to_vote</md-icon>
-						<p class="md-subhead"  layout="row" layout-align="start start" style="color: #0000008a;" flex md-truncate> 
-					
-						</p>
-						<p class="md-subhead md-warn">  
-						</p>
-						<md-button style="margin: auto;" ng-if="checkRoles('admin')" class="md-icon-button md-warn" ng-click="deleteSurvey(activeSurvey.surveyId)" >
-							<md-icon class="material-icons">delete_forever</md-icon>
-						</md-button>
-					</md-card-actions>
-				</md-card> 
-				 -->
 	<md-button ng-if="appuntiLista.length != 0" ng-click="search()">Carica altro</md-button>
 </div>

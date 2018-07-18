@@ -11,6 +11,7 @@ app.config(function($stateProvider){
 app.controller("paginaAppuntiCtrl", paginaAppuntiCtrl);
 
 function paginaAppuntiCtrl($scope, appuntiService, $stateParams){
+	console.log($stateParams.idAppunto);
 	$scope.appunto=[];
 	
 	var appuntoPromise = appuntiService.getAppunto($stateParams.idAppunto);
