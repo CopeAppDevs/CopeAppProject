@@ -9,10 +9,20 @@ function appuntiService($q, $http) {
 					data: {
 						appunti:[{
 							appuntoId : '0',
-							title : 'riccio molesto'
+							titolo : 'riccio molesto',
+							descrizione: "Una testo moltooooo lungo da scrivere",
+							prof: 'Galletto',
+							materia: 'Italiano',
+							data: new Date()
+								 
 						},{
 							appuntoId : '1',
-							title : 'cinese molesto'
+							titolo : 'cinese molesto',
+							descrizione: "Una testo moltooooo lungo da scrivere",
+							prof: 'Maria',
+							materia: 'Matematica',
+							data: new Date()
+						
 						}]
 				}});
 			} else {
