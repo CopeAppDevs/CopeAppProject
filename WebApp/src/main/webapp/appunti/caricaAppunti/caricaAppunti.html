@@ -1,25 +1,65 @@
+<div ng-controller="caricaAppuntiCtrl">
+	<div>
+		<md-subheader>Carica appunti <md-button
+			style="margin: auto;" ng-click="goToLoading()"
+			class="md-icon-button"> <md-icon class="material-icons">add</md-icon>
+		</md-button> </md-subheader>
 
-<md-subheader>Carica appunti <md-button
-	style="margin: auto;" ng-click="goto('caricaAppunti')"
-	class="md-icon-button"> <md-icon class="material-icons">add</md-icon>
-</md-button> </md-subheader>
-
-<md-button ng-if="miaListaAppunti != 0" ng-click="refreshMine()">Aggiorna</md-button>
-
-
-<!-- 
-<div ng-controller="CreateSurveyCtrl">
-	<form name="surveyCreateForm">
-		<md-card layout="column"> <md-card-header>
-		<h3 style="">CARICA APPUNTI</h3>
-		</md-card-header> <md-input-container class="md-block"> <label>Titolo
-			dell'appunto</label> <input md-maxlength="40" required md-no-asterisk
-			name="titolo" ng-model="titolo">
-		<div ng-messages="titolo.$error">
-			<div ng-message="required">Mi serve un titolo.</div>
-			<div ng-message="md-maxlength">Titolo troppo lungo</div>
+		<md-button ng-if="miaListaAppunti != 0" ng-click="refreshMine()">Aggiorna</md-button>
+	</div>
+<!-- 	
+<div>
+	<form>
+		<md-card layout="column"> <md-card-header><md-card-header-text> <span class="md-title">
+		Informazioni
+			sull'appunto</span> </md-card-header-text> </md-card-header>
+		<div>
+			<md-input-container class="title"> <label>Titolo
+				dell'appunto</label> <input md-maxlength="50" required md-no-asterisk
+				name="titolo" ng-model="titolos">
+			<div ng-messages="projectForm.description.$error">
+				<div ng-message="required">Il titolo è obligatorio</div>
+				<div ng-message="md-maxlength">Il titolo deve avere al massimo
+					50 caratteri.</div>
+			</div>
 		</div>
-		</md-input-container> </md-card>
-	</form>
+		</md-input-container> <input
+			type="file" nv-file-select uploader="fileUploader" /> <md-button class="md-icon-button"> <md-icon
+			class="material-icons">add</md-icon> </md-button></md-input-container>
+
+<div>
+  <md-input-container class="md-block" flex-gt-sm>
+            <label>Materia dell'appunto</label>
+            <input ng-model="materia">
+          </md-input-container>
+</div>
+ <div layout-gt-xs="row">
+    <div flex-gt-xs>
+     <md-datepicker ng-model="data" md-placeholder="2000-07-18"></md-datepicker>
+     Creatore
+    </div>
+<div>
+  <md-input-container class="md-block" flex-gt-sm>
+            <label>Prof</label>
+            <input ng-model="prof">
+          </md-input-container>
+</div>
+ <div layout="row">
+		    <md-button class="md-raised md-primary" ng-click="">
+		    	Salva
+		    	<md-icon class="material-icons">cloud_upload</md-icon>
+		    </md-button>
+		    <md-button class="md-raised md-primary" ng-click="exit()">
+		    	Esci
+		    	<md-icon class="material-icons">clear</md-icon>
+		    </md-button>
+		    <span flex md-truncate></span>
+		    <md-button class="md-warn" ng-click="resetAll()">
+		    	Reset
+		    	<md-icon class="material-icons">refresh</md-icon>
+		    </md-button>
+	    </div>
+</md-card>
+</form>
 </div>
  -->
