@@ -1,0 +1,9 @@
+<div ng-controller="materiaAppuntiCtrl">
+	
+	<md-card style="padding: 0px;" ng-repeat="appunto in listaAppuntiMateria" ng-include="'appunti/components/cardcomponent.htm'" ng-click="goto('paginaAppunti', {'idAppunto' : '0'})">
+    
+    </md-card>
+	
+	<!-- <md-button ng-if="appuntiLista.length != 0" ng-click="search()">Carica altro</md-button> -->
+	<div class="material-icons" ng-click="goto('appunti', {selectedTab : 1})" style="margin: 8px; padding: 5px; position:relative">arrow_back</div>
+</div>

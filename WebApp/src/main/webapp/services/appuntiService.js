@@ -50,10 +50,9 @@ function appuntiService($q, $http) {
 		});
 		
 	}
-	/*	TIRA FUORI LE MATERIE PER LA SEZIONE MATERIE... NON WORKA PERCHE' DICE CHE NON È UNA FUNZIONE :(
+	
 	this.getMaterie = function() { 
 		return $q(function(resolve, reject) {
-			if(resolve){
 				resolve({ 
 					data: {
 						materie:[{
@@ -64,11 +63,8 @@ function appuntiService($q, $http) {
 							nome : 'Italiano'
 						}]
 				}});
-			}else{
-				reject("Errore interno al server");
-			}
 		});
-	}*/
+	}
 //	
 //	this.login = function(mail,password) {  //mettere per attivare la login
 //		var loginDTO = new Object();

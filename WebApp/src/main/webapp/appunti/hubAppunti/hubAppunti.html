@@ -1,0 +1,6 @@
+<div ng-controller="materieAppuntiCtrl">
+	<md-card style="text-align:center" ng-repeat="materia in subjectList">
+	<md-card-content layout-padding style="max-height: 40vh" ng-click="goto('materiaAppunti', {'materiaId' : materia.materiaId })"> <md-card-action
+		style="margin: 0px; padding: 8px;layout=" row" child-align="center">{{materia.nome}}</md-card-action>
+	</md-card-content> </md-card>
+</div>
