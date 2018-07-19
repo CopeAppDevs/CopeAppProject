@@ -1,6 +1,6 @@
 app.config(function($stateProvider) {
 	$stateProvider.state("iMieiAppunti", {
-		url : "iMieiAppunti",
+		url : "/iMieiAppunti",
 		templateUrl : "appunti/iMieiAppunti/iMieiAppunti.html",
 	})
 });

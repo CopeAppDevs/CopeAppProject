@@ -67,7 +67,7 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader){
 	$scope.exit = function() {
 		$scope.showActionToast("Vuoi uscire? Perderai le modifiche.", "bottom right", 3000, "OK", function(response) {
 			if (response=="ok") {
-				$scope.goto("iMieiAppunti");
+				$scope.goto('appunti', {selectedTab : 2});
 			}
 		});
 	}

@@ -1,13 +1,17 @@
 app.config(function($stateProvider) {
 	$stateProvider.state("appunti", {
 		url : "/appunti",
-		templateUrl : "appunti/appunti.html"
+		templateUrl : "appunti/appunti.html",
+		params: {
+			selectedTab : 0
+		}
 	})
 });
 app.controller("AppuntiCtrl", AppuntiCtrl);
 
-function AppuntiCtrl($scope){
+function AppuntiCtrl($scope, $stateParams){
 	
+	$scope.selectedTab = $stateParams.selectedTab;
 	$scope.appuntiLista = [];
 	$scope.searchBar = {
 	        "width" : "137.5%"
