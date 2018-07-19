@@ -7,7 +7,13 @@ app.config(function($stateProvider){
 
 app.controller("caricaAppuntiCtrl", caricaAppuntiCtrl);
 
-function caricaAppuntiCtrl($scope, appuntiService, FileUploader){
+function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
+	 var self = this;
+	 
+	self.prof = loadAll();
+	self.querySearch   = querySearch;
+	self.selectedItemChange = selectedItemChange;
+	self.searchTextChange   = searchTextChange;
 	
 	$scope.title = "";
 	$scope.description = "";
@@ -15,12 +21,7 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader){
 	$scope.prof = "";
 	$scope.loader = "";
 	
-	
-	$scope.goToLoading = function (){
-		compile = true;
-		goto('caricaAppunti');
-		}
-	
+	$scope.currentImageIndex;
 	$scope.loadImage = function() {
 		$("#imageUploader").click();
 	}
@@ -30,10 +31,10 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader){
             name: 'imageFilter',
             fn: function(item /* {File|FileLikeObject} */, options) {
                 var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-                if ('|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1) {
+                if ('|pdf|'.indexOf(type) !== -1) {
         			return true;
         		} else {
-        			$scope.showSimpleToast("Sono ammesse solo immagini", "bottom right", 2500);
+        			$scope.showSimpleToast("Sono ammessi solo formati pdf", "bottom right", 2500);
         			return false;
         		}
             }
@@ -60,7 +61,6 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader){
 			var result = reader.result;
 			var position = 5;
 			var output = [result.slice(0, position), item._file.type, result.slice(position)].join('');
-			$scope.answers[$scope.currentImageIndex].answerContent.answerImage = output;
 			$scope.showSimpleToast("Immagine caricata con successo", "bottom right", 2500);
 		}
 	}
@@ -79,5 +79,44 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader){
 		$scope.prof = "";
 		$scope.loader = "";
 	}
-             
+	 
+	function querySearch (query) {
+	      var results = query ? self.prof.filter( createFilterFor(query) ) : self.prof,
+	          deferred;
+	      if (self.simulateQuery) {
+	        deferred = $q.defer();
+	        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+	        return deferred.promise;
+	      } else {
+	        return results;
+	      }
+	    }
+	
+	 function searchTextChange(text) {
+	      $log.info('Text changed to ' + text);
+	    }
+
+	    function selectedItemChange(item) {
+	      $log.info('Item changed to ' + JSON.stringify(item));
+	    }
+	 
+	function loadAll() {
+	      var allProf = 'Benassi, Corvino, Valzania, Pannullo, Braidi, Ragno, Ravazza, Zangoli';
+
+	      return allProf.split(/, +/g).map( function (prof) {
+	        return {
+	          value: prof.toLowerCase(),
+	          display: prof
+	        };
+	      });
+	    }   
+	
+	function createFilterFor(query) {
+	      var lowercaseQuery = query.toLowerCase();
+
+	      return function filterFn(prof) {
+	        return (prof.value.indexOf(lowercaseQuery) === 0);
+	      };
+
+	    }
 }

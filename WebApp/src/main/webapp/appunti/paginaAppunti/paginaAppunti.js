@@ -11,6 +11,7 @@ app.config(function($stateProvider){
 app.controller("paginaAppuntiCtrl", paginaAppuntiCtrl);
 
 function paginaAppuntiCtrl($scope, appuntiService, $stateParams){
+	
 	console.log($stateParams.idAppunto);
 	$scope.appunto=[];
 	
@@ -19,5 +20,6 @@ function paginaAppuntiCtrl($scope, appuntiService, $stateParams){
 			$scope.appunto = searchResponse.data.appunti;
 		},
 			$scope.serverErrorCallbackToast);
+	$scope.materia = $scope.appunto[0].nome;
 	
 }

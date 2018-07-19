@@ -1,4 +1,4 @@
-<div ng-controller="caricaAppuntiCtrl">
+<div ng-controller="caricaAppuntiCtrl as ctrl">
 	<form>
 		<md-card layout="column"> <md-card-header><md-card-header-text> <span class="md-title">
 		Informazioni sull'appunto</span> </md-card-header-text> </md-card-header>
@@ -14,19 +14,32 @@
 		
 	<div>
 	<div> 
-	     <textarea ui-tinymce="tinymceOptions" ng-model="description"></textarea>
-	    	<div layout="column" flex layout-padding style="padding-bottom: 0px" layout-align="center start">
+	<div layout="column" flex layout-padding style="padding-bottom: 0px" layout-align="center start" >
+	     <textarea style=" width:93%;"" ng-model="description" placeholder ="Descrizione dell'appunto"></textarea>
+	    	</div>
 	          		</div>
   <md-input-container class="md-block" flex-gt-sm>
             <label>Materia dell'appunto</label>
             <input ng-model="subject">
           </md-input-container>
 	</div>
-	<div>
-  <md-input-container class="md-block" flex-gt-sm>
-            <label>Prof</label>
-            <input ng-model="prof">
-          </md-input-container>
+	<div ng-model="prof">
+  		 <md-autocomplete
+          md-selected-item="ctrl.selectedItem"
+          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+          md-search-text="ctrl.searchText"
+          md-selected-item-change="ctrl.selectedItemChange(item)"
+          md-items="item in ctrl.querySearch(ctrl.searchText)"
+          md-item-text="item.display"
+          md-min-length="0"
+          placeholder="Scrivi il nome del prof">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+         Non esiste "{{ctrl.searchText}}" come prof.
+        </md-not-found>
+      </md-autocomplete>
 	</div>
 	<div>
 		<md-card-content>
