@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class InterrogationDTO {
+public class InterrogationDTO { //TODO forse è da rivedere (entity in dto?)
 
     @NonNull
     private Classe classe;
@@ -19,7 +19,7 @@ public class InterrogationDTO {
     @NonNull
     private Subject subject;
 
-    @NonNull
+    @NonNull 
     private List<Student> studentsInterrogated;
 
     @NonNull

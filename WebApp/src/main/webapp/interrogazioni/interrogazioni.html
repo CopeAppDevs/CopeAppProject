@@ -1,5 +1,12 @@
 <div ng-controller="InterrogazioniCtrl">
-	<md-cool-calendar id="calendar" calendar-events="events" lock-view-type="false" open-event="openEvent" rest-for-events="'localhost:8080/rest/getYearEvents'">
+	<md-cool-calendar 
+	id="calendar" 
+	calendar-events="events" 
+	lock-view-type="false" 
+	open-event="openEvent" 
+	view-mode="mode" 
+	can-edit="checkRoles('admin')"
+	rest-for-events="'localhost:8080/rest/getYearEvents'">
 		
 	</md-cool-calendar>
 </div>

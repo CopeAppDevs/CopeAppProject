@@ -6,13 +6,21 @@ app.config(function($stateProvider){
 });
 app.controller("InterrogazioniCtrl", InterrogazioniCtrl);
 function InterrogazioniCtrl($scope, $moment, $anchorScroll){
+	$scope.mode = "dafys";
 	
 	$scope.events = [{
-			date: new Date(1529432645),
-			description: "Domani"
+			eventDate: new Date(1532025814925),
+			description: "Domani",
+			color: 'yellow'
+	}, 
+		{
+		eventDate: new Date(1532025814925),
+		description: "Ungu",
+		color: 'lightblue'
 	}, {
-		date: new Date(1529519045),
-		description: "Dopodomani"
+		eventDate: new Date(1532325814925),
+		description: "Dopodomani",
+		color: 'lightgreen'
 	}]
 	
 	$scope.openEvent = function(index) {

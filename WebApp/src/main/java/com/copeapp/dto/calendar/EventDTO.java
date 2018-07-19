@@ -1,13 +1,14 @@
 package com.copeapp.dto.calendar;
 
-import com.copeapp.entities.common.Classe;
-import com.copeapp.entities.common.Role;
-import com.copeapp.entities.common.User;
-import lombok.Data;
-import lombok.NonNull;
-
 import java.util.Date;
 import java.util.List;
+
+import com.copeapp.dto.commons.ClasseDTO;
+import com.copeapp.dto.commons.RoleDTO;
+import com.copeapp.entities.common.User;
+
+import lombok.Data;
+import lombok.NonNull;
 
 @Data
 public class EventDTO {
@@ -23,10 +24,10 @@ public class EventDTO {
     private Date deleteDate;
 
     @NonNull
-    private List<Role> destinationRoles;
+    private List<RoleDTO> destinationRoles;
 
     @NonNull
-    private List<Classe> destinationClasses;
+    private List<ClasseDTO> destinationClasses;
 
     @NonNull
     private String type;
