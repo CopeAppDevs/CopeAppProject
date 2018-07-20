@@ -71,8 +71,19 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
 			$scope.showSimpleToast("Documento caricato con successo", "bottom right", 2500);
 		}
 	}
-	$scope.checkValidity = function ()   {
-		return true;
+	$scope.checkValidity = function ()  {
+		var error = [];
+		if($scope.title === "") { error.push("Non hai messo un titolo");}
+		if($scope.description === "") { error.push("La descrizione !!");}
+		if($scope.subject === "") { error.push("Manca la meteria dell'appunto");}
+		if($scope.classNumber > 5) { error.push("Non sapevo ci fossero classi sopra la 5 !");}
+		if($scope.classNumber === "") { error.push("In che classe sei ?");}
+		if($scope.section === "") { error.push("In che sezione sei ?");}
+		if($scope.section.length >= 4) { error.push("Come fa ad esistere una sezione con piu' di 3 lettere");}
+		if($scope.indirizzo === "") { error.push("Indirizzo ??");}
+		if($scope.documento === "") { error.push("Mi manca il documento !!");}
+		if (error.length == 0) {return true}
+		return error;
 	}
 	
 $scope.uploadAppunto = function() {
@@ -81,7 +92,7 @@ $scope.uploadAppunto = function() {
 		if (response != true) {
 			$scope.showSimpleToast(response[0], "bottom right", 2500);
 		} else {
-			$scope.showActionToast("sei sicuro l'appunto sarà visualizzabile a tutti, procedere con l'upload ?", "bottom right", 7500, "OK", function(response) {
+			$scope.showActionToast("sei sicuro l'appunto sara' visualizzabile a tutti, procedere con l'upload ?", "bottom right", 7500, "OK", function(response) {
 				if ( response == 'ok' ) {
 					// castare le date in stringhe
 					var appunto = {
@@ -97,7 +108,7 @@ $scope.uploadAppunto = function() {
 							indirizzo:$scope.indirizzo,
 							documento: $scope.documento
 							}						
-					appuntiService.uploadAppunti($scope.user, apunto, false).then(function(response) {
+					appuntiService.uploadAppunti($scope.user, appunto, false).then(function(response) {
 						$scope.goto("appunti", {selectedTab: 2});
 						$scope.showSimpleToast("Appunto salvato con ID : "+response.data.appunto.appuntoId, "bottom right", 2500);
 					}, $scope.serverErrorCallbackToast)

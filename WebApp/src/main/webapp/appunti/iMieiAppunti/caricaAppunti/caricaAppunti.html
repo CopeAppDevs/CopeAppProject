@@ -23,7 +23,7 @@
             <input ng-model="subject">
           </md-input-container>
 	</div>
-	<div ng-model="teacher">
+	<div>
   		 <md-autocomplete
           md-selected-item="ctrl.selectedItem"
           md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
@@ -34,7 +34,7 @@
           md-min-length="0"
           placeholder="Scrivi il nome del prof">
         <md-item-template>
-          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i" ng-model="teacher">{{item.display}}</span>
         </md-item-template>
         <md-not-found>
          Non esiste "{{ctrl.searchText}}" come prof.
