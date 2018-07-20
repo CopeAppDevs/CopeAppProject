@@ -106,13 +106,12 @@ function appuntiService($q, $http) {
 						teachers:[
 							{
 								teacherId: '0',
-								nome: 'Benassi'
+								cognome: 'Benassi'
 							},{
 								teacherId: '1',
-								nome: 'Valzania'
+								cognome: 'Valzania'
 							}]
 				}});
-				reject("Errore interno al server");
 		});
 	}
 

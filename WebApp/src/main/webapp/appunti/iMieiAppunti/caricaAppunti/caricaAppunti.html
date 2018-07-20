@@ -1,4 +1,4 @@
-<div ng-controller="caricaAppuntiCtrl as ctrl">
+<div ng-controller="caricaAppuntiCtrl">
 	<form>
 		<md-card layout="column"> <md-card-header><md-card-header-text> <span class="md-title">
 		Informazioni sull'appunto</span> </md-card-header-text> </md-card-header>
@@ -25,16 +25,16 @@
 	</div>
 	<div>
   		 <md-autocomplete
-          md-selected-item="ctrl.selectedItem"
-          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-          md-search-text="ctrl.searchText"
-          md-selected-item-change="ctrl.selectedItemChange(item)"
-          md-items="item in ctrl.querySearch(ctrl.searchText)"
-          md-item-text="item.display"
+          md-selected-item="teacher"
+          md-search-text="searchTextTeacher"
+          md-search-text-change="querySearch(searchTextTeacher)"
+          md-selected-item-change="selectedItemChange(item)"
+          md-items="item in listaTeacher"
+          md-item-text="item.cognome"
           md-min-length="0"
           placeholder="Scrivi il nome del prof">
         <md-item-template>
-          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i" ng-model="teacher">{{item.display}}</span>
+          <span md-highlight-text="searchTextTeacher" md-highlight-flags="^i">{{item.cognome}}</span>
         </md-item-template>
         <md-not-found>
          Non esiste "{{ctrl.searchText}}" come prof.
