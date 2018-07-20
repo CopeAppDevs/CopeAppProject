@@ -53,6 +53,8 @@ function appuntiService($q, $http) {
 							//gli elementi mancanti non li ho messi dato che non li uso...
 							userId: 1,
 							username: "RiccioMolesto",
+							firstname: "Riccio",
+							lastname: "TroppoMolesto",
 							imageUrl: "https://openclipart.org/download/292749/abstract-icon.svg"
 						},
 						teacher:{
