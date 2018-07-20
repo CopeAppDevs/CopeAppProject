@@ -37,15 +37,44 @@ function appuntiService($q, $http) {
 		return $q(function(resolve, reject) {
 			resolve({ 
 				data: {
-					appunto:[{
+					appunto:{
 						appuntoId : '0',
-						titolo : 'riccio molesto',
-						descrizione: "Una testo moltooooo lungo da scrivere",
-						ownerId: '51',
-						prof: 'Galletto',
-						materia: 'Italiano',
-						data: new Date()
-					}]
+						student: {
+							classe: {
+								classId: 50,
+								number: 4,
+								section: 'A',
+								indirizzo: "Informatica",
+								students: null, //perchè non verrà mai usato.
+								rappresentanti: null, //same
+								teachers: null, // same
+								coordinator: null
+							},
+							//gli elementi mancanti non li ho messi dato che non li uso...
+							userId: 1,
+							username: "RiccioMolesto",
+							imageUrl: "https://openclipart.org/download/292749/abstract-icon.svg"
+						},
+						teacher:{
+							userId: 1,
+							firstname: "Sandro",
+							lastname: "Corvino",
+						},
+						subject:{
+							subjectId: 2,
+							name: "Informatica",
+							color: "f3f3f3f3"
+						},
+						title : 'riccio molesto',
+						description: "Una testo moltooooo lungo da scrivere",
+						likes: '51',
+						dislikes: 'Galletto',
+						dataCreazione: new Date(),
+						classNumber: 5,
+						section: 'A',
+						indirizzo: 'Informatica',
+						documento: 'AUDJOWANBUDHAWDGAH'
+					}
 			}});
 		});
 		

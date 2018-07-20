@@ -3,7 +3,7 @@ app.config(function($stateProvider){
 		url:"/paginaAppunti",
 		templateUrl:"appunti/paginaAppunti/paginaAppunti.html",
 		params: {
-			idAppunto: null
+			idAppunto: 0
 		}
 	})
 });
@@ -13,13 +13,18 @@ app.controller("paginaAppuntiCtrl", paginaAppuntiCtrl);
 function paginaAppuntiCtrl($scope, appuntiService, $stateParams){
 	
 	console.log($stateParams.idAppunto);
-	$scope.appunto=[];
+	$scope.appunto= null;
 	
 	var appuntoPromise = appuntiService.getAppunto($stateParams.idAppunto);
 	appuntoPromise.then(function onSuccess(searchResponse) {
-			$scope.appunto = searchResponse.data.appunti;
+			$scope.appunto = searchResponse.data.appunto;
 		},
 			$scope.serverErrorCallbackToast);
-	$scope.materia = $scope.appunto[0].nome;
+	
+	$scope.back = function(){
+		window.history.back();
+	}
+	
+	
 	
 }

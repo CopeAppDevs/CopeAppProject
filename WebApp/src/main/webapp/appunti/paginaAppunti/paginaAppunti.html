@@ -1,15 +1,15 @@
 <div ng-controller = "paginaAppuntiCtrl">
-	<md-card>
+	<md-card ng-if="appunto != null">
         <md-card-header>
           <md-card-avatar>
-            <img class="md-user-avatar" src="img/100-2.jpeg"/>
+            <img class="md-user-avatar" src="{{appunto.student.imageUrl}}"/>
           </md-card-avatar>
           <md-card-header-text>
-            <span class="md-title">{{appunto.titolo}}</span>
-            <span class="md-subhead">scritto da {{appunto.ownerId}}</span>
+            <span class="md-title">{{appunto.student.username}}</span>
+            <span class="md-subhead">scritto da {{appunto.student.username}}</span>
           </md-card-header-text>
         </md-card-header>
-        <img ng-src="{{imageUrl}}" class="md-card-image" alt="Washed Out">
+        <img ng-src="" class="md-card-image" alt="Washed Out">
         
         <md-card-actions layout="row" layout-align="start center">
           	<md-button class="material-icons">thumb_up</md-button>
@@ -26,5 +26,5 @@
           </p>
         </md-card-content>
       </md-card>
-      <div class="material-icons" ng-click="goto('appunti')" style="margin: 8px; padding: 5px; position:relative">arrow_back</div>
+      <div class="material-icons" ng-click="back()" style="margin: 8px; padding: 5px; position:relative">arrow_back</div>
 </div>
