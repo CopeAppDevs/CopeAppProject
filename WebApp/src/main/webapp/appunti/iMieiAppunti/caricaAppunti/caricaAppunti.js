@@ -8,13 +8,7 @@ app.config(function($stateProvider){
 app.controller("caricaAppuntiCtrl", caricaAppuntiCtrl);
 
 function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
-	 var self = this;
-	 
-	self.prof = loadAll();
-	self.querySearch   = querySearch;
-	self.selectedItemChange = selectedItemChange;
-	self.searchTextChange   = searchTextChange;
-	
+	 	
 	
 	$scope.title = "";
 	$scope.description = "";
@@ -141,23 +135,14 @@ $scope.uploadAppunto = function() {
 	}
 	 
 	function querySearch (query) {
-	      var results = query ? self.prof.filter( createFilterFor(query) ) : self.prof,
-	          deferred;
-	      if (self.simulateQuery) {
-	        deferred = $q.defer();
-	        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-	        return deferred.promise;
-	      } else {
-	        return results;
-	      }
-	    }
-	
-	 function searchTextChange(text) {
-	      $log.info('Text changed to ' + text);
-	    }
-
-	    function selectedItemChange(item) {
-	      $log.info('Item changed to ' + JSON.stringify(item));
+		$scope.listaTeacher=[];
+		for(i = 0; i<$scope.listaTeacherAll.length; i++){
+			if($scope.listaTeacherAll[i].indexOf(query) > -1){
+				$scope.listaTeacher.push($scope.listaTeacherAll[i]);	
+			}
+		}
+		return $scope.listaTeacher;
+		
 	    }
 	 
 	function loadAll() {
@@ -165,25 +150,17 @@ $scope.uploadAppunto = function() {
 		$scope.listaTeacher = [];
 	      var allProf =  appuntiService.teacherList();
 	      	allProf.then(function onSuccess(searchResponse) {
-			$scope.listaTeacher = searchResponse.data.teachers;
-	      	 return $scope.listaTeacher.map( function (prof) {
-	 	      	prof.value= prof.nome.toLowerCase();
-	 	          return prof;
-	 	        
-	 	      });
+			$scope.listaTeacherAll = searchResponse.data.teachers;
+	      	 return $scope.listaTeacherAll;
 	      	},
 			$scope.serverErrorCallbackToast);
 	      	
 	     
 	}    
+	    function selectedItemChange(item) {
+	      $log.info('Item changed to ' + JSON.stringify(item));
+	    }
 	
-	function createFilterFor(query) {
-	      var lowercaseQuery = query.toLowerCase();
-
-	      return function filterFn(prof) {
-	        return (prof.value.indexOf(lowercaseQuery) === 0);
-	      };
-
-	}
+	    loadAll();
 }
 

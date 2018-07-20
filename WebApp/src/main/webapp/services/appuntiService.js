@@ -118,6 +118,21 @@ function appuntiService($q, $http) {
 				}});
 		});
 	}
+	this.teacherList = function() { 
+		return $q(function(resolve, reject) {
+				resolve({ 
+					data: {
+						teachers:[
+							{
+								teacherId: '0',
+								cognome: 'Benassi'
+							},{
+								teacherId: '1',
+								cognome: 'Valzania'
+							}]
+				}});
+		});
+	}
 //	
 //	this.login = function(mail,password) {  //mettere per attivare la login
 //		var loginDTO = new Object();
