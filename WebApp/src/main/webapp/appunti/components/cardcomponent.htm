@@ -1,9 +1,19 @@
 <md-card-title>
 	  <md-card-title-text>
-	    <span class="md-headline">{{appunto.titolo}}</span>
-	    <span class="md-subhead">{{appunto.descrizione}}</span>
+	  
+	    <span class="appunti-title">{{appunto.titolo}}</span><i style="float: right;">
+	    <div class="dataAppunti">10/10/2001</div>
+	    <span class="appunti-description">{{appunto.descrizione}}</span>
+	    <div style="overflow: auto;">
+	        	<div style="color: #b3b3b3; margin-top: 20px; padding: 0; float:left">
+	        	Materia: <i style="color: {{appunto.subject.color}};">{{appunto.subject.name}}</i>
+	        	<br>Prof: <i style="color: black;">{{appunto.teacher.firstname + " " + appunto.teacher.lastname}}</i>
+	        	</div>
+        	</div>
+	    <div class="appunti-listaVote">
+		    <i class="material-icons" style="margin:8px 8px 0 12px;">thumb_up</i>{{appunto.likes}}
+			<i class="material-icons" style="margin:8px 10px 0 10px;">thumb_down</i>{{appunto.dislikes}}
+		</div>
+		
 	  </md-card-title-text>
-	  <md-card-title-media>
-	    <div class="md-media-md card-media"></div>
-	  </md-card-title-media>
 </md-card-title>

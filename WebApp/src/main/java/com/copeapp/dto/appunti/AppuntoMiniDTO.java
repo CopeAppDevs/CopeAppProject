@@ -24,10 +24,15 @@ public class AppuntoMiniDTO {
 	private Integer appuntoId;
 	
 	@NonNull
+	private SubjectDTO subject;
+	
+	@NonNull
 	private String title;
 	
 	@NonNull
 	private String description;
+	
+	private Date dataCreazione;
 	
 	
 	private int likes;

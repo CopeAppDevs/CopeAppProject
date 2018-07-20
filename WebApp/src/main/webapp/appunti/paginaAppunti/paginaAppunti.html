@@ -6,25 +6,37 @@
           </md-card-avatar>
           <md-card-header-text>
             <span class="md-title">{{appunto.student.username}}</span>
-            <span class="md-subhead">scritto da {{appunto.student.firstname}} {{appunto.student.lastname}}</span>
+            <span class="md-subhead">{{appunto.student.firstname}} {{appunto.student.lastname}}</span>
           </md-card-header-text>
         </md-card-header>
-        <img ng-src="" class="md-card-image" alt="Washed Out">
-        
-        <md-card-actions layout="row" layout-align="start center">
-          	<md-button class="material-icons">thumb_up</md-button>
-	  		<md-button class="material-icons">thumb_down</md-button>
-          <md-card-icon-actions>
-            <md-button class="md-icon-button" aria-label="toggle">
-              <md-icon md-svg-icon="md-toggle-arrow"></md-icon>
-            </md-button>
-          </md-card-icon-actions>
-        </md-card-actions>
         <md-card-content>
-          <p>
-            {{appunto.description}}
-          </p>
+        
+        	<div style="text-align: center;" class="appunti-title">{{appunto.title}}</div>
+        	<div class="md-subhead" style=" margin: 18px 0 8px 0">Descrizione:</div>
+        	<span style="text-align: center; font-size: 18px;">{{appunto.description}}</span>
+        	
+        	<!-- Div floattanti che contiene altri due div che hanno un float-->
+        	<div style="overflow: auto;">
+	        	<div style="color: #b3b3b3; margin-top: 20px; padding: 0; float:left">
+	        	Materia: <i style="color: {{appunto.subject.color}};">{{appunto.subject.name}}</i>
+	        	<br>Prof: <i style="color: black;">{{appunto.teacher.firstname + " " + appunto.teacher.lastname}}</i>
+	        	</div>
+	        	
+	        	<div style="color: #b3b3b3; margin-top: 20px; padding: 0; float:right; text-align: right">
+	        	11/11/2000<br>{{appunto.classNumber + appunto.section}}<br>{{appunto.indirizzo}}
+	        	</div>
+        	</div>
+        	<!-- FINE Div floattanti -->
+        	<!-- Zona Tasti -->
+        	<md-card-actions layout="row" layout-align="start center" style="margin-top:20px;">
+	        	<div class="material-icons" ng-click="back()" style="margin: 8px; padding: 5px;">arrow_back</div>
+	        	<div style="position: absolute; right: 20px; float:right;">
+		          	<md-button class="material-icons">thumb_up</md-button>{{appunto.likes}}
+			  		<md-button class="material-icons">thumb_down</md-button>{{appunto.dislikes}}
+		  		</div>
+          	<md-card-icon-actions>
+          	<!-- FINE Zona Tasti -->
         </md-card-content>
+       
       </md-card>
-      <div class="material-icons" ng-click="back()" style="margin: 8px; padding: 5px; position:relative">arrow_back</div>
 </div>
