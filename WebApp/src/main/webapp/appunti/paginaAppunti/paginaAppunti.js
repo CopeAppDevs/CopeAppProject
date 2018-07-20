@@ -18,6 +18,12 @@ function paginaAppuntiCtrl($scope, appuntiService, $stateParams){
 	var appuntoPromise = appuntiService.getAppunto($stateParams.idAppunto);
 	appuntoPromise.then(function onSuccess(searchResponse) {
 			$scope.appunto = searchResponse.data.appunto;
+			console.log($scope.appunto);
+			let pdf = $scope.appunto.documento.substr(28);
+			console.log(pdf);
+			fetch(`data:application/pdf;base64,${pdf}`)
+			.then(response => response.blob())
+			.then(blob => document.querySelector("iframe").src = URL.createObjectURL(blob));
 		},
 			$scope.serverErrorCallbackToast);
 	
@@ -25,6 +31,11 @@ function paginaAppuntiCtrl($scope, appuntiService, $stateParams){
 		window.history.back();
 	}
 	
+	
+	/*
+	fetch($scope.appunto.documento)
+	.then(response => response.blob())
+	.then(blob => document.querySelector("iframe").src = URL.createObjectURL(blob));*/
 	
 	
 }
