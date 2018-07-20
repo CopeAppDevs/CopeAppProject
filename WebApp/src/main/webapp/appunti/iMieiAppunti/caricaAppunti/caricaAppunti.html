@@ -17,13 +17,13 @@
 	<div layout="column" flex layout-padding style="padding-bottom: 0px" layout-align="center start" >
 	     <textarea style=" width:93%;"" ng-model="description" placeholder ="Descrizione dell'appunto"></textarea>
 	    	</div>
-	          		</div>
+	         </div>
   <md-input-container class="md-block" flex-gt-sm>
             <label>Materia dell'appunto</label>
             <input ng-model="subject">
           </md-input-container>
 	</div>
-	<div ng-model="prof">
+	<div ng-model="teacher">
   		 <md-autocomplete
           md-selected-item="ctrl.selectedItem"
           md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
@@ -41,6 +41,20 @@
         </md-not-found>
       </md-autocomplete>
 	</div>
+	<div layout="row" style = "margin-top: 20px;">
+		 <md-input-container class="md-block" flex-gt-sm>
+            <label>Anno</label>
+            <input ng-model="classNumber">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Sezione</label>
+            <input ng-model="section">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Indirizzo</label>
+            <input ng-model="indirizzo">
+          </md-input-container>
+	</div>
 	<div>
 		<md-card-content>
 		carica appunto
@@ -52,7 +66,7 @@
 		     	</div>
  	</md-input-container>
 	 <div layout="row">
-		    <md-button class="md-raised md-primary" ng-click="">
+		    <md-button class="md-raised md-primary" ng-click="uploadAppunto()">
 		    	Salva
 		    	<md-icon class="material-icons">cloud_upload</md-icon>
 		    </md-button>

@@ -23,7 +23,6 @@ public class AppuntoDTO {
 	
 	private Integer appuntoId;
 	
-	@NonNull
 	private StudentDTO student;
 	
 	@NonNull
@@ -37,6 +36,7 @@ public class AppuntoDTO {
 	
 	@NonNull
 	private String description;
+	
 	
 	private int likes;
 	

@@ -54,9 +54,9 @@ public class Teacher extends User {
 	private List<Subject> subjects;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable( name = "teachers_classes",
-				joinColumns = { @JoinColumn(name = "userId") },
-				inverseJoinColumns = { @JoinColumn(name = "classId") } )
+//	@JoinTable( name = "teachers_classes",
+//				joinColumns = { @JoinColumn(name = "userId") },
+//				inverseJoinColumns = { @JoinColumn(name = "classId") } )
 	private List<Classe> classi;
 	
 }
