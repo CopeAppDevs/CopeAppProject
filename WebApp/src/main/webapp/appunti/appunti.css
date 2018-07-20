@@ -1,0 +1,16 @@
+.appunti-title{
+	 font-size: 23px;
+	 margin-bottom: 3px;
+}
+.appunti-description{
+	margin-top: 10px;
+	
+}
+.dataAppunti{
+	color: #e6e6e6;
+	margin-bottom: 18px;
+}
+.appunti-listaVote{
+	margin-top:20px;
+	float:right;
+}
