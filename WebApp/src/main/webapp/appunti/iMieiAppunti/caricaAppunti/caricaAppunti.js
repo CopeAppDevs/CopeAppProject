@@ -78,6 +78,7 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
 		if($scope.subject === "") { error.push("Manca la meteria dell'appunto");}
 		if($scope.classNumber > 5) { error.push("Non sapevo ci fossero classi sopra la 5 !");}
 		if($scope.classNumber === "") { error.push("In che classe sei ?");}
+		if($scope.classNumber.length >= 2) { error.push("Non esiste un classe con quel nome !!");}
 		if($scope.section === "") { error.push("In che sezione sei ?");}
 		if($scope.section.length >= 4) { error.push("Come fa ad esistere una sezione con piu' di 3 lettere");}
 		if($scope.indirizzo === "") { error.push("Indirizzo ??");}
@@ -165,7 +166,6 @@ $scope.uploadAppunto = function() {
 	      var allProf =  appuntiService.teacherList();
 	      	allProf.then(function onSuccess(searchResponse) {
 			$scope.listaTeacher = searchResponse.data.teachers;
-	      	console.log($scope.listaTeacher);
 	      	 return $scope.listaTeacher.map( function (prof) {
 	 	      	prof.value= prof.nome.toLowerCase();
 	 	          return prof;

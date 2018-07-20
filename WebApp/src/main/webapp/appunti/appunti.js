@@ -17,16 +17,9 @@ function AppuntiCtrl($scope, $stateParams){
 	        "width" : "137.5%"
 	    }
 	
-	$scope.search = function(){
-		//tira fuori dal database 10 elementi;
-		//partendo dalla lunghezza dell'array appuntiLista fino a appuntilista+10
-		console.log("Funzia");
-	}
-	
 	/* COLLEGAMENTO AL SERVICE PER TIRARE FUORI LE MATERIE non va :(
 	$scope.materieLista = null;
 	$scope.materia = function (){
-//		 console.log("ciao dalla search");
 		var materiaProm = appuntiService.getMaterie();
 		materiaProm.then(function onSuccess(searchResponse){
 			$scope.materieLista = searchResponse.data.materia;
