@@ -135,15 +135,23 @@ function IndexCtrl($scope, $state, $moment, $mdToast, localStorageService, $mdSi
 	$scope.backgroundTag = "girl";
 	$scope.backgroundBlur = 15;
 	
-	$scope.checkRoles = function(buttonRole) {
+	$scope.checkRoles = function(roles) {
 		if ($scope.user != null) {
-			for (var i = 0; i < $scope.getUser().roles.length; i++) {
-				if ($scope.getUser().roles[i].role == buttonRole) {
-					return true;
+			if(typeof roles === "string") {
+				for (var i = 0; i < $scope.getUser().roles.length; i++) {
+					if ($scope.getUser().roles[i].role == roles) {
+						return(true);
+					}
+				}
+			} else if (typeof roles === "object") {
+				for (var i = 0; i < $scope.getUser().roles.length; i++) {
+					if (roles.indexOf($scope.getUser().roles[i].role) > -1) {
+						return(true);
+					}
 				}
 			}
 		}
-		return false
+		return(false);
 	}
 
 	//pagine di menu

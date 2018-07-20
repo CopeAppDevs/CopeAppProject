@@ -5,25 +5,37 @@ app.config(function($stateProvider){
 	})
 });
 app.controller("InterrogazioniCtrl", InterrogazioniCtrl);
-function InterrogazioniCtrl($scope, $moment, $anchorScroll){
+function InterrogazioniCtrl($scope, $moment, $anchorScroll, $mdDialog){
 	$scope.mode = "dafys";
 	
 	$scope.events = [{
 			eventDate: new Date(1532025814925),
-			description: "Domani",
+			description: "one",
 			color: 'yellow'
 	}, 
 		{
 		eventDate: new Date(1532025814925),
-		description: "Ungu",
+		description: "two",
 		color: 'lightblue'
 	}, {
 		eventDate: new Date(1532325814925),
-		description: "Dopodomani",
+		description: "three",
 		color: 'lightgreen'
 	}]
 	
-	$scope.openEvent = function(index) {
-		//open dialog for the event with this index
+	$scope.openInterrogationDay = function(ev, d, index) {
+		$mdDialog.show({
+			locals : {
+				day : d,
+			}, 
+			controller : DetailsDayCtrl,
+			templateUrl : 'interrogazioni/interrogationDetails/detailsDayTMPL.html',
+			parent : angular.element(document.body),
+			targetEvent : ev,
+			clickOutsideToClose : true,
+			fullscreen : true
+		}).then(function() {
+			
+		});
 	}
 }

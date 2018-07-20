@@ -1,15 +1,15 @@
 <div layout="column" layout-align="center stretch" style="padding: 8px;">
 
-	<div ng-repeat="day in calendar" layout="column" ng-style="setStickiness(day.type)" ng-if="activeMode == 'days'">
-		<div ng-if="day.type == 'day'" id="day-{{day.day.format('DD/MM/YYYY')}}" layout="row" layout-align="start center">
+	<div ng-repeat="day in calendar" layout="column" ng-style="setStickiness(day.type)" ng-if="activeMode == 'days'" style="height: 53px !important;">
+		<div ng-if="day.type == 'day'" id="day-{{day.day.format('DD/MM/YYYY')}}" layout="row" layout-align="start center" ng-click="openEvent($event, day.day, $index)"> <!-- containter riga giorno -->
 			<div layout="row" flex>
 				<div flex="10" layout="column" layout-align="center center" style="margin: 8px;">
 					<p style="margin:0px; font-size: large; font-weight: bold;">{{day.day.date()}}</p>
 					<p style="margin: 0px; font-size: small;">{{day.day.format("MMM")}}</p>
 				</div>
 <!-- 				mostrare croce on hover ng-if="canEdit==true" -->
-				<div layout-align = "start start" ng-repeat="event in day.events" ng-style="{'background-color': event.color}"> 
-					<p style= "padding: 8px"> {{event.description}} </p> 
+				<div layout-align = "center stretch" ng-repeat="event in day.events" ng-style="{'background-color': event.color}" style="height: 53px !important;"> 
+					<p style= "padding: 8px" layout-align = "center center"> {{event.description}} </p> 
 				</div>
 			</div>
 		</div>
@@ -28,6 +28,7 @@
         </md-fab-trigger>
        <md-fab-actions>
           	<md-button class="md-fab md-raised md-mini" ng-click="scrollToToday()">
+          	<md-tooltip  md-direction="left" md-visible="true">  Oggi </md-tooltip>
             	<md-icon class="material-icons">today</md-icon>
           	</md-button>
           <!--         vista per lista di giorni -->
@@ -37,6 +38,10 @@
           <!--         vista per lista di giorni -->
         	<md-button class="md-fab md-raised md-mini" ng-click="setViewMode('month')">
         	    <md-icon class="material-icons">view_week</md-icon>
+       		</md-button>
+		  <!--        	creazione -->
+       		<md-button class="md-fab md-raised md-mini" ng-click="showDayDetails()" ng-if="checkRoles('admin')">
+        	    <md-icon class="material-icons">add</md-icon>
        		</md-button>
         </md-fab-actions>
  	</md-fab-speed-dial>

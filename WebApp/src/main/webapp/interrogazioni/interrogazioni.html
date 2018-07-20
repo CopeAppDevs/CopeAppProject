@@ -3,10 +3,10 @@
 	id="calendar" 
 	calendar-events="events" 
 	lock-view-type="false" 
-	open-event="openEvent" 
+	open-event="openInterrogationDay()" 
 	view-mode="mode" 
-	can-edit="checkRoles('admin')"
-	rest-for-events="'localhost:8080/rest/getYearEvents'">
+	can-edit="checkRoles('admin')">
+<!--rest-for-events="localhost:8080/rest/getInterrogationList" --> 
 		
 	</md-cool-calendar>
 </div>

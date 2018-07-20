@@ -10,8 +10,9 @@ function mdCoolCalendar($moment, $anchorScroll, $timeout) {
     	lockViewType: "=",
     	openEvent: "&",
        	mode: "=viewMode",
-    	rest: "=restForEvents",
+    	//rest: "=restForEvents",	//evitabile mettendo il tipo di eventi
     	canEdit: "="		//passare true se l'utente puù efitare le interrogazioni
+    	//eventType: "="		//forse conviene passare anche il tipo di evento, per evitare di dover inviare gli eventi completi di tutto l'anno
     }
     
     
@@ -35,6 +36,15 @@ function mdCoolCalendar($moment, $anchorScroll, $timeout) {
     	
     	
     	//richiesta al server degli eventi dell'anno
+    	
+    	
+    	$scope.fallbackDefault = function() {
+        	if(typeof $scope.lockViewType == "undefined") {$scope.lockViewType = false}
+        	if(typeof $scope.openEvent == "undefined") {$scope.openEvent = false}
+        	if(typeof $scope.mode == "undefined") {$scope.mode = "days"}
+        	//if(typeof $scope.rest == "undefined") {$scope.rest = ""}
+        	if(typeof $scope.canEdit !== "boolean") {$scope.canEdit = false}		
+    	}
     	
     	//stickiness della barra del mese
     	$scope.setStickiness = function(type) {
@@ -61,17 +71,15 @@ function mdCoolCalendar($moment, $anchorScroll, $timeout) {
     	
     	$scope.setViewMode = function(mode) {
     		if($scope.modes.indexOf(mode)==-1) {
-    			console.log("wrong mode: " + mode);
-    			console.log("setting default mode");
     			$scope.activeMode = $scope.defaultViewMode;
     		} else {
     			console.log("view mode set to: " + mode);
     			$scope.activeMode = mode;
     		}
+    		//timeout aspetta finchè il dom non è caricato del tutto
     		$timeout($scope.scrollToToday);
     	}
-    	
-    	$scope.setViewMode($scope.mode);
+
     	
     	//eventi in un giorno
     	$scope.eventsIn = function(day) {
@@ -107,15 +115,11 @@ function mdCoolCalendar($moment, $anchorScroll, $timeout) {
 	    	}
 	    	console.log("days loaded");
     	}
-    	
+    	$scope.fallbackDefault();
+    	$scope.setViewMode($scope.mode);
     	$scope.loadDays();
-    	
-   
     	//creazione vista per mesi
     	
-    	
-    	//timeout aspetta finchè il dom non è caricato del tutto
-    	$timeout($scope.scrollToToday);
     }
     return directive;
 }
