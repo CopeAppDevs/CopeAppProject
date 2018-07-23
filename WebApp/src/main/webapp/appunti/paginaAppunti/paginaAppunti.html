@@ -15,9 +15,11 @@
         	
         	<!-- PDF Zone -->
         	
-        	<iframe></iframe>
+        	<!-- <iframe></iframe> -->
+        	<a href="" ng-click="openPDFWindows()">LET'S PLAY</a>
+        	<p ng-click="openPDF()">Apri questo file molto brutto...</p>
         	
-        	
+        	<input id="inputFile" type="file" onchange="convertToBase64();" />
         	<!-- FINE PDF Zone -->
         	
         	<div class="md-subhead" style=" margin: 18px 0 8px 0">Descrizione:</div>
@@ -45,6 +47,15 @@
           	<md-card-icon-actions>
           	<!-- FINE Zona Tasti -->
         </md-card-content>
+        <script>
+        
+        
+	    /* fetch(`data:application/pdf;base64,`+pdf)
+	    .then(response => response.blob())
+	    .then(blob => {
+	      document.querySelector("iframe").src = URL.createObjectURL(blob)
+	    }) */
+        </script>
        
       </md-card>
 </div>

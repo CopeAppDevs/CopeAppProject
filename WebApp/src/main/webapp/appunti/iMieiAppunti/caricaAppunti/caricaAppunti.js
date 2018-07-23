@@ -42,7 +42,7 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
         {
         	name: 'sizeFilter',
         	fn: function(item /* {File|FileLikeObject} */, options) { 
-        		if (item.size <= 1048576) {
+        		if (item.size <= 10485760) {
         			return true;
         		} else {
         			$scope.showSimpleToast("Dimensione immagine massima: 10MB", "bottom right", 2500);
