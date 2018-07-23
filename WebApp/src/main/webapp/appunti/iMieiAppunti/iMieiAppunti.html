@@ -5,7 +5,7 @@
 			class="md-icon-button"> <md-icon class="material-icons">add</md-icon>
 		</md-button> </md-subheader>
 		
-		<md-card ng-include="'appunti/components/cardcomponent.htm'" ng-repeat="appunto in laMiaLista">
+		<md-card ng-include="'appunti/components/cardcomponent.htm'" ng-repeat="appunto in laMiaLista" ng-click="goto('paginaAppunti', {'idAppunto' : '0'})">
 		</md-card>
 
 		<md-button ng-if="laMiaLista != 0" ng-click="refreshMine()">Aggiorna</md-button>
