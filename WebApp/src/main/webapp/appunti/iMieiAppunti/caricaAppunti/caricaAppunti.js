@@ -98,13 +98,12 @@ $scope.uploadAppunto = function() {
 							description: $scope.description,
 							likes: 0,
 							dislikes: 0,
-							// ricordati che devi morire!!!!
 							classNumber: $scope.classNumber,
 							section: $scope.section,
 							indirizzo:$scope.indirizzo,
 							documento: $scope.documento
 							}
-					appuntiService.uploadAppunto($scope.user, appunto, false).then(function(response) {
+					appuntiService.uploadAppunto($scope.user, appunto, false).then(function onSuccess(response) {
 						$scope.goto("appunti", {selectedTab: 2});
 						$scope.showSimpleToast("Appunto salvato con ID : "+response.data.appunto.appuntoId, "bottom right", 2500);
 					}, $scope.serverErrorCallbackToast)
