@@ -24,7 +24,7 @@ public class AppuntoMiniDTO {
 	private Integer appuntoId;
 	
 	@NonNull
-	private String subject;
+	private SubjectDTO subject;
 	
 	@NonNull
 	private String title;
@@ -39,5 +39,7 @@ public class AppuntoMiniDTO {
 	
 	
 	private int dislikes;
+	
+	private TeacherDTO teacher;
 	
 }

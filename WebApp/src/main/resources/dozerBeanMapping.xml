@@ -109,10 +109,7 @@
 	<mapping type="one-way" map-null="true" map-empty-string="true">
 		<class-a>com.copeapp.entities.appunti.Appunto</class-a>
 		<class-b>com.copeapp.dto.appunti.AppuntoMiniDTO</class-b>
-		<field>
-			<a>subject.name</a>
-			<b>subject</b>
-		</field>
+		
 	</mapping>
 	<mapping type="one-way" map-null="true" map-empty-string="true">
 		<class-a>com.copeapp.dto.appunti.AppuntoDTO</class-a>
