@@ -9,5 +9,5 @@ import lombok.NonNull;
 public class AppuntoRequestByIdDTO {
 	
 	@NonNull
-	private Integer surveyId;
+	private Integer appuntoId;
 }

@@ -1,8 +1,8 @@
 <div ng-controller="materieAppuntiCtrl">
 	<md-card style="text-align:center" ng-repeat="materia in subjectList">
-		<md-card-content layout-padding style="height: 30px" ng-click="goto('materiaAppunti', {'materiaId' : '{{materia.materiaId}}' })">
+		<md-card-content layout-padding style="height: 30px" ng-click="goto('materiaAppunti', {'materiaId' : '{{materia.subjectId}}' })">
 			<md-card-action
-				style="margin-top : 20px; layout=" row" child-align="center">{{materia.nome}}</md-card-action>
+				style="margin-top : 20px; layout=" row" child-align="center">{{materia.name}}</md-card-action>
 			</md-card-content>
 	</md-card>
 </div>

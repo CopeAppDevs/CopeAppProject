@@ -13,7 +13,7 @@ function paginaAppuntiCtrl($scope, appuntiService, $stateParams, $window){
 	
 	$scope.appunto= null;
 	
-	var appuntoPromise = appuntiService.getAppunto($stateParams.idAppunto);
+	var appuntoPromise = appuntiService.getAppunto($scope.user, $stateParams.idAppunto);
 	appuntoPromise.then(function onSuccess(searchResponse) {
 			$scope.appunto = searchResponse.data.appunto;
 		},

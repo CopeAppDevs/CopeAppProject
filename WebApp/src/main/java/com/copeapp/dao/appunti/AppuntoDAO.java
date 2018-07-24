@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
+import com.copeapp.dto.appunti.AppuntoDTO;
 import com.copeapp.dto.appunti.AppuntoMiniDTO;
 import com.copeapp.entities.appunti.Appunto;
 import com.copeapp.entities.common.User;
@@ -56,7 +57,7 @@ public class AppuntoDAO {
 				query = EntityManagerGlobal.getEntityManager().createQuery(
 						"SELECT DISTINCT s FROM Appunto s WHERE s.title LIKE :text ORDER BY s.appuntoId DESC",
 						Appunto.class);
-				query.setParameter("text", text);
+				query.setParameter("text", "%" +text+ "%");
 			}
 		} else {
 			query = EntityManagerGlobal.getEntityManager().createQuery(
@@ -73,4 +74,5 @@ public class AppuntoDAO {
 		}
 		return miniDTO;
 	}
+	
 }
