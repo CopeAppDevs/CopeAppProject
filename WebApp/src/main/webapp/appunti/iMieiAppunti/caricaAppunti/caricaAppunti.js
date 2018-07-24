@@ -92,8 +92,8 @@ $scope.uploadAppunto = function() {
 				if ( response == 'ok' ) {
 					// castare le date in stringhe
 					var appunto = {
-							teacher: searchTextTeacher,
-							subject: searchTextSubject,
+							teacher: $scope.searchTextTeacher,
+							subject: $scope.searchTextSubject,
 							title : $scope.title,
 							description: $scope.description,
 							likes: 0,
@@ -135,18 +135,19 @@ $scope.uploadAppunto = function() {
 		$scope.searchTextTeacher = "";
 	}
 	 
-	function querySearchSubject (query) {
-		$scope.listaSubject = [];
-		for(i = 0; i<$scope.listaSubjectAll.length; i++){
-			if($scope.listaSubjectAll[i].indexOf(query) > -1){
-				$scope.listaSubject.push($scope.listaSubjectAll[i]);	
+	$scope.querySearchSubject = function (query) {
+			$scope.listaSubject = [];
+			for(i = 0; i<$scope.listaSubjectAll.length; i++){
+				if($scope.listaSubjectAll[i].name.toLowerCase().indexOf(query) > -1){
+					$scope.listaSubject.push($scope.listaSubjectAll[i]);	
+				}
 			}
-		}
-		return $scope.listaSubject;
+			return $scope.listaSubject;
 		
-	    }
+		
+	    };
 	
-	function loadAllSubjet() {
+	 $scope.loadAllSubjet = function() {
 		//manca poco, da fixare
 	      var allSubject =  appuntiService.getMaterie($scope.user, false, "");
 	      	allSubject.then(function onFulfilled(searchResponse) {
@@ -157,20 +158,20 @@ $scope.uploadAppunto = function() {
 			$scope.serverErrorCallbackToast);
 	      	
 	     
-	}    
+	};   
 	
-	function querySearchTeacher (query) {
+	$scope.querySearchTeacher = function(query) {
 		$scope.listaTeacher = [];
 		for(i = 0; i<$scope.listaTeacherAll.length; i++){
-			if($scope.listaTeacherAll[i].indexOf(query) > -1){
+			if($scope.listaTeacherAll[i].lastname.toLowerCase().indexOf(query) > -1){
 				$scope.listaTeacher.push($scope.listaTeacherAll[i]);	
 			}
 		}
 		return $scope.listaTeacher;
 		
-	    }
+	    };
 	
-	function loadAllTeacher() {
+	$scope.loadAllTeacher = function() {
 		//manca poco, da fixare
 	      var allProf =  appuntiService.teacherList($scope.user, false, "");
 	      	allProf.then(function onSuccess(searchResponse) {
@@ -181,12 +182,12 @@ $scope.uploadAppunto = function() {
 			$scope.serverErrorCallbackToast);
 	      	
 	     
-	}    
-	    function selectedItemChange(item) {
+	};    
+	    $scope.selectedItemChange = function(item) {
 	      $log.info('Item changed to ' + JSON.stringify(item));
-	    }
+	    };
 	
-	    loadAllTeacher();
-	    loadAllSubjet();
+	    $scope.loadAllTeacher();
+	    $scope.loadAllSubjet();
 }
 
