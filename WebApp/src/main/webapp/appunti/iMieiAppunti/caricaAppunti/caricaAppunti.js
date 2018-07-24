@@ -11,13 +11,13 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
 	 	
 	$scope.title = "";
 	$scope.description = "";
-	$scope.subject = "";
+	$scope.searchTextSubject = "";
 	$scope.loader = "";
 	$scope.classNumber = "";
 	$scope.section = "";
 	$scope.indirizzo = "";
 	$scope.documento = "";
-	$scope.teacher = "";
+	$scope.searchTextTeacher = "";
 	
 	
 	
@@ -69,7 +69,8 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
 		var error = [];
 		if($scope.title === "") { error.push("Non hai messo un titolo");}
 		if($scope.description === "") { error.push("La descrizione !!");}
-		if($scope.subject === "") { error.push("Manca la meteria dell'appunto");}
+		if($scope.searchTextTeacher=== "") { error.push("Manca il prof della marteria");}
+		if($scope.searchTextSubject=== "") { error.push("Manca la meteria dell'appunto");}
 		if($scope.classNumber > 5) { error.push("Non sapevo ci fossero classi sopra la 5 !");}
 		if($scope.classNumber === "") { error.push("In che classe sei ?");}
 		if($scope.classNumber.length >= 2) { error.push("Non esiste un classe con quel nome !!");}
@@ -91,8 +92,8 @@ $scope.uploadAppunto = function() {
 				if ( response == 'ok' ) {
 					// castare le date in stringhe
 					var appunto = {
-//							teacher: $scope.teacher,
-//							subject: $scope.subject,
+							teacher: searchTextTeacher,
+							subject: searchTextSubject,
 							title : $scope.title,
 							description: $scope.description,
 							likes: 0,
@@ -125,13 +126,13 @@ $scope.uploadAppunto = function() {
 	$scope.resetAll = function () {
 		$scope.title = "";
 		$scope.description = "";
-		$scope.subject = "";
+		$scope.searchTextSubject = "";
 		$scope.loader = "";
 		$scope.classNumber = "";
 		$scope.section = "";
 		$scope.indirizzo = "";
 		$scope.documento = "";
-		$scope.teacher = "";
+		$scope.searchTextTeacher = "";
 	}
 	 
 	function querySearchSubject (query) {
