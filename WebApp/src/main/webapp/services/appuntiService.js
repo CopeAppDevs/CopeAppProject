@@ -129,14 +129,13 @@ function appuntiService($q, $http) {
 	this.getMaterie = function(user, xmine, xtext) { 
 		var req = {
 				method: 'POST',
-				url: 'http://localhost:8080/CopeApp/rest/appuntoSubjects',
+				url: 'http://localhost:8080/CopeApp/rest/appuntoSubject',
 				headers: {
 					'Content-Type': "application/json",
 					'Authorization': btoa(user.mail+":"+user.password)
 				},
 				data: {
 					mine: xmine,
-				
 					text: xtext
 				}
 		}

@@ -148,9 +148,9 @@ $scope.uploadAppunto = function() {
 	function loadAllSubjet() {
 		//manca poco, da fixare
 	      var allSubject =  appuntiService.getMaterie($scope.user, false, "");
-	      	allSubject.then(function onSuccess(searchResponse) {
-			$scope.listaSubjectAll = searchResponse.data.materie;
-			$scope.listasubject = $scope.listaSubjectAll;
+	      	allSubject.then(function onFulfilled(searchResponse) {
+			$scope.listaSubjectAll = searchResponse.data.subjectList;
+			$scope.listaSubject = $scope.listaSubjectAll;
 	      	 return $scope.listaSubjectAll;
 	      	},
 			$scope.serverErrorCallbackToast);
