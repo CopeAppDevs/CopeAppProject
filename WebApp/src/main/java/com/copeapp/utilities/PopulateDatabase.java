@@ -61,13 +61,16 @@ public class PopulateDatabase {
 			
 			entityManager.getTransaction().begin();
 			//riempiendo classes
-			Classe class0 = new Classe(5, "F", "Scientifico applicato", teacher1);
+			Classe class0 = new Classe(5, "F", "Scientifico applicato");
+			ArrayList<Teacher> al = new ArrayList<Teacher>();
+			class0.setTeachers(al);
 			List<Student> rappresentanti0 = new ArrayList<Student>();
 			rappresentanti0.add(student2);
 			rappresentanti0.add(student0);
 			class0.setRappresentanti(rappresentanti0);
 			entityManager.persist(class0);
-			Classe class1 = new Classe(5, "C", "Scientifico applicato", teacher0);
+			Classe class1 = new Classe(5, "C", "Scientifico applicato");
+			class1.setTeachers(al);
 			List<Student> rappresentanti1 = new ArrayList<Student>();
 			rappresentanti1.add(student1);
 			class1.setRappresentanti(rappresentanti1);

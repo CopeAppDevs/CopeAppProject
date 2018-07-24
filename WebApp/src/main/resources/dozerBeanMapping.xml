@@ -7,7 +7,23 @@
 		<date-format>dd/MM/yyyy HH:mm:ss</date-format>
 		<wildcard>true</wildcard>
 	</configuration>
-	<mapping map-null="true" map-empty-string="true" type="bi-directional">
+	<mapping><class-a>com.copeapp.entities.common.Subject</class-a><class-b>com.copeapp.dto.commons.SubjectDTO</class-b><field-exclude><a>teachers</a><b>teachers</b></field-exclude></mapping><mapping>
+		<class-a>com.copeapp.entities.common.Teacher</class-a>
+		<class-b>com.copeapp.dto.commons.UserDTO</class-b>
+	</mapping>
+	<mapping>
+		<class-a>com.copeapp.entities.common.Student</class-a>
+		<class-b>com.copeapp.dto.commons.UserDTO</class-b>
+		<field-exclude>
+			<a map-get-method="getUserId">classe</a><b>userId</b>
+		</field-exclude>
+	</mapping>
+	<mapping>
+		<class-a>com.copeapp.entities.common.User</class-a>
+		<class-b>com.copeapp.dto.commons.UserDTO</class-b>
+	</mapping>
+	<mapping map-null="true" map-empty-string="true"
+		type="bi-directional">
 		<class-a>com.copeapp.entities.survey.Answer</class-a>
 		<class-b>com.copeapp.dto.survey.AnswerDTO</class-b>
 	</mapping>
@@ -32,6 +48,46 @@
 		<class-a>com.copeapp.entities.survey.Survey</class-a>
 		<class-b>com.copeapp.dto.survey.SurveyDTO</class-b>
 	</mapping>
+	<mapping>
+		<class-a>com.copeapp.entities.common.Teacher</class-a>
+		<class-b>com.copeapp.dto.commons.TeacherDTO</class-b>
+		<field-exclude>
+			<a>coordinatorOf</a>
+			<b>coordinatorOf</b>
+		</field-exclude>
+		<field-exclude>
+			<a>subjects</a>
+			<b>subjects</b>
+		</field-exclude>
+		<field-exclude>
+			<a>classi</a>
+			<b>classi</b>
+		</field-exclude>
+	</mapping>
+	<mapping>
+		<class-a>com.copeapp.entities.common.Classe</class-a>
+		<class-b>com.copeapp.dto.commons.ClasseDTO</class-b>
+		<field-exclude>
+			<a>students</a>
+			<b>students</b>
+		</field-exclude>
+		<field-exclude>
+			<a>rappresentanti</a>
+			<b>rappresentanti</b>
+		</field-exclude>
+		<field-exclude>
+			<a>teachers</a>
+			<b>teachers</b>
+		</field-exclude>
+		<field-exclude>
+			<a>coordinator</a>
+			<b>coordinator</b>
+		</field-exclude>
+	</mapping>
+	<mapping>
+		<class-a>com.copeapp.entities.common.Student</class-a>
+		<class-b>com.copeapp.dto.commons.StudentDTO</class-b>
+	</mapping>
 	<mapping type="bi-directional" map-null="true"
 		map-empty-string="true">
 		<class-a>com.copeapp.entities.common.Role</class-a>
@@ -49,5 +105,26 @@
 	<mapping type="one-way">
 		<class-a>com.copeapp.entities.survey.AnswerContent</class-a>
 		<class-b>com.copeapp.dto.survey.AnswerContentDTO</class-b>
+	</mapping>
+	<mapping type="one-way" map-null="true" map-empty-string="true">
+		<class-a>com.copeapp.entities.appunti.Appunto</class-a>
+		<class-b>com.copeapp.dto.appunti.AppuntoMiniDTO</class-b>
+		<field>
+			<a>subject.name</a>
+			<b>subject</b>
+		</field>
+	</mapping>
+	<mapping type="one-way" map-null="true" map-empty-string="true">
+		<class-a>com.copeapp.dto.appunti.AppuntoDTO</class-a>
+		<class-b>com.copeapp.entities.appunti.Appunto</class-b>
+		<field-exclude type="one-way">
+			<a>appuntoId</a>
+			<b>appuntoId</b>
+		</field-exclude>
+	</mapping>
+	<mapping type="one-way" stop-on-errors="true" map-null="true"
+		map-empty-string="true">
+		<class-a>com.copeapp.entities.appunti.Appunto</class-a>
+		<class-b>com.copeapp.dto.appunti.AppuntoDTO</class-b>
 	</mapping>
 </mappings>

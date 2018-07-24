@@ -2,6 +2,8 @@ package com.copeapp.dto.commons;
 
 import java.util.List;
 
+import javax.persistence.Transient;
+
 import com.copeapp.entities.common.Teacher;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +23,7 @@ public class SubjectDTO {
 	
 	private String color;
 	
-	private List<Teacher> teachers;
+	@Transient
+	private List<TeacherDTO> teachers;
 
 }

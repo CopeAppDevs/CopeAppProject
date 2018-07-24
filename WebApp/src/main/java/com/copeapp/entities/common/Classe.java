@@ -27,7 +27,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "classId")
 @Entity
@@ -60,7 +59,7 @@ public class Classe {
 				inverseJoinColumns = { @JoinColumn(name = "userId") } )
 	private List<Teacher> teachers;
 	
-	@NonNull
+//	@NonNull
 	@JoinColumn(name="coordinator")
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Teacher coordinator;

@@ -11,6 +11,10 @@ function IndexCtrl($scope, $state, $moment, $mdToast, localStorageService, $mdSi
 		$state.go(state, stateParams);
 	}
 	
+	$scope.back = function(){
+		window.history.back();
+	}
+	
 	//configurazione moment
 	$moment.updateLocale('en', {
 		months : 'Gennaio_Febbraio_Marzo_Aprile_Maggio_Giugno_Luglio_Agosto_Settembre_Ottobre_Novembre_Dicembre'.split('_'),

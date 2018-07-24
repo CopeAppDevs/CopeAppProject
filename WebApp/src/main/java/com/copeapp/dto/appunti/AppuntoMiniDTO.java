@@ -24,7 +24,7 @@ public class AppuntoMiniDTO {
 	private Integer appuntoId;
 	
 	@NonNull
-	private SubjectDTO subject;
+	private String subject;
 	
 	@NonNull
 	private String title;

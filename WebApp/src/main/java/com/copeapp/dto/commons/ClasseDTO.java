@@ -2,7 +2,7 @@ package com.copeapp.dto.commons;
 
 import java.util.List;
 
-import com.copeapp.entities.common.Student;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +27,7 @@ public class ClasseDTO {
 	private String indirizzo;
 	
 	@NonNull
+	@Transient
 	private List<StudentDTO> students;
 	
 	@NonNull

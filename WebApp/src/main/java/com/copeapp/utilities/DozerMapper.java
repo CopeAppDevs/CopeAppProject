@@ -45,4 +45,15 @@ public class DozerMapper {
 	public static synchronized void destroyInstance() {
 		instance = null;
 	}
+	
+	public static <T, U> List<U> map(final List<T> source, final Class<U> destType) {
+
+	    final List<U> dest = new ArrayList<>();
+
+	    for (T element : source) {
+	        dest.add(getMapper().map(element, destType));
+	    }
+
+	    return dest;
+	}
 }

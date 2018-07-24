@@ -15,11 +15,8 @@
         	
         	<!-- PDF Zone -->
         	
-        	<!-- <iframe></iframe> -->
-        	<a href="" ng-click="openPDFWindows()">LET'S PLAY</a>
-        	<p ng-click="openPDF()">Apri questo file molto brutto...</p>
+        	<a href="" ng-click="openPDFWindows()">Clicca qua per aprire il file PDF</a>
         	
-        	<input id="inputFile" type="file" onchange="convertToBase64();" />
         	<!-- FINE PDF Zone -->
         	
         	<div class="md-subhead" style=" margin: 18px 0 8px 0">Descrizione:</div>
@@ -37,6 +34,7 @@
 	        	</div>
         	</div>
         	<!-- FINE Div floattanti -->
+        	
         	<!-- Zona Tasti -->
         	<md-card-actions layout="row" layout-align="start center" style="margin-top:20px;">
 	        	<div class="material-icons" ng-click="back()" style="margin: 8px; padding: 5px;">arrow_back</div>
@@ -45,17 +43,10 @@
 			  		<md-button class="material-icons">thumb_down</md-button>{{appunto.dislikes}}
 		  		</div>
           	<md-card-icon-actions>
+          	
           	<!-- FINE Zona Tasti -->
+          	
         </md-card-content>
-        <script>
-        
-        
-	    /* fetch(`data:application/pdf;base64,`+pdf)
-	    .then(response => response.blob())
-	    .then(blob => {
-	      document.querySelector("iframe").src = URL.createObjectURL(blob)
-	    }) */
-        </script>
        
       </md-card>
 </div>

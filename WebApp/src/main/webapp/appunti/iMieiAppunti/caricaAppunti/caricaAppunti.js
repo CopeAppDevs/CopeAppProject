@@ -91,8 +91,8 @@ $scope.uploadAppunto = function() {
 				if ( response == 'ok' ) {
 					// castare le date in stringhe
 					var appunto = {
-							teacher: $scope.teacher,
-							subject: $scope.subject,
+//							teacher: $scope.teacher,
+//							subject: $scope.subject,
 							title : $scope.title,
 							description: $scope.description,
 							likes: 0,
@@ -102,8 +102,8 @@ $scope.uploadAppunto = function() {
 							section: $scope.section,
 							indirizzo:$scope.indirizzo,
 							documento: $scope.documento
-							}						
-					appuntiService.uploadAppunti($scope.user, appunto, false).then(function(response) {
+							}
+					appuntiService.uploadAppunto($scope.user, appunto, false).then(function(response) {
 						$scope.goto("appunti", {selectedTab: 2});
 						$scope.showSimpleToast("Appunto salvato con ID : "+response.data.appunto.appuntoId, "bottom right", 2500);
 					}, $scope.serverErrorCallbackToast)

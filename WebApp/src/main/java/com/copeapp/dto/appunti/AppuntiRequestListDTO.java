@@ -7,9 +7,9 @@ public class AppuntiRequestListDTO {
 		
 	private boolean mine; //restituisce i miei appunti
 	
-	private String keyword;
+	private String text;
 		
-	private int lastSurveyNumber;
+	private int lastAppuntoNumber;
 	
 	private int numberToRetrieve;
 }

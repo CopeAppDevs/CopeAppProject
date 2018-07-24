@@ -25,10 +25,10 @@ public class AppuntoDTO {
 	
 	private StudentDTO student;
 	
-	@NonNull
+//	@NonNull
 	private TeacherDTO teacher;
 	
-	@NonNull
+//	@NonNull
 	private SubjectDTO subject;
 	
 	@NonNull

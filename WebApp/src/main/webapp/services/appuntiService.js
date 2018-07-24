@@ -1,59 +1,81 @@
 app.service('appuntiService', appuntiService);
 
 function appuntiService($q, $http) {
-
-	this.search = function(text) { 
-		return $q(function(resolve, reject) {
-			if (text != 'errore') {
-				resolve({ 
-					data: {
-						appunti:[{
-							appuntoId : '0',
-							titolo : 'Lorem ipsum dolor sit amet, consectetur cras amet.',
-							descrizione: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id diam velit. Ut fringilla aliquam commodo. Praesent ultricies turpis ut imperdiet semper. Curabitur ullamcorper tristique enim ut congue. Pellentesque quis dolor urna. Sed ligula urna metus.",
-							teacher:{
-								userId: 1,
-								firstname: "Sandro",
-								lastname: "Corvino",
-							},
-							subject:{
-								subjectId: 2,
-								name: "Informatica",
-								color: "red"
-							},
-							title : 'Lorem ipsum dolor sit amet, consectetur cras amet.',
-							description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nulla eros, mollis ac interdum sed, mattis eget eros. Phasellus quis ultricies nibh. Mauris gravida suscipit augue id lacinia. Donec vitae lectus auctor, ultrices leo at, bibendum elit cras amet.",
-							likes: '10',
-							dislikes: '1',
-							dataCreazione: new Date()
-								 
-						},{
-							appuntoId : '1',
-							titolo : 'Lorem ipsum dolor sit amet, consectetur cras amet.',
-							descrizione: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis ut nulla ut vehicula. Nulla vel justo massa. Fusce ultricies laoreet enim, in sagittis elit interdum at. Nullam non urna eros. Lorem ipsum dolor sit amet, consectetur adipiscing nullam.",
-							teacher:{
-								userId: 1,
-								firstname: "Sandro",
-								lastname: "Corvino",
-							},
-							subject:{
-								subjectId: 2,
-								name: "Informatica",
-								color: "red"
-							},
-							title : 'Lorem ipsum dolor sit amet, consectetur cras amet.',
-							description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nulla eros, mollis ac interdum sed, mattis eget eros. Phasellus quis ultricies nibh. Mauris gravida suscipit augue id lacinia. Donec vitae lectus auctor, ultrices leo at, bibendum elit cras amet.",
-							likes: '51',
-							dislikes: '10',
-							dataCreazione: new Date()
-						
-						}]
-				}});
-			} else {
-				reject("Errore interno al server");
-			}
-		});
+	
+	this.search = function(user, xtext, xmine, xlastNumber, xnumberToRetrive) { 
+		var req = {
+				method: 'POST',
+				url: 'http://localhost:8080/CopeApp/rest/appuntoList',
+				headers: {
+					'Content-Type': "application/json",
+					'Authorization': btoa(user.mail+":"+user.password)
+				},
+				data: {
+					mine: xmine,
+				
+					text: xtext,
+					
+					lastAppuntoNumber: xlastNumber,
+				
+					numberToRetrieve: xnumberToRetrive
+					
+				}
+		}
+		return $http(req);
 	}
+
+//	this.search = function(text) { 
+//		return $q(function(resolve, reject) {
+//			if (text != 'errore') {
+//				resolve({ 
+//					data: {
+//						appunti:[{
+//							appuntoId : '0',
+//							titolo : 'Lorem ipsum dolor sit amet, consectetur cras amet.',
+//							descrizione: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id diam velit. Ut fringilla aliquam commodo. Praesent ultricies turpis ut imperdiet semper. Curabitur ullamcorper tristique enim ut congue. Pellentesque quis dolor urna. Sed ligula urna metus.",
+//							teacher:{
+//								userId: 1,
+//								firstname: "Sandro",
+//								lastname: "Corvino",
+//							},
+//							subject:{
+//								subjectId: 2,
+//								name: "Informatica",
+//								color: "red"
+//							},
+//							title : 'Lorem ipsum dolor sit amet, consectetur cras amet.',
+//							description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nulla eros, mollis ac interdum sed, mattis eget eros. Phasellus quis ultricies nibh. Mauris gravida suscipit augue id lacinia. Donec vitae lectus auctor, ultrices leo at, bibendum elit cras amet.",
+//							likes: '10',
+//							dislikes: '1',
+//							dataCreazione: new Date()
+//								 
+//						},{
+//							appuntoId : '1',
+//							titolo : 'Lorem ipsum dolor sit amet, consectetur cras amet.',
+//							descrizione: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis ut nulla ut vehicula. Nulla vel justo massa. Fusce ultricies laoreet enim, in sagittis elit interdum at. Nullam non urna eros. Lorem ipsum dolor sit amet, consectetur adipiscing nullam.",
+//							teacher:{
+//								userId: 1,
+//								firstname: "Sandro",
+//								lastname: "Corvino",
+//							},
+//							subject:{
+//								subjectId: 2,
+//								name: "Informatica",
+//								color: "red"
+//							},
+//							title : 'Lorem ipsum dolor sit amet, consectetur cras amet.',
+//							description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nulla eros, mollis ac interdum sed, mattis eget eros. Phasellus quis ultricies nibh. Mauris gravida suscipit augue id lacinia. Donec vitae lectus auctor, ultrices leo at, bibendum elit cras amet.",
+//							likes: '51',
+//							dislikes: '10',
+//							dataCreazione: new Date()
+//						
+//						}]
+//				}});
+//			} else {
+//				reject("Errore interno al server");
+//			}
+//		});
+//	}
 	
 	this.getAppunto = function(id){
 		return $q(function(resolve, reject) {
@@ -104,35 +126,66 @@ function appuntiService($q, $http) {
 		
 	}
 	
-	this.getMaterie = function() { 
-		return $q(function(resolve, reject) {
-				resolve({ 
-					data: {
-						materie:[{
-							materiaId : '0',
-							nome : 'Matematica'
-						},{
-							materiaId : '1',
-							nome : 'Italiano'
-						}]
-				}});
-		});
+	this.getMaterie = function(user, xmine, xtext) { 
+		var req = {
+				method: 'POST',
+				url: 'http://localhost:8080/CopeApp/rest/appuntoSubjects',
+				headers: {
+					'Content-Type': "application/json",
+					'Authorization': btoa(user.mail+":"+user.password)
+				},
+				data: {
+					mine: xmine,
+				
+					text: xtext,
+				}
+		}
+		return $http(req);
 	}
-	this.teacherList = function() { 
-		return $q(function(resolve, reject) {
-				resolve({ 
-					data: {
-						teachers:[
-							{
-								teacherId: '0',
-								cognome: 'Benassi'
-							},{
-								teacherId: '1',
-								cognome: 'Valzania'
-							}]
-				}});
-		});
+	
+	this.teacherList = function(user, xmine, xtext) { 
+		var req = {
+				method: 'POST',
+				url: 'http://localhost:8080/CopeApp/rest/appuntoSubjects',
+				headers: {
+					'Content-Type': "application/json",
+					'Authorization': btoa(user.mail+":"+user.password)
+				},
+				data: {
+					mine: xmine,
+				
+					text: xtext,
+				}
+		}
+		return $http(req);
+	
 	}
+	
+	this.uploadAppunto = function(user, appunto, update) {
+		if (update) {
+			var req = {
+					method: 'POST',
+					url: 'http://localhost:8080/CopeApp/rest/appuntoupdate',
+					headers: {
+						'Content-Type': "application/json",
+						'Authorization': btoa(user.mail+":"+user.password)
+					},
+					data: {appuntoDTO: appunto}
+			}
+		} else {
+			var req = {
+					method: 'POST',
+					url: 'http://localhost:8080/CopeApp/rest/appuntoCreate',
+					headers: {
+						'Content-Type': "application/json",
+						'Authorization': btoa(user.mail+":"+user.password)
+					},
+					data: {appuntoDTO: appunto}
+			}
+		}
+		return $http(req);
+	}
+	
 //	
 //	this.login = function(mail,password) {  //mettere per attivare la login
 //		var loginDTO = new Object();
