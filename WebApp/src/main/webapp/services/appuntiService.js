@@ -137,7 +137,7 @@ function appuntiService($q, $http) {
 				data: {
 					mine: xmine,
 				
-					text: xtext,
+					text: xtext
 				}
 		}
 		return $http(req);
@@ -146,7 +146,7 @@ function appuntiService($q, $http) {
 	this.teacherList = function(user, xmine, xtext) { 
 		var req = {
 				method: 'POST',
-				url: 'http://localhost:8080/CopeApp/rest/appuntoSubjects',
+				url: 'http://localhost:8080/CopeApp/rest/appuntoTeachers',
 				headers: {
 					'Content-Type': "application/json",
 					'Authorization': btoa(user.mail+":"+user.password)

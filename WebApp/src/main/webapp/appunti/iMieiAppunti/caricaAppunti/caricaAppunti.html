@@ -18,23 +18,35 @@
 	     <textarea style=" width:93%;"" ng-model="description" placeholder ="Descrizione dell'appunto"></textarea>
 	    	</div>
 	         </div>
-  <md-input-container class="md-block" flex-gt-sm>
-            <label>Materia dell'appunto</label>
-            <input ng-model="subject">
-          </md-input-container>
+  <md-autocomplete
+          md-selected-item="subject"
+          md-search-text="searchTextSubject"
+          md-search-text-change="querySearchSubject(searchTextSubject)"
+          md-selected-item-change="selectedItemChange(subject)"
+          md-items="subject in listaTeacher"
+          md-item-text="subject.name"
+          md-min-length="0"
+          placeholder="Materia dell'appunto">
+        <md-item-template>
+          <span md-highlight-text="searchTextSubject" md-highlight-flags="^i">{{subject.name}}</span>
+        </md-item-template>
+        <md-not-found>
+         Non esiste "{{searchTextSubject}}" come materia.
+        </md-not-found>
+      </md-autocomplete>
 	</div>
 	<div>
   		 <md-autocomplete
           md-selected-item="teacher"
           md-search-text="searchTextTeacher"
-          md-search-text-change="querySearch(searchTextTeacher)"
-          md-selected-item-change="selectedItemChange(item)"
-          md-items="item in listaTeacher"
-          md-item-text="item.cognome"
+          md-search-text-change="querySearchTeacher(searchTextTeacher)"
+          md-selected-item-change="selectedItemChange(teacher)"
+          md-items="teacher in listaTeacher"
+          md-item-text="teacher.lastname"
           md-min-length="0"
           placeholder="Scrivi il nome del prof">
         <md-item-template>
-          <span md-highlight-text="searchTextTeacher" md-highlight-flags="^i">{{item.cognome}}</span>
+          <span md-highlight-text="searchTextTeacher" md-highlight-flags="^i">{{teacher.lastname}}</span>
         </md-item-template>
         <md-not-found>
          Non esiste "{{ctrl.searchText}}" come prof.

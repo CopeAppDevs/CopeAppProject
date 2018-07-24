@@ -9,7 +9,6 @@ app.controller("caricaAppuntiCtrl", caricaAppuntiCtrl);
 
 function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
 	 	
-	
 	$scope.title = "";
 	$scope.description = "";
 	$scope.subject = "";
@@ -19,6 +18,7 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
 	$scope.indirizzo = "";
 	$scope.documento = "";
 	$scope.teacher = "";
+	
 	
 	
 	$scope.currentImageIndex;
@@ -134,8 +134,32 @@ $scope.uploadAppunto = function() {
 		$scope.teacher = "";
 	}
 	 
-	function querySearch (query) {
-		$scope.listaTeacher=[];
+	function querySearchSubject (query) {
+		$scope.listaSubject = [];
+		for(i = 0; i<$scope.listaSubjectAll.length; i++){
+			if($scope.listaSubjectAll[i].indexOf(query) > -1){
+				$scope.listaSubject.push($scope.listaSubjectAll[i]);	
+			}
+		}
+		return $scope.listaSubject;
+		
+	    }
+	
+	function loadAllSubjet() {
+		//manca poco, da fixare
+	      var allSubject =  appuntiService.getMaterie($scope.user, false, "");
+	      	allSubject.then(function onSuccess(searchResponse) {
+			$scope.listaSubjectAll = searchResponse.data.materie;
+			$scope.listasubject = $scope.listaSubjectAll;
+	      	 return $scope.listaSubjectAll;
+	      	},
+			$scope.serverErrorCallbackToast);
+	      	
+	     
+	}    
+	
+	function querySearchTeacher (query) {
+		$scope.listaTeacher = [];
 		for(i = 0; i<$scope.listaTeacherAll.length; i++){
 			if($scope.listaTeacherAll[i].indexOf(query) > -1){
 				$scope.listaTeacher.push($scope.listaTeacherAll[i]);	
@@ -144,13 +168,13 @@ $scope.uploadAppunto = function() {
 		return $scope.listaTeacher;
 		
 	    }
-	 
-	function loadAll() {
+	
+	function loadAllTeacher() {
 		//manca poco, da fixare
-		$scope.listaTeacher = [];
-	      var allProf =  appuntiService.teacherList();
+	      var allProf =  appuntiService.teacherList($scope.user, false, "");
 	      	allProf.then(function onSuccess(searchResponse) {
-			$scope.listaTeacherAll = searchResponse.data.teachers;
+			$scope.listaTeacherAll = searchResponse.data.teacherList;
+			$scope.listaTeacher = $scope.listaTeacherAll;
 	      	 return $scope.listaTeacherAll;
 	      	},
 			$scope.serverErrorCallbackToast);
@@ -161,6 +185,7 @@ $scope.uploadAppunto = function() {
 	      $log.info('Item changed to ' + JSON.stringify(item));
 	    }
 	
-	    loadAll();
+	    loadAllTeacher();
+	    loadAllSubjet();
 }
 

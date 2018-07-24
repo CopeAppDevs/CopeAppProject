@@ -16,7 +16,7 @@ function iMieiAppuntiCtrl($scope, appuntiService) {
 		$scope.laMiaLista = searchResponse.data.appunti;
 	}, $scope.serverErrorCallbackToast);
 
-	$scope.refreshMine = function() { //TODO raddoppia gli appunti ??? WHAT
+	$scope.refreshMine = function() {
 		appuntiService.search($scope.user, "" , true, 0, 5)
 		.then(function(response) {
 			for (var a = 0; a < response.data.appunti.length; a++) {
