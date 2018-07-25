@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.copeapp.dao.appunti.AppuntoDAO;
-import com.copeapp.dao.commons.SubjectDAO;
-import com.copeapp.dao.commons.TeacherDAO;
 import com.copeapp.dao.commons.UserDAO;
 import com.copeapp.dto.appunti.AppuntoDTO;
 import com.copeapp.dto.appunti.AppuntoRequestCreateDTO;

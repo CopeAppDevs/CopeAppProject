@@ -19,7 +19,7 @@ function iMieiAppuntiCtrl($scope, appuntiService) {
 	}, $scope.serverErrorCallbackToast);
 
 	$scope.refreshMine = function() {
-		appuntiService.search($scope.user, "" , true, $scope.indexToRetrive-1, $scope.indexToRetrive + 5)
+		appuntiService.search($scope.user, "" , true, $scope.indexToRetrive, $scope.indexToRetrive + 5)
 		.then(function(response) {
 			for (var a = 0; a < response.data.appuntoMini.length; a++) {
 				$scope.laMiaLista.push(response.data.appuntoMini[a]);
