@@ -20,6 +20,8 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $window){
 	$scope.searchTextTeacher = "";
 	$scope.currentImageIndex;
 	$scope.loadImage = function() {
+	$scope.uploaded = false;
+		
 		$("#imageUploader").click();
 	}
 
@@ -60,6 +62,7 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $window){
 			var output = [result.slice(0, position), item._file.type, result.slice(position)].join('');
 			$scope.documento = output;
 			$scope.showSimpleToast("Documento caricato con successo", "bottom right", 2500);
+			$scope.uploaded = true;
 		}
 	}
 	$scope.checkValidity = function ()  {
@@ -81,7 +84,7 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $window){
 	
 	$scope.openPDFWindows = function(){
         var dataUri = $scope.documento;
-//        $window.open( dataUri , "_blank");
+// $window.open( dataUri , "_blank");
         var win = $window.open();
         win.document.open();
         win.document.write('<html><body style="margin:0; padding:0;border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;"><iframe src="' + dataUri + '" frameborder="0" style="margin:0; padding:0;border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe></body></html>')
@@ -138,6 +141,8 @@ $scope.uploadAppunto = function() {
 		$scope.indirizzo = "";
 		$scope.documento = "";
 		$scope.searchTextTeacher = "";
+		$scope.uploaded = false;
+
 	}
 	 
 	$scope.querySearchSubject = function (query) {
@@ -153,7 +158,7 @@ $scope.uploadAppunto = function() {
 	    };
 	
 	 $scope.loadAllSubjet = function() {
-		//manca poco, da fixare
+		// manca poco, da fixare
 	      var allSubject =  appuntiService.getMaterie($scope.user, false, "");
 	      	allSubject.then(function onFulfilled(searchResponse) {
 			$scope.listaSubjectAll = searchResponse.data.subjectList;
@@ -177,7 +182,7 @@ $scope.uploadAppunto = function() {
 	    };
 	
 	$scope.loadAllTeacher = function() {
-		//manca poco, da fixare
+		// manca poco, da fixare
 	      var allProf =  appuntiService.teacherList($scope.user, false, "");
 	      	allProf.then(function onSuccess(searchResponse) {
 			$scope.listaTeacherAll = searchResponse.data.teacherList;

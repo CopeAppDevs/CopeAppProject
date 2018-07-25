@@ -61,7 +61,7 @@
 				type="file" nv-file-select uploader="fileUploader" ng-model="loader" />
 			<md-button class="md-icon-button" ng-click="loadImage()">
 			<md-icon class="material-icons">add</md-icon> </md-button> </md-card-content>
-        	<a href="" ng-click="openPDFWindows()"><md-icon class="material-icons">picture_as_pdf</md-icon></a>
+        	<a ng-disable="!uploaded" href="" ng-click="openPDFWindows()"><md-icon ng-show ="uploaded" class="material-icons">picture_as_pdf</md-icon></a>
 		</div>
 		</md-input-container>
 		<div layout="row">
