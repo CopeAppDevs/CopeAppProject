@@ -55,12 +55,13 @@
 			<md-input-container class="md-block" flex-gt-sm>
 			<label>Indirizzo</label> <input ng-model="indirizzo"> </md-input-container>
 		</div>
-		<div style = "margin-bottom: 20px; margin-left: 20px;">
-			<md-card-content> carica appunto <input
+		<div style = "margin-bottom: 20px; margin-left: 20px;" layout="row">
+			<md-card-content style="padding: 0px;"> carica appunto <input
 				style="display: none; visibility: hidden; padding: 0px;" id="imageUploader" 
 				type="file" nv-file-select uploader="fileUploader" ng-model="loader" />
 			<md-button class="md-icon-button" ng-click="loadImage()">
 			<md-icon class="material-icons">add</md-icon> </md-button> </md-card-content>
+        	<a href="" ng-click="openPDFWindows()"><md-icon class="material-icons">picture_as_pdf</md-icon></a>
 		</div>
 		</md-input-container>
 		<div layout="row">

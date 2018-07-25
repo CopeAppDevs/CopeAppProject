@@ -7,7 +7,7 @@ app.config(function($stateProvider){
 
 app.controller("caricaAppuntiCtrl", caricaAppuntiCtrl);
 
-function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
+function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $window){
 	 	
 	$scope.title = "";
 	$scope.description = "";
@@ -79,6 +79,15 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
 		return error;
 	}
 	
+	$scope.openPDFWindows = function(){
+        var dataUri = $scope.documento;
+//        $window.open( dataUri , "_blank");
+        var win = $window.open();
+        win.document.open();
+        win.document.write('<html><body style="margin:0; padding:0;border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;"><iframe src="' + dataUri + '" frameborder="0" style="margin:0; padding:0;border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe></body></html>')
+        win.document.close();
+    };
+    
 $scope.uploadAppunto = function() {
 		
 		var response = $scope.checkValidity()
