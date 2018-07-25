@@ -1,6 +1,6 @@
 <div ng-controller="materiaAppuntiCtrl">
-	{{materia}}
-	<md-card style="padding: 0px;" ng-repeat="appunto in listaAppuntiMateria" ng-include="'appunti/components/cardcomponent.htm'" ng-click="goto('paginaAppunti', {'idAppunto' : '0'})">
+	<p class="materiaHead">{{materia}}</p>
+	<md-card style="padding: 0px;" ng-repeat="appunto in listaAppuntiMateria" ng-include="'appunti/components/cardcomponent.htm'" ng-click="goto('paginaAppunti', {'idAppunto' : appunto.appuntoId})">
     
     </md-card>
 	
