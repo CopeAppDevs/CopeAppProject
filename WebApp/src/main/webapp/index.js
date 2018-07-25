@@ -1,6 +1,6 @@
 app.controller("IndexCtrl", IndexCtrl);
 
-function IndexCtrl($scope, $state, $moment, $mdToast, localStorageService, $mdSidenav, $timeout, UserService){
+function IndexCtrl($scope, $state, $moment, $mdToast, localStorageService, $mdSidenav, $timeout, UserService, $filter){
 	
 	$scope.reload = function() {
 		$state.reload();
@@ -9,6 +9,12 @@ function IndexCtrl($scope, $state, $moment, $mdToast, localStorageService, $mdSi
 	//funzione globale cambio stato
 	$scope.goto = function(state, stateParams){
 		$state.go(state, stateParams);
+	}
+	
+	//funziona globale convertitore ms in Data
+	$scope.convertToDate = function(ms, pattern){
+		$scope.dataConvertito = $filter('date')(ms, pattern);
+		return $scope.dataConvertito;
 	}
 	
 	$scope.back = function(){

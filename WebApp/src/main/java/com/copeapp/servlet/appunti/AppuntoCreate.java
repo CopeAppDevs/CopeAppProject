@@ -37,8 +37,6 @@ public class AppuntoCreate extends HttpServlet{
 		Appunto appunto = DozerMapper.getMapper().map(appuntoRequest.getAppuntoDTO(), Appunto.class);
 		appunto.setStudent((Student)currentUser);
 		appunto.setDataCreazione(new Date());
-		appunto.setTeacher(TeacherDAO.getTeacherById(50));
-		appunto.setSubject(SubjectDAO.getSubjectById(50));
 		AppuntoDAO.appuntoCreate(currentUser, appunto);
 		
 		om.writeValue(response.getOutputStream(), new AppuntoResponseCreateDTO(DozerMapper.getMapper().map(appunto, AppuntoDTO.class)));
