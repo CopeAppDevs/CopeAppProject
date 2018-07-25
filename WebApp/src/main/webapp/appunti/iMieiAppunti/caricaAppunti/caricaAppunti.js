@@ -18,14 +18,11 @@ function caricaAppuntiCtrl($scope, appuntiService, FileUploader, $log, $q){
 	$scope.indirizzo = "";
 	$scope.documento = "";
 	$scope.searchTextTeacher = "";
-	
-	
-	
 	$scope.currentImageIndex;
 	$scope.loadImage = function() {
 		$("#imageUploader").click();
 	}
-	
+
 	$scope.fileUploader = new FileUploader({
 		filters: [{
             name: 'imageFilter',

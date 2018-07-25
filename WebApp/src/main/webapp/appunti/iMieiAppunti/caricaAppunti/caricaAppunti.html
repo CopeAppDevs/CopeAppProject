@@ -12,13 +12,13 @@
 		</md-input-container>
 
 		<div>
-			<div>
 				<div layout="column" flex layout-padding style="padding-bottom: 0px"
 					layout-align="center start">
 					<textarea style="width: 93%;" " ng-model="description"
 						placeholder="Descrizione dell'appunto"></textarea>
 				</div>
-			</div>
+				</div>
+				<div style = "margin-top: 20px">
 			<md-autocomplete
 				md-search-text-change="querySearchSubject(searchTextSubject)"
 				md-no-cache="true" 
@@ -34,8 +34,7 @@
 			</md-item-template> <md-not-found> Non esiste "{{searchTextSubject}}"
 			come materia. </md-not-found> </md-autocomplete>
 		</div>
-
-		<div>
+		<div style ="margin-top: 20px">
 			<md-autocomplete md-selected-item="teacher" md-no-cache="true"
 				md-search-text="searchTextTeacher"
 				md-search-text-change="querySearchTeacher(searchTextTeacher)"
@@ -56,9 +55,9 @@
 			<md-input-container class="md-block" flex-gt-sm>
 			<label>Indirizzo</label> <input ng-model="indirizzo"> </md-input-container>
 		</div>
-		<div>
+		<div style = "margin-bottom: 20px; margin-left: 20px;">
 			<md-card-content> carica appunto <input
-				style="display: none; visibility: hidden;" id="imageUploader"
+				style="display: none; visibility: hidden; padding: 0px;" id="imageUploader" 
 				type="file" nv-file-select uploader="fileUploader" ng-model="loader" />
 			<md-button class="md-icon-button" ng-click="loadImage()">
 			<md-icon class="material-icons">add</md-icon> </md-button> </md-card-content>
