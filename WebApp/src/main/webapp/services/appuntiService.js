@@ -23,6 +23,21 @@ function appuntiService($q, $http) {
 		}
 		return $http(req);
 	}
+	
+	this.materieAppunti = function(user, idMateria) { 
+		var req = {
+				method: 'POST',
+				url: 'http://localhost:8080/CopeApp/rest/appuntiMaterieById',
+				headers: {
+					'Content-Type': "application/json",
+					'Authorization': btoa(user.mail+":"+user.password)
+				},
+				data: {
+						materiaId: idMateria
+				}
+		}
+		return $http(req);
+	}
 
 //	this.search = function(text) { 
 //		return $q(function(resolve, reject) {
