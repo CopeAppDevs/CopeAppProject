@@ -24,7 +24,7 @@ function paginaAppuntiCtrl($scope, appuntiService, $stateParams, $window){
 //	}
 	
 	$scope.openPDFWindows = function(){
-        var dataUri = $appunto.documento;
+        var dataUri = $scope.appunto.documento;
 //        $window.open( dataUri , "_blank");
         var win = $window.open();
         win.document.open();

@@ -92,8 +92,8 @@ $scope.uploadAppunto = function() {
 				if ( response == 'ok' ) {
 					// castare le date in stringhe
 					var appunto = {
-							teacher: $scope.searchTextTeacher,
-							subject: $scope.searchTextSubject,
+							teacher: $scope.teacher,
+							subject: $scope.subject,
 							title : $scope.title,
 							description: $scope.description,
 							likes: 0,
@@ -182,9 +182,13 @@ $scope.uploadAppunto = function() {
 	      	
 	     
 	};    
-	    $scope.selectedItemChange = function(item) {
+	    $scope.selectedTeacherChange = function(item) {
 	      $log.info('Item changed to ' + JSON.stringify(item));
 	    };
+	    
+	    $scope.selectedSubjectChange = function(item) {
+		      $log.info('Item changed to ' + JSON.stringify(item));
+		    };
 	
 	    $scope.loadAllTeacher();
 	    $scope.loadAllSubjet();

@@ -21,10 +21,14 @@
 			</div>
 			<md-autocomplete
 				md-search-text-change="querySearchSubject(searchTextSubject)"
-				md-no-cache="true" md-selected-item="subject"
+				md-no-cache="true" 
+				md-selected-item="subject"
 				md-search-text="searchTextSubject"
-				md-items="subject in listaSubject" md-item-text="subject.name"
-				md-min-length="0" placeholder="Materia dell'appunto">
+				md-items="subject in listaSubject"
+				md-item-text="subject.name"
+				md-selected-item-change="selectedSubjectChange(subject)"
+				md-min-length="0" 
+				placeholder="Materia dell'appunto">
 			<md-item-template> <span
 				md-highlight-text="searchTextSubject" md-highlight-flags="^i">{{subject.name}}</span>
 			</md-item-template> <md-not-found> Non esiste "{{searchTextSubject}}"
@@ -35,7 +39,7 @@
 			<md-autocomplete md-selected-item="teacher" md-no-cache="true"
 				md-search-text="searchTextTeacher"
 				md-search-text-change="querySearchTeacher(searchTextTeacher)"
-				md-selected-item-change="selectedItemChange(teacher)"
+				md-selected-item-change="selectedTeacherChange(teacher)"
 				md-items="teacher in listaTeacher" md-item-text="teacher.lastname"
 				md-min-length="0" placeholder="Scrivi il nome del prof">
 			<md-item-template> <span
