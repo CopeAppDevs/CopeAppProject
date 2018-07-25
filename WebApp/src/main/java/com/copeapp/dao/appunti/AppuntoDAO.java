@@ -55,9 +55,9 @@ public class AppuntoDAO {
 						Appunto.class);
 			} else {
 				query = EntityManagerGlobal.getEntityManager().createQuery(
-						"SELECT DISTINCT s FROM Appunto s WHERE s.title LIKE :text ORDER BY s.appuntoId DESC",
+						"SELECT DISTINCT s FROM Appunto s WHERE upper(s.title) LIKE :text ORDER BY s.appuntoId DESC",
 						Appunto.class);
-				query.setParameter("text", "%" +text+ "%");
+				query.setParameter("text", "%" +text.toUpperCase()+ "%");
 			}
 		} else {
 			query = EntityManagerGlobal.getEntityManager().createQuery(
