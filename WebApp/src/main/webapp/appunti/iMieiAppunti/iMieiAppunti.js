@@ -15,13 +15,15 @@ function iMieiAppuntiCtrl($scope, appuntiService) {
 	var listaPromise = appuntiService.search($scope.user, "" , true, 0, 5);
 	listaPromise.then(function onSuccess(searchResponse) {
 		$scope.laMiaLista = searchResponse.data.appuntoMini;
+		$scope.indexToRetrive += 5;
 	}, $scope.serverErrorCallbackToast);
 
 	$scope.refreshMine = function() {
-		appuntiService.search($scope.user, "" , true, 0, 5)
+		appuntiService.search($scope.user, "" , true, $scope.indexToRetrive-1, $scope.indexToRetrive + 5)
 		.then(function(response) {
 			for (var a = 0; a < response.data.appuntoMini.length; a++) {
 				$scope.laMiaLista.push(response.data.appuntoMini[a]);
+				$scope.indexToRetrive += 5;
 			}
 		}, $scope.serverErrorCallback);
 	}
