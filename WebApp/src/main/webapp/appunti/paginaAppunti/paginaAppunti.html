@@ -30,7 +30,10 @@
 	        	</div>
 	        	
 	        	<div style="color: #b3b3b3; margin-top: 20px; padding: 0; float:right; text-align: right">
-	        	11/11/2000<br>{{appunto.classNumber + appunto.section}}<br>{{appunto.indirizzo}}
+	        	<!-- Conversione Data ms to Date -->
+	        	{{convertToDate(appunto.dataCreazione, "dd/MM/yyyy")}}
+	        	<!-- Fine -->
+	        	<br>{{appunto.classNumber + appunto.section}}<br>{{appunto.indirizzo}}
 	        	</div>
         	</div>
         	<!-- FINE Div floattanti -->

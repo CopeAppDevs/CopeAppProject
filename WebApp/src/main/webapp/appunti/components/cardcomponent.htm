@@ -2,7 +2,7 @@
 	  <md-card-title-text>
 	  
 	    <span class="appunti-title">{{appunto.title}}</span><i style="float: right;">
-	    <div class="dataAppunti">10/10/2001</div>
+	    <div class="dataAppunti">{{convertToDate(appunto.dataCreazione, "dd/MM/yyyy")}}</div>
 	    <span class="appunti-description">{{appunto.description}}</span>
 	    <div style="overflow: auto;">
 	        	<div style="color: #b3b3b3; margin-top: 20px; padding: 0; float:left">
