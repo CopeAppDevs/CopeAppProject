@@ -86,7 +86,7 @@ function appuntiService($q, $http) {
 					'Authorization': btoa(user.mail+":"+user.password)
 				},
 				data: {
-					id: xid
+					appuntoId: xid
 				}
 		}
 		return $http(req);

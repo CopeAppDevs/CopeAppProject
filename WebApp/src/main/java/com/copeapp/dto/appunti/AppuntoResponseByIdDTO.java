@@ -7,7 +7,7 @@ import lombok.NonNull;
 public class AppuntoResponseByIdDTO {
 
 	@NonNull
-	private AppuntoDTO appuntoDTO;
+	private AppuntoDTO appunto;
 	
 	private boolean hasVotedLike;
 	

@@ -28,12 +28,14 @@ public class CopeAppFilter implements Filter {
 			chain.doFilter(request, response);
 			EntityManagerGlobal.killEntityManager(false);
 		} catch (CopeAppGenericException e) {
+			e.printStackTrace();
 			EntityManagerGlobal.killEntityManager(true);
 			ObjectMapper om = new ObjectMapper();
 			httpServletResponse.setStatus(e.getHttpStatus());
 			ExceptionDTO errorResponse = new ExceptionDTO(e, e.getHttpStatus(), e.getMessage());
 			om.writeValue(httpServletResponse.getOutputStream(), errorResponse);
 		} catch (Throwable e) {
+			e.printStackTrace();
 			EntityManagerGlobal.killEntityManager(true);
 			ObjectMapper om = new ObjectMapper();
 			httpServletResponse.setStatus(HttpStatusUtility.INTERNAL_SERVER_ERROR);
