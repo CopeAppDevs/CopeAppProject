@@ -1,7 +1,7 @@
 <div layout="column" layout-align="center stretch" style="padding: 8px;">
 
 	<div ng-repeat="day in calendar" layout="column" ng-style="setStickiness(day.type)" ng-if="activeMode == 'days'" style="height: 53px !important;">
-		<div ng-if="day.type == 'day'" id="day-{{day.day.format('DD/MM/YYYY')}}" layout="row" layout-align="start center" ng-click="openEvent($event, day.day, $index)"> <!-- containter riga giorno -->
+		<div ng-if="day.type == 'day'" id="day-{{day.day.format('DD/MM/YYYY')}}" layout="row" layout-align="start center" ng-click="openEvent($event, day.day)"> <!-- containter riga giorno -->
 			<div layout="row" flex>
 				<div flex="10" layout="column" layout-align="center center" style="margin: 8px;">
 					<p style="margin:0px; font-size: large; font-weight: bold;">{{day.day.date()}}</p>

@@ -6,7 +6,15 @@ app.config(function($stateProvider){
 });
 app.controller("InterrogazioniCtrl", InterrogazioniCtrl);
 function InterrogazioniCtrl($scope, $moment, $anchorScroll, $mdDialog){
-	$scope.mode = "dafys";
+	$scope.mode = "ungu";
+	$scope.events = [];
+	
+//	InterrogationService.getAllInterrogationList().then(
+//			function(response) {
+//				for (var a = 0; a < response.data.interrogationMini.length; a++) {
+//					$scope.events.push(response.data.interrogationMini[a]);
+//				}
+//	});
 	
 	$scope.events = [{
 			eventDate: new Date(1532025814925),
@@ -23,10 +31,11 @@ function InterrogazioniCtrl($scope, $moment, $anchorScroll, $mdDialog){
 		color: 'lightgreen'
 	}]
 	
+	
 	$scope.openInterrogationDay = function(ev, d, index) {
 		$mdDialog.show({
 			locals : {
-				day : d,
+				day : d
 			}, 
 			controller : DetailsDayCtrl,
 			templateUrl : 'interrogazioni/interrogationDetails/detailsDayTMPL.html',
