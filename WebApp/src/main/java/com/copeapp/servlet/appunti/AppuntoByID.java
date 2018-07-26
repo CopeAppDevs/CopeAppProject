@@ -9,28 +9,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.copeapp.dao.appunti.AppuntoDAO;
+import com.copeapp.dao.appunti.LikerDAO;
 import com.copeapp.dao.commons.UserDAO;
 import com.copeapp.dto.appunti.AppuntoDTO;
 import com.copeapp.dto.appunti.AppuntoRequestByIdDTO;
 import com.copeapp.dto.appunti.AppuntoResponseByIdDTO;
 import com.copeapp.entities.appunti.Appunto;
+import com.copeapp.entities.appunti.Liker;
 import com.copeapp.entities.common.User;
 import com.copeapp.utilities.DozerMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet("/rest/appuntoId")
-public class AppuntoByID extends HttpServlet{
+public class AppuntoByID extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		ObjectMapper om = new ObjectMapper();
-		
+
 		User currentUser = UserDAO.selectByBasicAuthTokenException(request.getHeader("Authorization"));
-		
+
 		AppuntoRequestByIdDTO appuntoRequestById = om.readValue(request.getInputStream(), AppuntoRequestByIdDTO.class);
 		Appunto appunto = AppuntoDAO.getAppuntoById(appuntoRequestById.getAppuntoId());
-		om.writeValue(response.getOutputStream(), new AppuntoResponseByIdDTO(DozerMapper.getMapper().map(appunto, AppuntoDTO.class)));
+		AppuntoDTO appDTO = DozerMapper.getMapper().map(appunto, AppuntoDTO.class);
+		Liker liker = LikerDAO.getLikerByAppuntoId(currentUser, appuntoRequestById.getAppuntoId());
+		if (liker != null) {
+			appDTO.setYourVote(liker.isLiked());
+		}
+		om.writeValue(response.getOutputStream(), new AppuntoResponseByIdDTO(appDTO));
 	}
 }

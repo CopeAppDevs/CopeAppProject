@@ -9,7 +9,4 @@ public class AppuntoResponseByIdDTO {
 	@NonNull
 	private AppuntoDTO appunto;
 	
-	private boolean hasVotedLike;
-	
-	private boolean hasVotedDislike;
 }

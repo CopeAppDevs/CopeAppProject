@@ -90,5 +90,11 @@ public class AppuntoDAO {
 		}
 		return miniDTO;
 	}
+	
+
+	public static void delateAppunto(User currentUser, Integer idAppunto) {
+		
+	}
+	
 
 }
