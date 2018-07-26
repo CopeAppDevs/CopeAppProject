@@ -56,4 +56,6 @@ public class AppuntoDTO {
 	
 	@NonNull
 	private String documento;
+	
+	private Boolean yourVote;
 }

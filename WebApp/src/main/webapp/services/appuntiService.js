@@ -215,6 +215,22 @@ function appuntiService($q, $http) {
 		return $http(req);
 	}
 	
+	this.doLike  = function(user, xappuntoId, like){
+		var req = {
+				method: 'POST',
+				url: 'http://localhost:8080/CopeApp/rest/appuntoVote',
+				headers: {
+					'Content-Type': "application/json",
+					'Authorization': btoa(user.mail+":"+user.password)
+				},
+				data: {
+					appuntoId: xappuntoId,
+					vote: like
+				}
+		}
+		return $http(req);
+	}
+	
 //	
 //	this.login = function(mail,password) {  //mettere per attivare la login
 //		var loginDTO = new Object();
