@@ -11,7 +11,7 @@ function mdCoolCalendar($moment, $anchorScroll, $timeout) {
     	openEvent: "&",
        	mode: "=viewMode",
     	//rest: "=restForEvents",	//evitabile mettendo il tipo di eventi
-    	canEdit: "="		//passare true se l'utente puù efitare le interrogazioni
+    	canEdit: "="		//passare true se l'utente puù aggiungere eventi
     	//eventType: "="		//forse conviene passare anche il tipo di evento, per evitare di dover inviare gli eventi completi di tutto l'anno
     }
     
@@ -79,7 +79,34 @@ function mdCoolCalendar($moment, $anchorScroll, $timeout) {
     		//timeout aspetta finchè il dom non è caricato del tutto
     		$timeout($scope.scrollToToday);
     	}
+    	
+    	
+    	//FAB
 
+    	$scope.isOpen = false;
+    	
+//    	$scope.fabMenu = [{
+//    		displayName: "Oggi",
+//    		icon: "today",
+//    		onClick: "scrollToToday()",
+//    		restricted: false
+//    	}, {
+//    		displayName: "Lista",
+//    		icon: "reorder",
+//    		onClick: "setViewMode('days')",
+//    		restricted: false
+//    	}, {
+//    		displayName: "Mese",
+//    		icon: "view_week",
+//    		onClick: "setViewMode('month')",
+//    		restricted: false
+//    	}, {
+//    		displayName: "Crea",
+//    		icon: "add",
+//    		onClick: "",
+//    		restricted: true
+//    	}];
+    	
     	
     	//eventi in un giorno
     	$scope.eventsIn = function(day) {

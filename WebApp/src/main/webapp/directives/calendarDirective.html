@@ -20,7 +20,7 @@
 
 	<!-- fab impostazioni -->
 
-	<md-fab-speed-dial id="toTodayFab" md-open="false" md-direction="up" ng-class="'md-fling'">
+	<md-fab-speed-dial id="toTodayFab" md-open="isOpen" md-direction="up" ng-class="'md-scale'">
         <md-fab-trigger>
           	<md-button class="md-fab">
             	<md-icon class="material-icons">more_vert</md-icon>
@@ -28,21 +28,32 @@
         </md-fab-trigger>
        <md-fab-actions>
           	<md-button class="md-fab md-raised md-mini" ng-click="scrollToToday()">
-          	<md-tooltip  md-direction="left" md-visible="true">  Oggi </md-tooltip>
+				<md-tooltip  md-direction="left" md-visible="isOpen">  Oggi </md-tooltip>
             	<md-icon class="material-icons">today</md-icon>
           	</md-button>
           <!--         vista per lista di giorni -->
          	 <md-button class="md-fab md-raised md-mini" ng-click="setViewMode('days')">
+         	 	<md-tooltip  md-direction="left" md-visible="isOpen">  Lista </md-tooltip>
          	   	<md-icon class="material-icons">reorder</md-icon>
         	 </md-button>
           <!--         vista per lista di giorni -->
         	<md-button class="md-fab md-raised md-mini" ng-click="setViewMode('month')">
+        		<md-tooltip  md-direction="left" md-visible="isOpen">  Mese </md-tooltip>
         	    <md-icon class="material-icons">view_week</md-icon>
        		</md-button>
 		  <!--        	creazione -->
-       		<md-button class="md-fab md-raised md-mini" ng-click="showDayDetails()" ng-if="checkRoles('admin')">
+       		<md-button class="md-fab md-raised md-mini" ng-click="showDayDetails()" <!-- ng-if="checkRoles('admin')" --> >
+       			<md-tooltip  md-direction="left" md-visible="isOpen">  Edit </md-tooltip>
         	    <md-icon class="material-icons">add</md-icon>
        		</md-button>
+       		
+<!--        		<div ng-repeat="item in fabMenu"> -->
+<!--           		<md-button class="md-fab md-raised md-mini" ng-click="item.onClick"> -->
+<!-- 					<md-tooltip  md-direction="left" md-visible="isOpen">  {{item.displayName}} </md-tooltip> -->
+<!--             		<md-icon class="material-icons"> {{item.icon}} </md-icon> -->
+<!--           		</md-button> -->
+<!--           	</div> -->
+
         </md-fab-actions>
  	</md-fab-speed-dial>
 
