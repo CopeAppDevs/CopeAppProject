@@ -1,12 +1,35 @@
-<md-dialog layout="column" style="overflow-x: hidden"> 
+ <md-dialog layout="column" style="overflow-x: hidden">  
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 		<md-button class="md-icon-button" ng-click="cancel()"> 
 			<md-icon class="material-icons">close</md-icon> 
 		</md-button>
+		<p> giorno {{day}} </p>
 		</div>
 	</md-toolbar>
 	<md-dialog-content>
-		<p> is {{day}} </p>
+		<div ng-repeat="interrogation in interrogations" layout="column">
+			<md-card ng-style="{'background-color': interrogation.color}">
+		        <md-card-title>
+		          <md-card-title-text>
+		            <h1> {{interrogation.subject}}</h1>
+		          </md-card-title-text>
+		        </md-card-title>
+		        <md-divider> </md-divider>
+		        <md-card-content>
+					<div ng-repeat="student in interrogation.students">
+						<span> {{student.firstname}} {{student.lastname}}</span>
+						<md-divider> </md-divider>
+					</div>
+					<p> Tempo rimanente per offrirsi   </p>
+					<md-divider> </md-divider>
+					
+		        </md-card-content>
+		        <md-card-actions layout="row" layout-align="end center">
+		          <md-button>Offriti</md-button>
+		        </md-card-actions>
+		      </md-card>
+	      </div>
+	      
 	</md-dialog-content>
 </md-dialog>
