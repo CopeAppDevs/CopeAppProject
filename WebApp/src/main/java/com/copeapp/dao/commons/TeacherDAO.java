@@ -1,18 +1,16 @@
 package com.copeapp.dao.commons;
 
-import com.copeapp.entities.appunti.Appunto;
-import com.copeapp.entities.common.Classe;
-import com.copeapp.entities.common.Student;
-import com.copeapp.entities.common.Subject;
-import com.copeapp.entities.common.Teacher;
-import com.copeapp.entities.common.User;
-import com.copeapp.utilities.EntityManagerGlobal;
-import com.copeapp.utilities.MiscUtilities;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
+
+import com.copeapp.entities.common.Classe;
+import com.copeapp.entities.common.Student;
+import com.copeapp.entities.common.Teacher;
+import com.copeapp.entities.common.User;
+import com.copeapp.utilities.EntityManagerGlobal;
+import com.copeapp.utilities.MiscUtilities;
 
 public class TeacherDAO {
 

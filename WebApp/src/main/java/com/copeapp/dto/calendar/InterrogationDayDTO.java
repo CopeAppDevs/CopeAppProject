@@ -1,12 +1,13 @@
 package com.copeapp.dto.calendar;
 
+import java.util.List;
+
 import com.copeapp.entities.calendar.Interrogation;
 import com.copeapp.entities.common.Student;
 import com.copeapp.entities.common.Subject;
+
 import lombok.Data;
 import lombok.NonNull;
-
-import java.util.List;
 
 @Data
 public class InterrogationDayDTO {

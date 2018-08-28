@@ -10,5 +10,5 @@ public class SurveyResponseByIdDTO {
 	private SurveyDTO surveyDTO;
 	
 	@NonNull
-	private boolean hasVoted;
+	private Boolean hasVoted;
 }

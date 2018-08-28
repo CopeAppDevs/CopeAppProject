@@ -1,5 +1,11 @@
 package com.copeapp.dao.survey;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import com.copeapp.dto.survey.SurveyMiniDTO;
 import com.copeapp.entities.common.Role;
 import com.copeapp.entities.common.User;
@@ -7,12 +13,11 @@ import com.copeapp.entities.survey.Answer;
 import com.copeapp.entities.survey.Survey;
 import com.copeapp.entities.survey.Vote;
 import com.copeapp.exception.SurveyException;
-import com.copeapp.utilities.*;
-
-import javax.persistence.TypedQuery;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.copeapp.utilities.DozerMapper;
+import com.copeapp.utilities.EntityManagerGlobal;
+import com.copeapp.utilities.HttpStatusUtility;
+import com.copeapp.utilities.MessageUtility;
+import com.copeapp.utilities.MiscUtilities;
 
 public class SurveyDAO {
 

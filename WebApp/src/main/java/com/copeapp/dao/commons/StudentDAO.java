@@ -1,10 +1,10 @@
 package com.copeapp.dao.commons;
 
+import java.util.List;
+
 import com.copeapp.entities.common.Classe;
 import com.copeapp.entities.common.Student;
 import com.copeapp.entities.common.Teacher;
-
-import java.util.List;
 
 public class StudentDAO {
 

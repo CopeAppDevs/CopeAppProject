@@ -2,7 +2,6 @@ package com.copeapp.dto.appunti;
 
 import java.util.Date;
 
-import com.copeapp.dto.commons.StudentDTO;
 import com.copeapp.dto.commons.SubjectDTO;
 import com.copeapp.dto.commons.TeacherDTO;
 

@@ -1,5 +1,11 @@
 package com.copeapp.dao.commons;
 
+import java.util.Base64;
+import java.util.List;
+
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
+
 import com.copeapp.entities.common.Classe;
 import com.copeapp.entities.common.Student;
 import com.copeapp.entities.common.User;
@@ -9,11 +15,6 @@ import com.copeapp.exception.LoginException;
 import com.copeapp.utilities.EntityManagerGlobal;
 import com.copeapp.utilities.HttpStatusUtility;
 import com.copeapp.utilities.MessageUtility;
-
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
-import java.util.Base64;
-import java.util.List;
 
 public class UserDAO {
 

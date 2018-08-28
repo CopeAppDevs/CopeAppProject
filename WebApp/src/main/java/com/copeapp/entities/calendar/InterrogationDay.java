@@ -1,10 +1,21 @@
 package com.copeapp.entities.calendar;
 
-import com.copeapp.entities.common.Student;
-import lombok.*;
-
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.copeapp.entities.common.Student;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @RequiredArgsConstructor

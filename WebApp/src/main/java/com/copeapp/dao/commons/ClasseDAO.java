@@ -1,10 +1,11 @@
 package com.copeapp.dao.commons;
 
-import com.copeapp.entities.common.Classe;
-import com.copeapp.utilities.EntityManagerGlobal;
+import java.util.List;
 
 import javax.persistence.TypedQuery;
-import java.util.List;
+
+import com.copeapp.entities.common.Classe;
+import com.copeapp.utilities.EntityManagerGlobal;
 
 public class ClasseDAO {
 

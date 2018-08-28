@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.Transient;
 
-import com.copeapp.entities.common.Teacher;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

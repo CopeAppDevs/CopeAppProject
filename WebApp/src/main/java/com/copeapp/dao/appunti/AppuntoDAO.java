@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
-import com.copeapp.dto.appunti.AppuntoDTO;
 import com.copeapp.dto.appunti.AppuntoMiniDTO;
 import com.copeapp.entities.appunti.Appunto;
 import com.copeapp.entities.common.User;

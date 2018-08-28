@@ -1,9 +1,9 @@
 package com.copeapp.dao.commons;
 
+import java.util.List;
+
 import com.copeapp.entities.common.Role;
 import com.copeapp.utilities.EntityManagerGlobal;
-
-import java.util.List;
 
 public class RoleDAO {
 

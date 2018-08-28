@@ -1,12 +1,9 @@
 package com.copeapp.dao.commons;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
 
-import com.copeapp.dto.commons.SubjectDTO;
-import com.copeapp.entities.common.Classe;
 import com.copeapp.entities.common.Subject;
 import com.copeapp.entities.common.User;
 import com.copeapp.utilities.EntityManagerGlobal;
