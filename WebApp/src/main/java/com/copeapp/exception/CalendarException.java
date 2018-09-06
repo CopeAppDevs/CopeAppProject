@@ -2,7 +2,9 @@ package com.copeapp.exception;
 
 public class CalendarException extends CopeAppGenericException {
 
-    public CalendarException(int httpStatus) {
+	private static final long serialVersionUID = 1L;
+
+	public CalendarException(int httpStatus) {
         super(httpStatus);
     }
 
