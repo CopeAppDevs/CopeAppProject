@@ -6,13 +6,13 @@
 	<persistence-unit name="CopeApp"
 		transaction-type="RESOURCE_LOCAL">
 
-		<non-jta-data-source>java:comp/env/jdbc/CopeAppJNDI</non-jta-data-source>
+<!-- 		<non-jta-data-source>java:comp/env/jdbc/CopeAppJNDI</non-jta-data-source> -->
 
 		<properties>
-			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://jeniasrv023.jenia.it:5423/CopeApp"/> -->
-			<!-- <property name="javax.persistence.jdbc.user" value="CopeApp"/> -->
-			<!-- <property name="javax.persistence.jdbc.password" value="CopeApp"/> -->
-			<!-- <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/> -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://jeniasrv023.jenia.it:5423/CopeApp"/>
+			<property name="javax.persistence.jdbc.user" value="CopeApp"/>
+			<property name="javax.persistence.jdbc.password" value="CopeApp"/>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
