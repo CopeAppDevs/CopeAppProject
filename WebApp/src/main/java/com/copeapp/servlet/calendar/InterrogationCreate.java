@@ -26,7 +26,7 @@ import com.copeapp.utilities.HttpStatusUtility;
 import com.copeapp.utilities.MessageUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebServlet("rest/interrogationCreate")
+@WebServlet("/rest/interrogationCreate")
 public class InterrogationCreate extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
