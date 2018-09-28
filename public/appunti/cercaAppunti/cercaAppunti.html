@@ -1,0 +1,12 @@
+<div ng-controller="cercaAppuntiCtrl">
+	<md-input-container float> <md-icon
+		class="material-icons" ng-click="search()">search</md-icon> 
+		<input	ng-keydown="$event.keyCode === 13 && search()" ng-model="text" type="text" placeholder="Cerca appunto"
+				ng-style="searchBar"> </md-input-container>
+	
+	<md-card style="padding: 0px;" ng-repeat="appunto in appuntiLista" ng-include="'appunti/components/cardcomponent.htm'" ng-click="goto('paginaAppunti', {'idAppunto' : appunto.appuntoId})">
+        
+    </md-card>
+	
+	<md-button ng-if="appuntiLista.length != 0" ng-click="refresh()">Carica altro</md-button>
+</div>

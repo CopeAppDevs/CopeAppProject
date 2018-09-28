@@ -1,0 +1,21 @@
+<div ng-controller="AppuntiCtrl" layout="column">
+	<md-tabs md-dynamic-height md-border-bottom layout="column" md-selected="selectedTab">
+	
+		<md-tab label="Cerca" >
+		<md-content layout-padding ng-include="'appunti/cercaAppunti/cercaAppunti.html'">
+		</md-content>				
+		</md-tab>
+		
+		<md-tab label="Materie">
+			<md-content layout-padding ng-include="'appunti/hubAppunti/hubAppunti.html'">
+			</md-content>
+		</md-tab>
+		
+		
+		<md-tab label="I miei" layout="column">
+		<md-content layout-padding ng-include="'appunti/iMieiAppunti/iMieiAppunti.html'">
+		
+		</md-content>
+		</md-tab>
+	</md-tabs>
+</div>

@@ -1,0 +1,21 @@
+{
+  "name": "CopeAppServer",
+  "version": "0.0.1-Proto",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "colors": "^1.3.2",
+    "express": "3.2.6",
+    "express-basic-auth": "^1.1.5",
+    "jade": "*",
+    "minimist": "^1.2.0",
+    "mongoose": "^5.2.17",
+    "simple-node-logger": "^0.93.40",
+    "web-push": "^3.3.3",
+    "winston": "^3.1.0",
+    "yargs": "^12.0.2"
+  }
+}

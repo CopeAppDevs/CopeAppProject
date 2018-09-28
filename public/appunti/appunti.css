@@ -1,0 +1,34 @@
+.appunti-title{
+	 font-size: 23px;
+	 margin-bottom: 3px;
+}
+.appunti-description{
+	margin-top: 10px;
+	
+}
+.dataAppunti{
+	color: #e6e6e6;
+	margin-bottom: 18px;
+}
+.appunti-listaVote{
+	margin-top:20px;
+	float:right;
+}
+.materiaHead{
+	text-align: center;
+    font-family: verdana;
+    font-size: 7vw;
+    font-weight: bold;
+	
+}
+.vote-0{
+	color:black;
+	
+}
+.vote-1{
+	color:green;
+}
+.vote-2{
+	
+	color:red;
+}

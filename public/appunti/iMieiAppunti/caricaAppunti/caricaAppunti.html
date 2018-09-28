@@ -1,0 +1,79 @@
+<div ng-controller="caricaAppuntiCtrl">
+	<form>
+		<md-card layout="column"> <md-card-header>
+		
+		<md-card-header-text> <span class="md-title">Informazioni sull'appunto</span> </md-card-header-text> </md-card-header> 
+		
+		<md-input-container class="md-block">
+			<label>Titolo</label> <input md-maxlength="50" required md-no-asterisk name="title" ng-model="title">
+			<div ng-messages="title.$error">
+				<div ng-message="required">Serve un titolo.</div>
+				<div ng-message="md-maxlength">Al massimo 50 caratteri.</div>
+			</div>
+		</md-input-container>
+
+		<div>
+				<div layout="column" flex layout-padding style="padding-bottom: 0px"
+					layout-align="center start">
+					<textarea style="width: 93%;" " ng-model="description"
+						placeholder="Descrizione dell'appunto"></textarea>
+				</div>
+				</div>
+				<div style = "margin-top: 20px">
+			<md-autocomplete
+				md-search-text-change="querySearchSubject(searchTextSubject)"
+				md-no-cache="true" 
+				md-selected-item="subject"
+				md-search-text="searchTextSubject"
+				md-items="subject in listaSubject"
+				md-item-text="subject.name"
+				md-selected-item-change="selectedSubjectChange(subject)"
+				md-min-length="0" 
+				placeholder="Materia dell'appunto">
+			<md-item-template> <span
+				md-highlight-text="searchTextSubject" md-highlight-flags="^i">{{subject.name}}</span>
+			</md-item-template> <md-not-found> Non esiste "{{searchTextSubject}}"
+			come materia. </md-not-found> </md-autocomplete>
+		</div>
+		<div style ="margin-top: 20px">
+			<md-autocomplete md-selected-item="teacher" md-no-cache="true"
+				md-search-text="searchTextTeacher"
+				md-search-text-change="querySearchTeacher(searchTextTeacher)"
+				md-selected-item-change="selectedTeacherChange(teacher)"
+				md-items="teacher in listaTeacher" md-item-text="teacher.lastname"
+				md-min-length="0" placeholder="Scrivi il nome del prof">
+			<md-item-template> <span
+				md-highlight-text="searchTextTeacher" md-highlight-flags="^i">{{teacher.lastname}}</span>
+			</md-item-template> <md-not-found> Non esiste {{searchTextTeacher}} come
+			prof. </md-not-found> </md-autocomplete>
+		</div>
+
+		<div layout="row" style="margin-top: 20px;">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label>Anno</label> <input ng-model="classNumber"> </md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+			<label>Sezione</label> <input ng-model="section"> </md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+			<label>Indirizzo</label> <input ng-model="indirizzo"> </md-input-container>
+		</div>
+		<div style = "margin-bottom: 20px; margin-left: 20px;" layout="row">
+			<md-card-content style="padding: 0px;"> carica appunto <input
+				style="display: none; visibility: hidden; padding: 0px;" id="imageUploader" 
+				type="file" nv-file-select uploader="fileUploader" ng-model="loader" />
+			<md-button class="md-icon-button" ng-click="loadImage()">
+			<md-icon class="material-icons">add</md-icon> </md-button> </md-card-content>
+        	<a ng-disable="!uploaded" href="" ng-click="openPDFWindows()"><md-icon ng-show ="uploaded" class="material-icons">picture_as_pdf</md-icon></a>
+		</div>
+		</md-input-container>
+		<div layout="row">
+			<md-button class="md-raised md-primary" ng-click="uploadAppunto()">
+			Salva <md-icon class="material-icons">cloud_upload</md-icon> </md-button>
+			<md-button class="md-raised md-primary" ng-click="exit()">
+			Esci <md-icon class="material-icons">clear</md-icon> </md-button>
+			<span flex md-truncate></span>
+			<md-button class="md-warn" ng-click="resetAll()"> Reset <md-icon
+				class="material-icons">refresh</md-icon> </md-button>
+		</div>
+		</md-card>
+	</form>
+</div>

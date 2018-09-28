@@ -1,0 +1,13 @@
+<div ng-controller="iMieiAppuntiCtrl">
+	<div>
+		<md-subheader>Carica appunti <md-button
+			style="margin: auto;" ng-click="goto('caricaAppunti')"
+			class="md-icon-button"> <md-icon class="material-icons">add</md-icon>
+		</md-button> </md-subheader>
+		
+		<md-card ng-include="'appunti/components/cardcomponent.htm'" ng-repeat="appunto in laMiaLista" ng-click="goto('paginaAppunti', {'idAppunto' : appunto.appuntoId})">
+		</md-card>
+
+		<md-button ng-if="laMiaLista.length != 0" ng-click="refreshMine()">Aggiorna</md-button>
+	</div>
+</div>

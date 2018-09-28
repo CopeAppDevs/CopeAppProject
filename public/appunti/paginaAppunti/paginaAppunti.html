@@ -1,0 +1,55 @@
+<div ng-controller = "paginaAppuntiCtrl">
+	<md-card ng-if="appunto != null">
+        <md-card-header>
+          <md-card-avatar>
+            <img class="md-user-avatar" src="{{appunto.student.imageUrl}}"/>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">{{appunto.student.username}}</span>
+            <span class="md-subhead">{{appunto.student.firstname}} {{appunto.student.lastname}}</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+        
+        	<div style="text-align: center;" class="appunti-title">{{appunto.title}}</div>
+        	
+        	<!-- PDF Zone -->
+        	<div style="margin-left: 30%; margin-bottom:30%;">
+        	<a href="" ng-click="openPDFWindows()"><md-icon class="material-icons" style="font-size: 100px">picture_as_pdf</md-icon></a>
+        	</div>
+        	<!-- FINE PDF Zone -->
+        	
+        	<div class="md-subhead" style=" margin: 18px 0 8px 0">Descrizione:</div>
+        	<span style="text-align: center; font-size: 18px;">{{appunto.description}}</span>
+        	
+        	<!-- Div floattanti che contiene altri due div che hanno un float-->
+        	<div style="overflow: auto;">
+	        	<div style="color: #b3b3b3; margin-top: 20px; padding: 0; float:left">
+	        	Materia: <i style="color: {{appunto.subject.color}};">{{appunto.subject.name}}</i>
+	        	<br>Prof: <i style="color: black;">{{appunto.teacher.firstname + " " + appunto.teacher.lastname}}</i>
+	        	</div>
+	        	
+	        	<div style="color: #b3b3b3; margin-top: 20px; padding: 0; float:right; text-align: right">
+	        	<!-- Conversione Data ms to Date -->
+	        	{{convertToDate(appunto.dataCreazione, "dd/MM/yyyy")}}
+	        	<!-- Fine -->
+	        	<br>{{appunto.classNumber + appunto.section}}<br>{{appunto.indirizzo}}
+	        	</div>
+        	</div>
+        	<!-- FINE Div floattanti -->
+        	
+        	<!-- Zona Tasti -->
+        	<md-card-actions layout="row" layout-align="start center" style="margin-top:20px;">
+	        	<div class="material-icons" ng-click="goto('appunti')" style="margin: 8px; padding: 5px;">arrow_back</div>
+	        	<div style="position: absolute; right: 20px; float:right;">
+		          	<md-button ng-click="liking(true)" class="material-icons vote-{{liked == 1? 1:0}}">thumb_up</md-button>{{appunto.likes}}
+			  		<md-button ng-click="liking(false)" class="material-icons vote-{{liked == 2? 2: 0}}">thumb_down</md-button>{{appunto.dislikes}}
+		  		</div>
+          	<md-card-icon-actions>
+          	
+          	<!-- FINE Zona Tasti -->
+          	
+        </md-card-content>
+       
+      </md-card>
+</div>

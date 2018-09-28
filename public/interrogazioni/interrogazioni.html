@@ -1,0 +1,12 @@
+<div ng-controller="InterrogazioniCtrl">
+	<md-cool-calendar 
+	id="calendar" 
+	calendar-events="events" 
+	lock-view-type="false" 
+	open-event="openInterrogationDay()" 
+	view-mode="mode" 
+	can-edit="checkRoles('admin')">
+<!--rest-for-events="localhost:8080/rest/getInterrogationList" --> 
+		
+	</md-cool-calendar>
+</div>
