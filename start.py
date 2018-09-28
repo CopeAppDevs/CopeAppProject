@@ -7,6 +7,8 @@ import platform
 import webbrowser
 import time
 from crontab import CronTab
+import subprocess
+import json
 
 #lettura dei parametri
 try:
@@ -25,6 +27,7 @@ except FileNotFoundError:
     configFile.append("monitorAddress: /monitor\n")
     configFile.append("# cluster config\n")
     configFile.append("nodesNumber: 2\n")
+    configFile.append("minNodes: 2\n")
     configFile.append("maxNodes: 4\n")
     configFile.append("startingPort: 3000\n")
     configFile.append("checkRateMinutes: 3\n")
@@ -97,20 +100,13 @@ nginx.close()
 
 if platform.system() == "Windows":
     for x in range(int(options.get("nodesNumber", 2))):
-        code = "start cmd /k node app -p "+str(int(options.get("startingPort", 3000))+x)
-        os.system(code)
-    code = 'start cmd /k "cd nginx && start nginx.exe -c conf/copeapp.conf"'
-    os.system(code)
+        port = str(int(options.get("startingPort", 3000))+x)
+        node = subprocess.Popen(['start', 'node', 'app', '-p', port], shell=True)
 
 elif platform.system() == "Linux":
     for x in range(int(options.get("nodesNumber", 2))):
-        code = "node -p " +str(int(options.get("startingPort", 3000))+x)
-        os.system(code)
-    code = 'nginx -c copeapp.conf'
-    os.system(code)
-
-    #database create
-    open("data/serverPIDs.db", "w+")
+        port = str(int(options.get("startingPort", 3000))+x)
+        node = subprocess.Popen(['start', 'node', 'app', '-p', port], shell=True)
 
     cronCode = "daemonProcess.py " + str(int(options.get("startingPort", 3000))+x)
 
