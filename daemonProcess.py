@@ -39,8 +39,8 @@ def newNode(freePorts):
         return 0
     
     
-def popNode(node):        
-    #kill node by pid
+def popNode(PID):        
+    subprocess.call("kill -9 " + PID)
     return 0
 #decidere se passare args o fare leggere dal config    
     
@@ -52,10 +52,8 @@ nodes = open("data/serverPIDs.db","r")
 nodeList = []
 for line in nodes:
     node = Node(line.split()[0], line.split()[1], 0)
-    nodeList.append(node)
-    
+    nodeList.append(node.replace("\n",""))   
 nodes.close()
-
 nodePorts = (node.port for node in nodeList)
 
 freePorts = (x for x in range(firstPort, firstPort + maxNodes - 1))
@@ -63,16 +61,23 @@ freePorts = set.difference_update(nodePorts)
     
 openSessions = {}    
 openSessions = checkPorts(nodePorts, hostname)
-for port, connections in openSessions.items():
-    averageTraffic = averageTraffic + connections
-    
-averageTraffic = double( (averageTraffic / len(openSessions)) / sessionLimiter ) 
-nodes = open("data/serverPIDs.db","w") 
+
+averageTraffic = 0
+averageTraffic = (averageTraffic + conns for conns in openSessions.values())
+averageTraffic = double(averageTraffic / (sessionLimiter * len(openSessions)))
+
+nodes = open("data/serverPIDs.db","rw") 
 if averageTraffic > 0.8:
-    nodeList.append(newNode(maxNodes, freePorts))
-    #TODO aggiungere
+    n = nodeList.append(newNode(maxNodes, freePorts))
+    nodesUpdate = nodes.readlines().append(str(n.port) + str(n.PID) + "\n")
+    nodes.write(nodesUpdate)
 elif (averageTraffic < 0.2) and (freePorts > minNodes):
-    popNode(openSessions[nodePorts[0]])
+    popNode(nodeList[0].PID)
+    port = nodeList[0].port
+    nodeList.pop(0)
+    nodesUpdate = nodes.readlines()
+    nodesUpdate = (x for x in nodesUpdate if not x.startsWith(port))
+    nodes.write(nodesUpdate)
     
 nodes.close()
         
