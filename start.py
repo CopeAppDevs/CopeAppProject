@@ -116,7 +116,7 @@ elif platform.system() == "Linux":
 
     cron =  CronTab(user = True)
     job = cron.new(command="./daemonProcess.py")
-    job.minute.every(int(options.get("checkRateMinutes", "3")))
+    job.hour.every(int(options.get("checkRateMinutes", "4")))
 
 else:
     sys.exit("OS not yet supported")
