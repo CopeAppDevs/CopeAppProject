@@ -26,9 +26,9 @@ replace = require('replace-in-file');
 
 app = express();
 
-if ((argv.d !== null && typeof arg.d !== "undefined") || (argv.dev !== null && typeof arg.dev !== "undefined")) {
+if (argv.d === null || typeof argv.d === "undefined" || argv.dev === null || typeof argv.dev === "undefined") {
   fs.appendFile("data/serverPIDs.db", app.get("port") + " " + process.pid + "\n", function(err) {
-    if (err === null && typeof err === "undefined") {
+    if (err === null || typeof err === "undefined") {
       console.log("Error saving process PID to db".red);
       return process.exit(1);
     }
