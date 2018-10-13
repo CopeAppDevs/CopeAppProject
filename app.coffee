@@ -10,6 +10,7 @@ winston = require("winston")
 exitHook = require('exit-hook')
 replace = require('replace-in-file')
 db = require("./repositories/sequelize")
+db.populate = require("./repositories/populate")
 router = require("./routes/router")
 
 app = express()
@@ -49,6 +50,7 @@ router.defineRoutes(app)
 
 db.sequelize.authenticate().then(() ->
 	console.log('Connection has been established successfully.'.green)
+	db.populate.syncDrop()
 ).catch((err) ->
 	console.error('Unable to connect to the database:', err)
 )

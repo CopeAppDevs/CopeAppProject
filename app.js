@@ -25,6 +25,8 @@
 
   db = require("./repositories/sequelize");
 
+  db.populate = require("./repositories/populate");
+
   router = require("./routes/router");
 
   app = express();
@@ -74,7 +76,8 @@
   router.defineRoutes(app);
 
   db.sequelize.authenticate().then(function() {
-    return console.log('Connection has been established successfully.'.green);
+    console.log('Connection has been established successfully.'.green);
+    return db.populate.syncDrop();
   })["catch"](function(err) {
     return console.error('Unable to connect to the database:', err);
   });
