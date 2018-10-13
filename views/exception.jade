@@ -26,10 +26,11 @@ html(lang="en")
 						md-tooltip(md-direction="bottom") Go back
 						md-icon(class="material-icons") arrow_back
 					h2(flex, md-truncate, layout-align="start center")= name
-					md-button(class="md-fab md-mini md-warn", ngclipboard, data-clipboard-text=""+stack+"", ng-click="copyToClipboard()")
+					md-button(class="md-fab md-mini md-warn", ngclipboard, data-clipboard-text=""+copyStack+"", ng-click="copyToClipboard()")
 						md-tooltip(md-direction="left") Copy to clipboard
 						md-icon(class="material-icons") file_copy
+			md-divider
 			md-content(flex, layout="column", layout-align="center center")
-				h1= code+" - "+message
-				div(layout-padding, style="padding-left: 2em; text-indent: -2em;", layout="column", layout-align="start start", ng-bind-html="compileStackTrace('" + stack + "')") 
+				h1(style="font-size: 700%; margin: 20px 0px;")= code
+				div!= stack
 				
