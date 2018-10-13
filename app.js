@@ -1,5 +1,5 @@
 (function() {
-  var app, argv, colors, exitHook, express, fs, http, path, process, replace, router, webpush, winston;
+  var app, argv, colors, db, exitHook, express, fs, http, path, process, replace, router, webpush, winston;
 
   express = require("express");
 
@@ -8,6 +8,8 @@
   path = require("path");
 
   fs = require("fs");
+
+  db = require("repositories/sequelize");
 
   process = require("process");
 
@@ -70,6 +72,12 @@
   app.use('/views/res', express["static"](__dirname + '/views/res'));
 
   router.defineRoutes(app);
+
+  db.sequelize.authenticate().then(function() {
+    return {};
+  })["catch"](function(err) {
+    return {};
+  });
 
   if (app.get('env') === 'development') {
     app.use(express.errorHandler());

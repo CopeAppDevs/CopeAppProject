@@ -2,6 +2,7 @@ express = require("express")
 http = require("http")
 path = require("path")
 fs = require("fs")
+db = require("repositories/sequelize")
 process = require("process")
 colors = require("colors")
 webpush = require("web-push")
@@ -27,7 +28,6 @@ else
 	unless isNaN(argv.p)
 		if argv.p >= 3000 and argv.p < 4000
 			app.set('port', argv.p)
-
 		else
 			console.log("Node.JS must run on a port between 3000 and 3999".red)
 			process.exit(1);
@@ -46,6 +46,13 @@ app.set('view engine', 'jade');
 app.use('/views/res', express.static(__dirname + '/views/res'))
 
 router.defineRoutes(app)
+
+db.sequelize.authenticate().then(() -> {
+	console.log('Connection has been established successfully.'.green)
+}).catch((err) -> {
+	console.error('Unable to connect to the database:', err);
+})
+
 
 if app.get('env') == 'development'
 	app.use(express.errorHandler())

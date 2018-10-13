@@ -1,4 +1,4 @@
-Errors = require("../errors/errors")
+Errors = require("../../errors/errors")
 
 exports.do = (req, res, next) ->
 	res.send("Ping!")

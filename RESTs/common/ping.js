@@ -1,7 +1,7 @@
 (function() {
   var Errors;
 
-  Errors = require("../errors/errors");
+  Errors = require("../../errors/errors");
 
   exports["do"] = function(req, res, next) {
     return res.send("Ping!");
