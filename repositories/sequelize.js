@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
-exports.sequelize = new Sequelize('CopeAppPrototype', 'CopeApp', 'CopeApp', {
+
+exports.sequelize = new Sequelize('CopeAppPrototype', 'postgres', 'postgres', {
   host: 'jeniasrv023.jenia.it',
   dialect: 'postgres',
+  port: 5423,
   operatorsAliases: false,
   pool: {
     max: 5,

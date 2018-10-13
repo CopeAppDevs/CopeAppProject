@@ -2,24 +2,17 @@ express = require("express")
 http = require("http")
 path = require("path")
 fs = require("fs")
-db = require("repositories/sequelize")
 process = require("process")
 colors = require("colors")
 webpush = require("web-push")
-router = require("./routes/router")
 argv = require("minimist")(process.argv.slice(2));
 winston = require("winston")
 exitHook = require('exit-hook')
 replace = require('replace-in-file')
+db = require("./repositories/sequelize")
+router = require("./routes/router")
 
 app = express()
-
-if (argv.d == null or typeof argv.d == "undefined" or argv.dev == null or typeof argv.dev == "undefined")
-	fs.appendFile("data/serverPIDs.db", app.get("port")+" "+process.pid+"\n", (err) ->
-		if err == null or typeof err == "undefined"
-			console.log("Error saving process PID to db".red)
-			process.exit(1);
-	)
 
 if argv.p == null or typeof argv.p == "undefined"
 	console.log("The port for Node.JS must be specified".red)
@@ -35,6 +28,13 @@ else
 		console.log("The port argument must be a number".red)
 		process.exit(1);
 
+if (!argv.dev)
+	fs.appendFile("data/serverPIDs.db", app.get("port")+" "+process.pid+"\n", (err) ->
+		if err != null and typeof err != "undefined"
+			console.log("Error saving process PID to db".red)
+			process.exit(1);
+	)
+
 app.use(express.logger('dev'))
 app.use(express.bodyParser())
 app.use(express.methodOverride())
@@ -47,17 +47,17 @@ app.use('/views/res', express.static(__dirname + '/views/res'))
 
 router.defineRoutes(app)
 
-db.sequelize.authenticate().then(() -> {
+db.sequelize.authenticate().then(() ->
 	console.log('Connection has been established successfully.'.green)
-}).catch((err) -> {
-	console.error('Unable to connect to the database:', err);
-})
+).catch((err) ->
+	console.error('Unable to connect to the database:', err)
+)
 
 
 if app.get('env') == 'development'
 	app.use(express.errorHandler())
 
-http.createServer(app).listen(app.get('port'), () -> console.log('Express server listening on port '+app.get('port')))
+http.createServer(app).listen(app.get('port'), () -> console.log(colors.green('Express server listening on port '+app.get('port'))))
 
 exitHook(() ->
 	console.log("Exiting node...".red)

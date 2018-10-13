@@ -9,15 +9,11 @@
 
   fs = require("fs");
 
-  db = require("repositories/sequelize");
-
   process = require("process");
 
   colors = require("colors");
 
   webpush = require("web-push");
-
-  router = require("./routes/router");
 
   argv = require("minimist")(process.argv.slice(2));
 
@@ -27,16 +23,11 @@
 
   replace = require('replace-in-file');
 
-  app = express();
+  db = require("./repositories/sequelize");
 
-  if (argv.d === null || typeof argv.d === "undefined" || argv.dev === null || typeof argv.dev === "undefined") {
-    fs.appendFile("data/serverPIDs.db", app.get("port") + " " + process.pid + "\n", function(err) {
-      if (err === null || typeof err === "undefined") {
-        console.log("Error saving process PID to db".red);
-        return process.exit(1);
-      }
-    });
-  }
+  router = require("./routes/router");
+
+  app = express();
 
   if (argv.p === null || typeof argv.p === "undefined") {
     console.log("The port for Node.JS must be specified".red);
@@ -53,6 +44,15 @@
       console.log("The port argument must be a number".red);
       process.exit(1);
     }
+  }
+
+  if (!argv.dev) {
+    fs.appendFile("data/serverPIDs.db", app.get("port") + " " + process.pid + "\n", function(err) {
+      if (err !== null && typeof err !== "undefined") {
+        console.log("Error saving process PID to db".red);
+        return process.exit(1);
+      }
+    });
   }
 
   app.use(express.logger('dev'));
@@ -74,9 +74,9 @@
   router.defineRoutes(app);
 
   db.sequelize.authenticate().then(function() {
-    return {};
+    return console.log('Connection has been established successfully.'.green);
   })["catch"](function(err) {
-    return {};
+    return console.error('Unable to connect to the database:', err);
   });
 
   if (app.get('env') === 'development') {
@@ -84,7 +84,7 @@
   }
 
   http.createServer(app).listen(app.get('port'), function() {
-    return console.log('Express server listening on port ' + app.get('port'));
+    return console.log(colors.green('Express server listening on port ' + app.get('port')));
   });
 
   exitHook(function() {
