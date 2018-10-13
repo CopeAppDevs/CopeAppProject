@@ -1,5 +1,5 @@
 (function() {
-  var app, argv, colors, db, exitHook, express, fs, http, path, process, replace, router, webpush, winston;
+  var app, argv, colors, exitHook, express, fs, http, path, process, replace, router, webpush, winston;
 
   express = require("express");
 
@@ -22,8 +22,6 @@
   exitHook = require('exit-hook');
 
   replace = require('replace-in-file');
-
-  db = require("./repositories/sequelize");
 
   router = require("./routes/router");
 

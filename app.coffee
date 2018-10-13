@@ -9,7 +9,6 @@ argv = require("minimist")(process.argv.slice(2));
 winston = require("winston")
 exitHook = require('exit-hook')
 replace = require('replace-in-file')
-db = require("./repositories/sequelize")
 router = require("./routes/router")
 
 app = express()
