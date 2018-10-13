@@ -46,12 +46,6 @@ app.use('/views/res', express.static(__dirname + '/views/res'))
 
 router.defineRoutes(app)
 
-db.sequelize.authenticate().then(() ->
-	console.log('Connection has been established successfully.'.green)
-).catch((err) ->
-	console.error('Unable to connect to the database:', err)
-)
-
 
 if app.get('env') == 'development'
 	app.use(express.errorHandler())

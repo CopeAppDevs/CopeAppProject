@@ -71,12 +71,6 @@
 
   router.defineRoutes(app);
 
-  db.sequelize.authenticate().then(function() {
-    return console.log('Connection has been established successfully.'.green);
-  })["catch"](function(err) {
-    return console.error('Unable to connect to the database:', err);
-  });
-
   if (app.get('env') === 'development') {
     app.use(express.errorHandler());
   }
