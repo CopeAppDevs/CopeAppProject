@@ -1,6 +1,6 @@
-auth = require("../RESTs/common/auth")
-ping = require("../RESTs/ping")
-handler = require("../RESTs/common/handler")
+auth = require("../RESTs/commons/auth")
+ping = require("../RESTs/commons/ping")
+handler = require("../RESTs/commons/handler")
 
 exports.defineRoutes = (app) ->
 	app.get("/ping", auth.asPAGE, ping.do, handler.asPAGE)

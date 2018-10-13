@@ -1,11 +1,11 @@
 (function() {
   var auth, handler, ping;
 
-  auth = require("../RESTs/common/auth");
+  auth = require("../RESTs/commons/auth");
 
-  ping = require("../RESTs/ping");
+  ping = require("../RESTs/commons/ping");
 
-  handler = require("../RESTs/common/handler");
+  handler = require("../RESTs/commons/handler");
 
   exports.defineRoutes = function(app) {
     app.get("/ping", auth.asPAGE, ping["do"], handler.asPAGE);
