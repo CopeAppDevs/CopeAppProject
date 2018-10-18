@@ -10,8 +10,14 @@ winston = require("winston")
 exitHook = require('exit-hook')
 replace = require('replace-in-file')
 router = require("./routes/router")
+db = require("./repositories/database")
 
 app = express()
+
+if argv.dbhost == null or typeof argv.dbhost == "undefined"
+	app.set('dbhost', 'localhost:666')
+else
+	app.set('dbhost', argv.dbhost)
 
 if argv.p == null or typeof argv.p == "undefined"
 	console.log("The port for Node.JS must be specified".red)
@@ -39,13 +45,14 @@ app.use(express.bodyParser())
 app.use(express.methodOverride())
 app.use(app.router)
 app.use('/', express.static(__dirname + '/public'))
+app.use('/test', express.static(__dirname + '/test'))
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use('/views/res', express.static(__dirname + '/views/res'))
 
 router.defineRoutes(app)
-
+db.createDatabase(app.get('dbhost'))
 
 if app.get('env') == 'development'
 	app.use(express.errorHandler())

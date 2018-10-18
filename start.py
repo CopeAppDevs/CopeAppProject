@@ -31,6 +31,9 @@ except FileNotFoundError:
     configFile.append("maxNodes: 4\n")
     configFile.append("startingPort: 3000\n")
     configFile.append("checkRateMinutes: 3\n")
+    configFile.append("# database config\n")
+    configFile.append("dbhost: localhost\n")
+    configFile.append("dbport: 666\n")
 
     config.writelines(configFile)
     config.close()
@@ -101,12 +104,16 @@ nginx.close()
 if platform.system() == "Windows":
     for x in range(int(options.get("nodesNumber", 2))):
         port = str(int(options.get("startingPort", 3000))+x)
-        node = subprocess.Popen(['start', 'node', 'app', '-p', port], shell=True)
+        dbhost = str(int(options.get("dbhost", 3000))+x)
+        dbport = str(int(options.get("dbport", 3000))+x)
+        node = subprocess.Popen(['start', 'node', 'app', '-p', port, "--dbhost", dbhost+":"+dbport], shell=True)
 
 elif platform.system() == "Linux":
     for x in range(int(options.get("nodesNumber", 2))):
         port = str(int(options.get("startingPort", 3000))+x)
-        node = subprocess.Popen(['start', 'node', 'app', '-p', port], shell=True)
+        dbhost = str(int(options.get("dbhost", 3000))+x)
+        dbport = str(int(options.get("dbport", 3000))+x)
+        node = subprocess.Popen(['start', 'node', 'app', '-p', port, "--dbhost", dbhost+":"+dbport], shell=True)
 
     cronCode = "daemonProcess.py " + str(int(options.get("startingPort", 3000))+x)
 
