@@ -11,50 +11,6 @@ exports.createDatabase = (dbHost) ->
 
   populateDatabase = () ->
     console.log(colors.green("Populating..."))
-    copernico = new shoolSchema.School({
-
-      schoolName: "Copernico",
-      address: "Via garavaglia 7",
-      phone: "335unguunguungu",
-      mail: "copernico]ungu.it",
-      website: "www.copernico.bo.it",
-
-      students: [{
-        firstName: "claudia",
-        lastName: "unguendoli",
-        username: "ungukla",
-        password: "VincioGay",
-        email: "ungu@ungu.it",
-        roles: [{
-          role: "student",
-          description: "ungu"
-        }]
-      }],
-      teachers: [{
-        firstName: "claudio",
-        lastName: "unguendoli",
-        username: "ungukla",
-        password: "VincioGay",
-        email: "ungu@ungu.it",
-        roles: [{
-          role: "teacher",
-          description: "ungu"
-        },{
-          role: "ungu",
-          description: "ungu"
-        }]
-      }],
-      classes: [{
-        section: "A",
-        year: 2,
-        subject: "linguistico",
-        location: "412"
-      }]
-    })
-    copernico.save((err, savedObj) ->
-      if err
-        console.error(colors.red(err))
-    )
     console.log(colors.green("Populated"))
 
   connection = connect(dbHost)

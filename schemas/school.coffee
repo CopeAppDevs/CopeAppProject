@@ -57,7 +57,7 @@ SchoolSchema.methods.populateUser = (users) ->
     else
       throw new Error("Unable to save the user: User type unknown")
   )
-exports.clazz = mongoose.model('classes', ClassSchema)
+exports.Class = mongoose.model('classes', ClassSchema)
 exports.Student = mongoose.model('students', StudentSchema)
 exports.Teacher = mongoose.model('teachers', TeacherSchema)
 exports.School = mongoose.model('schools', SchoolSchema)

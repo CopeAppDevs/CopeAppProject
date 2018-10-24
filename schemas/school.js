@@ -68,7 +68,7 @@ SchoolSchema.methods.populateUser = function(users) {
   });
 };
 
-exports.clazz = mongoose.model('classes', ClassSchema);
+exports.Class = mongoose.model('classes', ClassSchema);
 
 exports.Student = mongoose.model('students', StudentSchema);
 
