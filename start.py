@@ -6,7 +6,7 @@ import re
 import platform
 import webbrowser
 import time
-from crontab import CronTab
+#from crontab import CronTab
 import subprocess
 import json
 
@@ -118,11 +118,11 @@ try:
             dbport = str(int(options.get("dbport", 3000))+x)
             node = subprocess.Popen(['start', 'node', 'app', '-p', port, "--dbhost", dbhost+":"+dbport], shell=True)
 
-        cronCode = "daemonProcess.py " + str(int(options.get("startingPort", 3000))+x)
+        #cronCode = "daemonProcess.py " + str(int(options.get("startingPort", 3000))+x)
 
-        cron =  CronTab(user = True)
-        job = cron.new(command="./daemonProcess.py")
-        job.hour.every(int(options.get("checkRateHours", "4")))
+        #cron =  CronTab(user = True)
+        #job = cron.new(command="./daemonProcess.py")
+        #job.hour.every(int(options.get("checkRateHours", "4")))
 
     else:
         sys.exit("OS not yet supported")
