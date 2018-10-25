@@ -11,7 +11,7 @@ import subprocess
 import json
 import optparse
 
-realPath = os.getcwd()
+realPath = os.path.dirname(os.path.abspath(__file__))
 
 print("PARSING PARAMETERS...")
 parser = optparse.OptionParser()
