@@ -57,7 +57,7 @@ try:
         configPath = "nginx/conf/"
     elif platform.system() == "Linux":
         configPath = "/etc/nginx/"
-    else
+    else:
         sys.exit("OS not yet supported")
 
     nginx = open(configPath+"nginx.conf", "r")
