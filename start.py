@@ -11,13 +11,19 @@ import subprocess
 import json
 import optparse
 
+print("PARSING PARAMETERS...")
 parser = optparse.OptionParser()
 parser.add_option('-d', '--dev', action="store_true", help="Run in dev mode", default=False)
+(parameteres, args) = parser.parse_args()
+print("PARAMETERS PARSED!")
+
 #lettura dei parametri
 try:
+    print("OPENING CONF FILE...")
     config = open('data/copeapp.conf', 'r')
+    print("CONF FILE OPENED")
 except FileNotFoundError:
-    print('Conf file not found.... creating with default configuration')
+    print('CONF FILE NOT FOUND! CREATING ONE WITH DEFAULT CONFIGURATION...')
     config = open('data/copeapp.conf', 'w')
     configFile = []
     configFile.append("# nginx config\n")
@@ -37,12 +43,13 @@ except FileNotFoundError:
     configFile.append("# database config\n")
     configFile.append("dbhost: localhost\n")
     configFile.append("dbport: 666\n")
-
     config.writelines(configFile)
     config.close()
     config = open('data/copeapp.conf', 'r')
+    print('CONF FILE CREATED AND OPENED!')
 
 #lettura file di conf della app
+print('READING CONF FILE...')
 options = {}
 for line in config.readlines() :
     comment = re.match(r'(\t*#|\s*#)', line)
@@ -54,9 +61,10 @@ config.close();
 if int(options.get("maxNodes", 4))+int(options.get("startingPort", 3000))-1 > int(options.get("listen", 8080)) or int(options.get("listen", 8080)) < int(options.get("startingPort", 3000)) :
     sys.exit("The port assigned to the nginx server is equal to a port assignable to a node")
 
-(parameteres, args) = parser.parse_args()
+print('DONE!')
 
 if not parameteres.dev:
+    print('READING NGINX.CONF FILE...')
     #letture al file di configurazione di nginx
     if platform.system() == "Windows":
         configPath = "nginx/conf/"
@@ -75,24 +83,21 @@ if not parameteres.dev:
         if server is None and comment is None and blank is None and algorithm is None:
             nginxConf.append(line)
     nginx.close()
+    print('CONF FILE READ!')
 
     #cancellazione file log su windows
     if platform.system() == "Windows":
+        print('REMOVING LOG FILES...')
         try:
             os.remove("nginx/logs/access.log")
             os.remove("nginx/logs/error.conf")
             os.remove("nginx/logs/nginx.pid")
         except OSError:
             pass
+        print('REMOVED!')
 
-    if platform.system() == "Linux":
-        os.remove(configPath+"nginx.conf")
-        nginx = open(configPath+"nginx.conf", "w")
-    elif platform.system() == "Windows":
-        nginx = open(configPath+"copeapp.conf", "w")
-    else:
-        sys.exit("OS not yet supported")
-
+    print('MODIFIYNG NGINX CONF FILE...')
+    nginx = open(configPath+"nginx.conf", "w")
     for line in nginxConf :
         if line.find("worker_processes") != -1: #modifica proprieta workerProcesses: worker_processes
             line = re.sub(r'\b(worker_processes)\s*\d{1,2};', "worker_processes "+options.get("workerProcesses", "auto")+";", line)
@@ -115,7 +120,9 @@ if not parameteres.dev:
                 nginx.write("\t\tserver localhost:"+str(int(options.get("startingPort", "3000"))+x)+";\n")
 
     nginx.close()
+    print('MODIFIED!')
 
+    print('STARTING NODE...')
     if platform.system() == "Windows":
         dbhost = options.get("dbhost", "localhost")
         dbport = options.get("dbport", "666")
@@ -138,8 +145,11 @@ if not parameteres.dev:
 
     else:
         sys.exit("OS not yet supported")
+    print('NODE STARTED!')
 else:
+    print('STARTING NODE...')
     port = str(int(options.get("startingPort", "3000")))
     dbhost = options.get("dbhost", "localhost")
     dbport = options.get("dbport", "666")
     subprocess.call(["node", "app", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport], shell=True)
+    print('NODE STARTED!')
