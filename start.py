@@ -167,5 +167,5 @@ else:
     subprocess.Popen("touch data/logs/node"+port+".out", shell=True)
     subprocess.Popen("touch data/logs/node"+port+".err", shell=True)
     subprocess.Popen("touch data/logs/node"+port+".log", shell=True)
-    subprocess.Popen("forever start -l ./data/logs/"+port+".log -o data/logs/"+port+".out -e data/logs/"+port+".err -p data/forever/ app.js -p "+port+" --dev --dbhost "+dbhost+":"+dbport, shell=True)
+    subprocess.Popen("forever start -l node"+port+".log -o node"+port+".out -e node"+port+".err -p data/logs/ app.js -p "+port+" --dev --dbhost "+dbhost+":"+dbport, shell=True)
     print('NODE STARTED!')
