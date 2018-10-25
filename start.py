@@ -73,7 +73,14 @@ if not parameteres.dev:
     else:
         sys.exit("OS not yet supported")
 
-    nginx = open(configPath+"nginx.conf", "r")
+    if platform.system() == "Windows":
+        nginx = open(configPath+"copeapp.conf", "r")
+    elif platform.system() == "Linux":
+        os.remove(configPath+"nginx.conf")
+        nginx = open(configPath+"nginx.conf", "r")
+    else:
+        sys.exit("OS not yet supported")
+
     nginxConf = []
     for line in nginx.readlines() :
         server = re.match(r'\s*\bserver\s*(\w*|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\:\d{1,4}\;\n', line)
