@@ -53,7 +53,7 @@ config.close();
 
 if int(options.get("maxNodes", 4))+int(options.get("startingPort", 3000))-1 > int(options.get("listen", 8080)) or int(options.get("listen", 8080)) < int(options.get("startingPort", 3000)) :
     sys.exit("The port assigned to the nginx server is equal to a port assignable to a node")
-    
+
 (parameteres, args) = parser.parse_args()
 
 if not parameteres.dev:
@@ -85,9 +85,15 @@ if not parameteres.dev:
         except OSError:
             pass
 
-    nginx = open(configPath+"copeapp.conf", "w")
-    for line in nginxConf :
+    if platform.system() == "Linux":
+        os.remove(configPath+"nginx.conf")
+        nginx = open(configPath+"nginx.conf", "w")
+    elif platform.system() == "Windows":
+        nginx = open(configPath+"copeapp.conf", "w")
+    else:
+        sys.exit("OS not yet supported")
 
+    for line in nginxConf :
         if line.find("worker_processes") != -1: #modifica proprieta workerProcesses: worker_processes
             line = re.sub(r'\b(worker_processes)\s*\d{1,2};', "worker_processes "+options.get("workerProcesses", "auto")+";", line)
         if line.find("worker_connections") != -1: #modifica proprieta workerProcesses: worker_processes
