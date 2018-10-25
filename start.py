@@ -157,7 +157,7 @@ if not parameteres.dev:
     print('NODE STARTED!')
 else:
     print('STARTING NODE...')
-    realPath = os.path.realpath(__file__)
+    realPath = os.getcwd()
     port = str(int(options.get("devPort", "8023")))
     dbhost = options.get("dbhost", "localhost")
     dbport = options.get("dbport", "666")
