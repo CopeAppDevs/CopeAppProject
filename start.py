@@ -161,6 +161,6 @@ else:
     dbhost = options.get("dbhost", "localhost")
     dbport = options.get("dbport", "666")
     print("executing command: node app -p "+port+" --dev --dbhost "+dbhost+":"+dbport+" &")
-    os.spawnl("executing command: node app -p "+port+" --dev --dbhost "+dbhost+":"+dbport+" &")
+    os.spawnl("node app -p "+port+" --dev --dbhost "+dbhost+":"+dbport+" &")
     #subprocess.call(["node", "app", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport, "&"], shell=True)
     print('NODE STARTED!')
