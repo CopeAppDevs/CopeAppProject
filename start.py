@@ -134,6 +134,7 @@ if not parameteres.dev:
         dbport = options.get("dbport", "666")
         for x in range(int(options.get("nodesNumber", 2))):
             port = str(int(options.get("startingPort", 3000))+x)
+            print("executing command: node app -p "+port+" --dbhost "+dbhost+":"+dbport)
             node = subprocess.Popen(['start', 'node', 'app', '-p', port, "--dbhost", dbhost+":"+dbport], shell=True)
 
     elif platform.system() == "Linux":
@@ -141,6 +142,7 @@ if not parameteres.dev:
         dbport = options.get("dbport", "666")
         for x in range(int(options.get("nodesNumber", 2))):
             port = str(int(options.get("startingPort", 3000))+x)
+            print("executing command: node app -p "+port+" --dbhost "+dbhost+":"+dbport)
             node = subprocess.Popen(['start', 'node', 'app', '-p', port, "--dbhost", dbhost+":"+dbport], shell=True)
 
         #cronCode = "daemonProcess.py " + str(int(options.get("startingPort", 3000))+x)
@@ -157,5 +159,6 @@ else:
     port = str(int(options.get("startingPort", "3000")))
     dbhost = options.get("dbhost", "localhost")
     dbport = options.get("dbport", "666")
+    print("executing command: node app -p "+port+" --dev --dbhost "+dbhost+":"+dbport)
     subprocess.call(["node", "app", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport], shell=True)
     print('NODE STARTED!')
