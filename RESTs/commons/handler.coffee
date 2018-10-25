@@ -36,7 +36,7 @@ exports.asPAGE = (error, req, res, next) ->
 					console.log("Responding with a .jade page".green)
 					res.render(path.join("..", "views", "exception.jade"), {code: error.errorCode, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
 				else
-					console.log("Responding with a json".green)
+					console.log("File .jade not found, responding with a json".green)
 					res.status(error.errorCode);
 					res.send({code: error.errorCode, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
 			)
@@ -47,7 +47,7 @@ exports.asPAGE = (error, req, res, next) ->
 					console.log("Responding with a .jade page".green)
 					res.render(path.join("..", "views", "exception.jade"), {code: 500, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
 				else
-					console.log("Responding with a json".green)
+					console.log("File .jade not found, responding with a json".green)
 					res.status(500);
 					res.send({code: 500, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
 			)
