@@ -160,6 +160,6 @@ else:
     port = str(int(options.get("devPort", "8023")))
     dbhost = options.get("dbhost", "localhost")
     dbport = options.get("dbport", "666")
-    print("executing command: node app -p "+port+" --dev --dbhost "+dbhost+":"+dbport)
-    subprocess.call(["node", "app", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport], shell=True)
+    print("executing command: node app -p "+port+" --dev --dbhost "+dbhost+":"+dbport+" &")
+    subprocess.call(["node", "app", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport, "&"], shell=True)
     print('NODE STARTED!')

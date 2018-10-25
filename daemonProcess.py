@@ -10,34 +10,34 @@ class Node:
     port = 0
     activeConns = 0
     PID = 0
-    
+
     def __init__(self, port, PID, activeConns):
         self.port = port
         self.activeConns = activeConns
         self.PID = PID
-        
+
 
 
 def checkPorts(hostname, port):
     return activeConns(subprocess.check_output("netstat -anp | grep ESTABLISHED | grep -c " + hostname + ":" + port))
-        
-        
-        
-def newNode(onPort):             
-    code = "node -p " + onPort + "&"
+
+
+
+def newNode(onPort):
+    code = "node -p " + onPort + " &"
     PID = subprocess.check_output(code)
     if PID:
         node = Node(onPort, PID, 0)
         return node
     else:
-        
+
         return 0
-    
-    
-def popNode(PID):        
+
+
+def popNode(PID):
     subprocess.call("kill -9 " + PID)
 
- 
+
 hostname = sys.argv[0]
 firstPort = sys.argv[1]
 sessionLimiter = sys.argv[2]
@@ -47,7 +47,7 @@ nodes = open("data/serverPIDs.db","r")
 nodeList = []
 for line in nodes:
     node = Node(line.split()[0], line.split()[1], 0)
-    nodeList.append(node.replace("\n",""))   
+    nodeList.append(node.replace("\n",""))
 nodes.close()
 averageTraffic = 0
 
@@ -57,7 +57,7 @@ for node in nodeList:
     node.activeConns = checkPorts(hostname, node.port)
     averageTraffic += node.activeConns
 
-averageTraffic = averageTraffic / len(nodeList)    
+averageTraffic = averageTraffic / len(nodeList)
 
 log = open("data/logs/daemon.log", "a+")
 
@@ -82,15 +82,11 @@ while (averageTraffic < 0.1) & (len(nodeList) - 1 > minNodes):
     averageTraffic = averageTraffic / len(nodeList)
     if len(nodeList) - 1 > minNodes:
         log.write(datetime.datetime.now() + " -- Minimum Nodes existing")
-    
-    
+
+
 nodes = open("data/serverPIDs.db","w")
 for line in nodeList:
     nodes.write(line.port + " " + line.PID + "\n")
-    
+
 log("-- " + datetime.datetime.now() + "-- End of daemon cycle. nodes created: " + len(nodeList) - nodesBefore )    #TODO aggiungere nel nog nodes distrutti o avviati
 nodes.close()
-    
-
-        
-        
