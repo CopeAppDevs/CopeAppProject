@@ -102,7 +102,7 @@ if not parameteres.dev:
         nginx = open(configPath+"copeapp.conf", "w")
     elif platform.system() == "Linux":
         os.remove(configPath+"nginx.conf")
-        nginx = open(configPath+"nginx.conf", "w+")
+        nginx = open(configPath+"nginx.conf", "w")
     else:
         sys.exit("OS not yet supported")
     for line in nginxConf :
@@ -164,9 +164,9 @@ else:
     #os.spawnl(os.P_DETACH, "node app -p "+port+" --dev --dbhost "+dbhost+":"+dbport+" &")
     #subprocess.call(["node", "app", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport, "&"], shell=True)
     #subprocess.call(["forever", "start", "-l", "./data/logs/"+port+".log", "-o", "./data/logs/"+port+".out", "-e", "./data/logs/"+port+".err", "-p", "./data/forever/", "app.js", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport], shell=True)
-    file1 = open("data/logs/node"+port+".err", "w+")
-    file2 = open("data/logs/node"+port+".log", "w+")
-    file3 = open("data/logs/node"+port+".out", "w+")
+    file1 = open("data/logs/node"+port+".err", "w")
+    file2 = open("data/logs/node"+port+".log", "w")
+    file3 = open("data/logs/node"+port+".out", "w")
     file1.close()
     file2.close()
     file3.close()
