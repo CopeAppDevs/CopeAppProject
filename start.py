@@ -73,14 +73,7 @@ if not parameteres.dev:
     else:
         sys.exit("OS not yet supported")
 
-    if platform.system() == "Windows":
-        nginx = open(configPath+"copeapp.conf", "r")
-    elif platform.system() == "Linux":
-        os.remove(configPath+"nginx.conf")
-        nginx = open(configPath+"nginx.conf", "r")
-    else:
-        sys.exit("OS not yet supported")
-
+    nginx = open(configPath+"nginx.conf", "r")
     nginxConf = []
     for line in nginx.readlines() :
         server = re.match(r'\s*\bserver\s*(\w*|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\:\d{1,4}\;\n', line)
@@ -104,7 +97,13 @@ if not parameteres.dev:
         print('REMOVED!')
 
     print('MODIFIYNG NGINX CONF FILE...')
-    nginx = open(configPath+"nginx.conf", "w")
+    if platform.system() == "Windows":
+        nginx = open(configPath+"copeapp.conf", "w")
+    elif platform.system() == "Linux":
+        os.remove(configPath+"nginx.conf")
+        nginx = open(configPath+"nginx.conf", "w")
+    else:
+        sys.exit("OS not yet supported")
     for line in nginxConf :
         if line.find("worker_processes") != -1: #modifica proprieta workerProcesses: worker_processes
             line = re.sub(r'\b(worker_processes)\s*\d{1,2};', "worker_processes "+options.get("workerProcesses", "auto")+";", line)
