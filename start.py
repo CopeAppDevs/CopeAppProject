@@ -163,5 +163,6 @@ else:
     print("executing command: nohup node app -p "+port+" --dev --dbhost "+dbhost+":"+dbport+" > ./data/logs/"+port+".log &")
     #os.spawnl(os.P_DETACH, "node app -p "+port+" --dev --dbhost "+dbhost+":"+dbport+" &")
     #subprocess.call(["node", "app", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport, "&"], shell=True)
-    subprocess.Popen(["nohup", "node", "app", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport, ">", "./data/logs/"+port+".log", "&"], shell=True)
+    subprocess.call(["forever", "start", "-l", "./data/logs/"+port+".log", "-o", "./data/logs/"+port+".out", "-e", "./data/logs/"+port+".err", "app.js", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport], shell=True)
+    subprocess.Popen(["node", "app", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport, ">", "./data/logs/"+port+".log", "&"], shell=True)
     print('NODE STARTED!')
