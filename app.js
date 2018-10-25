@@ -39,10 +39,10 @@ if (argv.p === null || typeof argv.p === "undefined") {
   process.exit(1);
 } else {
   if (!isNaN(argv.p)) {
-    if (argv.p >= 3000 && argv.p < 4000) {
+    if (argv.p >= 8000 && argv.p < 9000) {
       app.set('port', argv.p);
     } else {
-      console.log("Node.JS must run on a port between 3000 and 3999".red);
+      console.log("Node.JS must run on a port between 8000 and 8999".red);
       process.exit(1);
     }
   } else {
