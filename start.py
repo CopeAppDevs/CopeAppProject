@@ -21,12 +21,12 @@ print("PARAMETERS PARSED!")
 
 #lettura dei parametri
 try:
-    print("OPENING CONF FILE...")
+    print("OPENING CONF FILE IN "+realPath+"/data/copeapp.conf...")
     config = open(realPath+'/data/copeapp.conf', 'r')
     print("CONF FILE OPENED")
 except FileNotFoundError:
     print('CONF FILE NOT FOUND! CREATING ONE WITH DEFAULT CONFIGURATION...')
-    config = open(realPath+'data/copeapp.conf', 'w')
+    config = open(realPath+'/data/copeapp.conf', 'w')
     configFile = []
     configFile.append("# nginx config\n")
     configFile.append("lbAlgorithm: least_conn\n")
