@@ -11,6 +11,8 @@ import subprocess
 import json
 import optparse
 
+realPath = os.getcwd()
+
 print("PARSING PARAMETERS...")
 parser = optparse.OptionParser()
 parser.add_option('-d', '--dev', action="store_true", help="Run in dev mode", default=False)
@@ -20,11 +22,11 @@ print("PARAMETERS PARSED!")
 #lettura dei parametri
 try:
     print("OPENING CONF FILE...")
-    config = open('data/copeapp.conf', 'r')
+    config = open(realPath+'/data/copeapp.conf', 'r')
     print("CONF FILE OPENED")
 except FileNotFoundError:
     print('CONF FILE NOT FOUND! CREATING ONE WITH DEFAULT CONFIGURATION...')
-    config = open('data/copeapp.conf', 'w')
+    config = open(realPath+'data/copeapp.conf', 'w')
     configFile = []
     configFile.append("# nginx config\n")
     configFile.append("lbAlgorithm: least_conn\n")
@@ -46,7 +48,7 @@ except FileNotFoundError:
     configFile.append("dbport: 666\n")
     config.writelines(configFile)
     config.close()
-    config = open('data/copeapp.conf', 'r')
+    config = open(realPath+'data/copeapp.conf', 'r')
     print('CONF FILE CREATED AND OPENED!')
 
 #lettura file di conf della app
@@ -157,7 +159,6 @@ if not parameteres.dev:
     print('NODE STARTED!')
 else:
     print('STARTING NODE...')
-    realPath = os.getcwd()
     port = str(int(options.get("devPort", "8023")))
     dbhost = options.get("dbhost", "localhost")
     dbport = options.get("dbport", "666")
