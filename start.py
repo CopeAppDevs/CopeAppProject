@@ -166,5 +166,5 @@ else:
     #os.spawnl(os.P_DETACH, "node app -p "+port+" --dev --dbhost "+dbhost+":"+dbport+" &")
     #subprocess.call(["node", "app", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport, "&"], shell=True)
     #subprocess.call(["forever", "start", "-l", "./data/logs/"+port+".log", "-o", "./data/logs/"+port+".out", "-e", "./data/logs/"+port+".err", "-p", "./data/forever/", "app.js", "-p", port, "--dev", "--dbhost", dbhost+":"+dbport], shell=True)
-    subprocess.Popen('forever start -p "'+realPath+'/data/logs/" "'+realPath+'/app.js" -p '+port+' --dev --dbhost '+dbhost+':'+dbport, shell=True)
+    subprocess.call('forever start -p "'+realPath+'/data/logs/" "'+realPath+'/app.js" -p '+port+' --dev --dbhost '+dbhost+':'+dbport, shell=True)
     print('NODE STARTED!')
