@@ -1,10 +1,10 @@
-var colors, connect, mongoose, shoolSchema;
+var colors, common, connect, mongoose;
 
 colors = require("colors");
 
 mongoose = require("mongoose");
 
-shoolSchema = require("../schemas/school");
+common = require("../schemas/common");
 
 connect = function(dbHost) {
   return mongoose.connect('mongodb://' + dbHost + '/local', {

@@ -1,6 +1,6 @@
 colors = require("colors")
 mongoose = require("mongoose")
-shoolSchema = require("../schemas/school")
+common = require("../schemas/common")
 
 connect = (dbHost) ->
   mongoose.connect('mongodb://'+dbHost+'/local', {
@@ -11,6 +11,7 @@ exports.createDatabase = (dbHost) ->
 
   populateDatabase = () ->
     console.log(colors.green("Populating..."))
+
     console.log(colors.green("Populated"))
 
   connection = connect(dbHost)
