@@ -64,10 +64,10 @@ if parameters.dev:
     print("STARTING NODE...")
     port = options.get("devPort", "8023")
     dbhost = options.get("dbHost", "localhost")
-    dbport = options.get("dbPort", "666")
-    print("debug: "+port+"; "+dbhost+":"+dbport+";")
+    dbport = options.get("dbPort", "5423")
     print("executing command: "+"sudo forever start -a -p "+realPath+"/data/dev/ -l devLog.log -e devErr.err -o devOut.out --pidFile "+realPath+"/data/dev/devPID.pid "+realPath+"/app.js -p "+port+" --dbhost "+dbhost+":"+dbport+" --dev")
-    subprocess.Popen("sudo forever start -a -p "+realPath+"/data/dev/ -l devLog.log -e devErr.err -o devOut.out --pidFile "+realPath+"/data/dev/devPID.pid "+realPath+"/app.js -p "+port+" --dbhost "+dbhost+":"+dbport+" --dev", shell=True)
+    node = subprocess.Popen("sudo forever start -a -p "+realPath+"/data/dev/ -l devLog.log -e devErr.err -o devOut.out --pidFile "+realPath+"/data/dev/devPID.pid "+realPath+"/app.js -p "+port+" --dbhost "+dbhost+":"+dbport+" --dev", shell=True)
+    node.wait();
     print("NODE STARTED AT localhost:"+port+"!")
 else:
     print("BUILD MODE DETECTED")
@@ -101,7 +101,7 @@ else:
         print("executing command: "+"sudo forever start -a -p "+realPath+"/data/logs/ -l "+str(port)+"Log.log -e "+str(port)+"Err.err -o "+str(port)+"Out.out --pidFile "+realPath+"/data/nodesPids/"+str(port)+"PID.pid "+realPath+"/app.js -p "+str(port)+" --dbhost "+dbhost+":"+dbport+" --dev")
         node = subprocess.Popen("sudo forever start -a -p "+realPath+"/data/logs/ -l "+str(port)+"Log.log -e "+str(port)+"Err.err -o "+str(port)+"Out.out --pidFile "+realPath+"/data/nodesPids/"+str(port)+"PID.pid "+realPath+"/app.js -p "+str(port)+" --dbhost "+dbhost+":"+dbport+" --dev", shell=True)
         node.wait()
-        print("NODE "+str(port)+" LAUNCHED")
+        print("NODE ON PORT "+str(port)+" LAUNCHED")
     newConf.write(
         "    }\n"+
         "    server {\n"+
