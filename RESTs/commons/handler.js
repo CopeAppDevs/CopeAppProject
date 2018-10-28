@@ -49,10 +49,10 @@ exports.asPAGE = function(error, req, res, next) {
   });
   if ((error != null) && !(typeof error === "undefined")) {
     console.log(colors.yellow(__dirname));
-    console.log(colors.yellow(path.join("views", "exception.pug")));
+    console.log(colors.yellow(path.join("..", "views", "exception.pug")));
     if (error.name.startsWith("Express")) {
       console.log(colors.red("AN ERROR OCCURRED WITH CODE " + error.errorCode + ": \n" + copyStack));
-      return fs.exists(path.join("views", "exception.pug"), function(exists) {
+      return fs.exists(path.join("..", "views", "exception.pug"), function(exists) {
         if (exists) {
           console.log("Responding with a .pug page".green);
           return res.render(path.join("..", "views", "exception.pug"), {
@@ -75,7 +75,7 @@ exports.asPAGE = function(error, req, res, next) {
       });
     } else {
       console.log(colors.red("AN ERROR OCCURRED WITH CODE 500: \n" + copyStack));
-      return fs.exists(path.join("views", "exception.pug"), function(exists) {
+      return fs.exists(path.join("..", "views", "exception.pug"), function(exists) {
         if (exists) {
           console.log("Responding with a .pug page".green);
           return res.render(path.join("..", "views", "exception.pug"), {

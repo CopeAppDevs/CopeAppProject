@@ -30,10 +30,10 @@ exports.asPAGE = (error, req, res, next) ->
 	})
 	if error? and not (typeof error == "undefined")
 		console.log(colors.yellow(__dirname))
-		console.log(colors.yellow(path.join("views", "exception.pug")))
+		console.log(colors.yellow(path.join("..", "views", "exception.pug")))
 		if error.name.startsWith("Express")
 			console.log(colors.red("AN ERROR OCCURRED WITH CODE "+error.errorCode+": \n"+copyStack))
-			fs.exists(path.join("views", "exception.pug"), (exists) ->
+			fs.exists(path.join("..", "views", "exception.pug"), (exists) ->
 				if exists
 					console.log("Responding with a .pug page".green)
 					res.render(path.join("..", "views", "exception.pug"), {code: error.errorCode, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
@@ -44,7 +44,7 @@ exports.asPAGE = (error, req, res, next) ->
 			)
 		else
 			console.log(colors.red("AN ERROR OCCURRED WITH CODE 500: \n"+copyStack))
-			fs.exists(path.join("views", "exception.pug"), (exists) ->
+			fs.exists(path.join("..", "views", "exception.pug"), (exists) ->
 				if exists
 					console.log("Responding with a .pug page".green)
 					res.render(path.join("..", "views", "exception.pug"), {code: 500, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
