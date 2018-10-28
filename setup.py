@@ -117,7 +117,7 @@ else:
         print("executing command: "+"sudo forever start -a -p "+realPath+"/data/logs/ -l "+str(port)+"Log.log -e "+str(port)+"Err.err -o "+str(port)+"Out.out --pidFile "+realPath+"/data/nodesPids/"+str(port)+"PID.pid "+realPath+"/app.js -p "+str(port)+" --dbhost "+dbhost+":"+dbport+" --dev")
         node = subprocess.Popen("sudo forever start -a -p "+realPath+"/data/logs/ -l "+str(port)+"Log.log -e "+str(port)+"Err.err -o "+str(port)+"Out.out --pidFile "+realPath+"/data/nodesPids/"+str(port)+"PID.pid "+realPath+"/app.js -p "+str(port)+" --dbhost "+dbhost+":"+dbport+" --dev", shell=True)
         node.wait()
-        print("NODE ON PORT "+str(port)+" LAUNCHED"!)
+        print("NODE ON PORT "+str(port)+" LAUNCHED!")
     newConf.write(
         "    }\n"+
         "    server {\n"+
