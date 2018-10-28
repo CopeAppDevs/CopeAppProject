@@ -6,7 +6,7 @@ import optparse
 import subprocess
 import platform
 
-print("RUNNING STOP.PY")
+print("----------> RUNNING STOP.PY <----------")
 
 print("FINDING PATH...")
 realPath = os.path.dirname(os.path.abspath(__file__))
