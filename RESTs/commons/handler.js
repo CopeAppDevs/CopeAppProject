@@ -52,10 +52,10 @@ exports.asPAGE = function(error, req, res, next) {
     console.log(colors.yellow(path.join("..", "views", "exception.pug")));
     if (error.name.startsWith("Express")) {
       console.log(colors.red("AN ERROR OCCURRED WITH CODE " + error.errorCode + ": \n" + copyStack));
-      return fs.exists(path.join("..", "views", "exception.pug"), function(exists) {
+      return fs.exists(path.join(__dirname, "..", "..", "views", "exception.pug"), function(exists) {
         if (exists) {
           console.log("Responding with a .pug page".green);
-          return res.render(path.join("..", "views", "exception.pug"), {
+          return res.render(path.join(__dirname, "..", "..", "views", "exception.pug"), {
             code: error.errorCode,
             name: error.name,
             message: error.message,
@@ -75,10 +75,10 @@ exports.asPAGE = function(error, req, res, next) {
       });
     } else {
       console.log(colors.red("AN ERROR OCCURRED WITH CODE 500: \n" + copyStack));
-      return fs.exists(path.join("..", "views", "exception.pug"), function(exists) {
+      return fs.exists(path.join(__dirname, "..", "..", "views", "exception.pug"), function(exists) {
         if (exists) {
           console.log("Responding with a .pug page".green);
-          return res.render(path.join("..", "views", "exception.pug"), {
+          return res.render(path.join(__dirname, "..", "..", "views", "exception.pug"), {
             code: 500,
             name: error.name,
             message: error.message,

@@ -33,10 +33,10 @@ exports.asPAGE = (error, req, res, next) ->
 		console.log(colors.yellow(path.join("..", "views", "exception.pug")))
 		if error.name.startsWith("Express")
 			console.log(colors.red("AN ERROR OCCURRED WITH CODE "+error.errorCode+": \n"+copyStack))
-			fs.exists(path.join("..", "views", "exception.pug"), (exists) ->
+			fs.exists(path.join(__dirname, "..", "..", "views", "exception.pug"), (exists) ->
 				if exists
 					console.log("Responding with a .pug page".green)
-					res.render(path.join("..", "views", "exception.pug"), {code: error.errorCode, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
+					res.render(path.join(__dirname, "..", "..", "views", "exception.pug"), {code: error.errorCode, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
 				else
 					console.log("File .pug not found, responding with a json".green)
 					res.status(error.errorCode);
@@ -44,10 +44,10 @@ exports.asPAGE = (error, req, res, next) ->
 			)
 		else
 			console.log(colors.red("AN ERROR OCCURRED WITH CODE 500: \n"+copyStack))
-			fs.exists(path.join("..", "views", "exception.pug"), (exists) ->
+			fs.exists(path.join(__dirname, "..", "..", "views", "exception.pug"), (exists) ->
 				if exists
 					console.log("Responding with a .pug page".green)
-					res.render(path.join("..", "views", "exception.pug"), {code: 500, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
+					res.render(path.join(__dirname, "..", "..", "views", "exception.pug"), {code: 500, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
 				else
 					console.log("File .pug not found, responding with a json".green)
 					res.status(500);
