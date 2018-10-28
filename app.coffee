@@ -15,7 +15,7 @@ db = require("./repositories/database")
 app = express()
 
 if argv.dbhost == null or typeof argv.dbhost == "undefined"
-	app.set('dbhost', 'localhost:666')
+	app.set('dbhost', 'localhost:5423')
 else
 	app.set('dbhost', argv.dbhost)
 
