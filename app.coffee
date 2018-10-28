@@ -48,7 +48,7 @@ app.use('/', express.static(__dirname + '/public'))
 app.use('/test', express.static(__dirname + '/test'))
 
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 app.use('/views/res', express.static(__dirname + '/views/res'))
 
 router.defineRoutes(app)
