@@ -16,7 +16,7 @@ realPath = os.path.dirname(os.path.abspath(__file__))
 print("PARSING PARAMETERS...")
 parser = optparse.OptionParser()
 parser.add_option('-d', '--dev', action="store_true", help="Run in dev mode", default=False)
-(parameteres, args) = parser.parse_args()
+(parameters, args) = parser.parse_args()
 print("PARAMETERS PARSED!")
 
 #lettura dei parametri
@@ -66,7 +66,7 @@ if int(options.get("maxNodes", 4))+int(options.get("startingPort", 3000))-1 > in
 
 print('DONE!')
 
-if not parameteres.dev:
+if not parameters.dev:
     print('READING NGINX.CONF FILE...')
     #letture al file di configurazione di nginx
     if platform.system() == "Windows":
