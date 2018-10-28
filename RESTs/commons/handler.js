@@ -22,8 +22,7 @@ exports.asJSON = function(error, req, res, next) {
         code: error.errorCode,
         name: error.name,
         message: error.message,
-        stack: error.stack,
-        copyStack: copyStack
+        stack: error.stack
       });
     } else {
       console.log(colors.red("AN ERROR OCCURRED: \n" + copyStack));
@@ -33,8 +32,7 @@ exports.asJSON = function(error, req, res, next) {
         code: 500,
         name: error.name,
         message: error.message,
-        stack: error.stack,
-        copyStack: copyStack
+        stack: error.stack
       });
     }
   } else {
@@ -69,8 +67,7 @@ exports.asPAGE = function(error, req, res, next) {
             code: error.errorCode,
             name: error.name,
             message: error.message,
-            stack: error.stack,
-            copyStack: copyStack
+            stack: copyStack
           });
         }
       });
@@ -93,8 +90,7 @@ exports.asPAGE = function(error, req, res, next) {
             code: 500,
             name: error.name,
             message: error.message,
-            stack: error.stack,
-            copyStack: copyStack
+            stack: copyStack
           });
         }
       });

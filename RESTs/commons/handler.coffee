@@ -13,12 +13,12 @@ exports.asJSON = (error, req, res, next) ->
 			console.log(colors.red("AN ERROR OCCURRED WITH CODE "+error.errorCode+": \n"+copyStack))
 			console.log("Responding with a json".green)
 			res.status(message.errorCode);
-			res.send({code: error.errorCode, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
+			res.send({code: error.errorCode, name: error.name, message: error.message, stack: error.stack})
 		else
 			console.log(colors.red("AN ERROR OCCURRED: \n"+copyStack))
 			console.log("Responding with a json".green)
 			res.status(500);
-			res.send({code: 500, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
+			res.send({code: 500, name: error.name, message: error.message, stack: error.stack})
 	else
 		res.end()
 
@@ -38,7 +38,7 @@ exports.asPAGE = (error, req, res, next) ->
 				else
 					console.log("File .pug not found, responding with a json".green)
 					res.status(error.errorCode);
-					res.send({code: error.errorCode, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
+					res.send({code: error.errorCode, name: error.name, message: error.message, stack: copyStack})
 			)
 		else
 			console.log(colors.red("AN ERROR OCCURRED WITH CODE 500: \n"+copyStack))
@@ -49,7 +49,7 @@ exports.asPAGE = (error, req, res, next) ->
 				else
 					console.log("File .pug not found, responding with a json".green)
 					res.status(500);
-					res.send({code: 500, name: error.name, message: error.message, stack: error.stack, copyStack: copyStack})
+					res.send({code: 500, name: error.name, message: error.message, stack: copyStack})
 			)
 	else
 		res.end()
