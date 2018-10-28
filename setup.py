@@ -61,6 +61,14 @@ print('DONE!')
 
 if parameters.dev:
     print("DEVELOPMENT MODE DETECTED")
+    print("STARTING MONGODB...")
+    print("executing command: "+"sudo systemctl start mongod")
+    startmongo = subprocess.Popen("sudo systemctl start mongod", shell=True)
+    startmongo.wait()
+    print("executing command: "+"sudo systemctl enable mongod")
+    enablemongo = subprocess.Popen("sudo systemctl enable mongod", shell=True)
+    enablemongo.wait()
+    print("MONGODB STARTED!")
     print("STARTING NODE...")
     port = options.get("devPort", "8023")
     dbhost = options.get("dbHost", "localhost")
@@ -71,6 +79,14 @@ if parameters.dev:
     print("NODE STARTED AT localhost:"+port+"!")
 else:
     print("BUILD MODE DETECTED")
+    print("STARTING MONGODB...")
+    print("executing command: "+"sudo systemctl enable mongod")
+    enablemongo = subprocess.Popen("sudo systemctl enable mongod", shell=True)
+    enablemongo.wait()
+    print("executing command: "+"sudo systemctl start mongod")
+    startmongo = subprocess.Popen("sudo systemctl start mongod", shell=True)
+    startmongo.wait()
+    print("MONGODB STARTED!")
     print("CONFIGURING NGINX...")
     print("REMOVING OLD CONFIG FILE...")
     oldConfRemoval = subprocess.Popen("sudo rm /etc/nginx/nginx.conf", shell=True)
@@ -101,7 +117,7 @@ else:
         print("executing command: "+"sudo forever start -a -p "+realPath+"/data/logs/ -l "+str(port)+"Log.log -e "+str(port)+"Err.err -o "+str(port)+"Out.out --pidFile "+realPath+"/data/nodesPids/"+str(port)+"PID.pid "+realPath+"/app.js -p "+str(port)+" --dbhost "+dbhost+":"+dbport+" --dev")
         node = subprocess.Popen("sudo forever start -a -p "+realPath+"/data/logs/ -l "+str(port)+"Log.log -e "+str(port)+"Err.err -o "+str(port)+"Out.out --pidFile "+realPath+"/data/nodesPids/"+str(port)+"PID.pid "+realPath+"/app.js -p "+str(port)+" --dbhost "+dbhost+":"+dbport+" --dev", shell=True)
         node.wait()
-        print("NODE ON PORT "+str(port)+" LAUNCHED")
+        print("NODE ON PORT "+str(port)+" LAUNCHED"!)
     newConf.write(
         "    }\n"+
         "    server {\n"+
@@ -117,4 +133,12 @@ else:
         "}\n"
     )
     newConf.close()
-    print("NGINX CONFIGURED")
+    print("NGINX CONFIGURED!")
+    print("STARTING NGINX...")
+    print("executing command: "+"sudo systemctl enable nginx")
+    enablenginx = subprocess.Popen("sudo systemctl enable nginx", shell=True)
+    enablenginx.wait()
+    print("executing command: "+"sudo systemctl start nginx")
+    startnginx = subprocess.Popen("sudo systemctl start nginx", shell=True)
+    startnginx.wait()
+    print("NGINX STARTED!")
