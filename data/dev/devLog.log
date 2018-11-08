@@ -1,0 +1,307 @@
+[32mExpress server listening on port 8023[39m
+[31mfailed to connect to db at localhost:666[39m
+[31m{ MongoNetworkError: failed to connect to server [localhost:666] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:666][39m
+[31m    at Pool.<anonymous> (/home/fabio/git/CopeAppProject/node_modules/mongodb-core/lib/topologies/server.js:564:11)[39m
+[31m    at emitOne (events.js:116:13)[39m
+[31m    at Pool.emit (events.js:211:7)[39m
+[31m    at Connection.<anonymous> (/home/fabio/git/CopeAppProject/node_modules/mongodb-core/lib/connection/pool.js:317:12)[39m
+[31m    at Object.onceWrapper (events.js:317:30)[39m
+[31m    at emitTwo (events.js:126:13)[39m
+[31m    at Connection.emit (events.js:214:7)[39m
+[31m    at Socket.<anonymous> (/home/fabio/git/CopeAppProject/node_modules/mongodb-core/lib/connection/connection.js:246:50)[39m
+[31m    at Object.onceWrapper (events.js:315:30)[39m
+[31m    at emitOne (events.js:116:13)[39m
+[31m    at Socket.emit (events.js:211:7)[39m
+[31m    at emitErrorNT (internal/streams/destroy.js:64:8)[39m
+[31m    at _combinedTickCallback (internal/process/next_tick.js:138:11)[39m
+[31m    at process._tickCallback (internal/process/next_tick.js:180:9)[39m
+[31m  name: 'MongoNetworkError',[39m
+[31m  errorLabels: [ 'TransientTransactionError' ],[39m
+[31m  [Symbol(mongoErrorContextSymbol)]: {} }[39m
+[90mGET / [32m200 [90m8ms - 5.5kb[0m
+[90mGET /node_modules/angular-material/angular-material.min.css [32m200 [90m4ms - 358.02kb[0m
+[90mGET /login/login.css [32m200 [90m2ms - 378b[0m
+[90mGET /directives/calendarDirective.css [32m200 [90m3ms - 119b[0m
+[90mGET /firstEntry/firstEntry.css [32m200 [90m3ms - 186b[0m
+[90mGET /main/sidenav/sidenav.css [32m200 [90m4ms - 202b[0m
+[90mGET /appunti/appunti.css [32m200 [90m4ms - 430b[0m
+[90mGET /node_modules/jquery/dist/jquery.min.js [32m200 [90m5ms - 84.89kb[0m
+[90mGET /node_modules/angular/angular.min.js [32m200 [90m6ms - 165.4kb[0m
+[90mGET /node_modules/angular-sanitize/angular-sanitize.min.js [32m200 [90m5ms - 6.46kb[0m
+[90mGET /node_modules/angular-local-storage/dist/angular-local-storage.min.js [32m200 [90m5ms - 6.61kb[0m
+[90mGET /node_modules/angular-animate/angular-animate.min.js [32m200 [90m5ms - 25.13kb[0m
+[90mGET /node_modules/angular-aria/angular-aria.min.js [32m200 [90m4ms - 3.79kb[0m
+[90mGET /node_modules/angular-messages/angular-messages.min.js [32m200 [90m4ms - 2.96kb[0m
+[90mGET /node_modules/trianglify/dist/trianglify.min.js [32m200 [90m3ms - 44.83kb[0m
+[90mGET /node_modules/angular-ui-router/release/angular-ui-router.min.js [32m200 [90m5ms - 108.09kb[0m
+[90mGET /node_modules/ngletteravatar/dist/ngletteravatar.min.js [32m200 [90m2ms - 3.65kb[0m
+[90mGET /node_modules/angular-file-upload/dist/angular-file-upload.js [32m200 [90m3ms - 65.05kb[0m
+[90mGET /node_modules/angular-material/angular-material.min.js [32m200 [90m5ms - 381.24kb[0m
+[90mGET /node_modules/momentjs/locale/it.js [32m200 [90m3ms - 2.32kb[0m
+[90mGET /node_modules/angular-momentjs/angular-momentjs.js [32m200 [90m3ms - 6.46kb[0m
+[90mGET /node_modules/ui-tinymce-master/dist/tinymce.min.js [32m200 [90m2ms - 2.25kb[0m
+[90mGET /node_modules/angular-chartjs/angular-chart.min.js [32m200 [90m3ms - 6.34kb[0m
+[90mGET /node_modules/momentjs/moment.js [32m200 [90m5ms - 143.38kb[0m
+[90mGET /app.js [32m200 [90m3ms - 1.25kb[0m
+[90mGET /directives/calendarDirective.js [32m200 [90m3ms - 4.51kb[0m
+[90mGET /services/userService.js [32m200 [90m2ms - 1.26kb[0m
+[90mGET /services/surveyService.js [32m200 [90m2ms - 2.25kb[0m
+[90mGET /services/commonsService.js [32m200 [90m2ms - 312b[0m
+[90mGET /node_modules/chartJS/Chart.js [32m200 [90m7ms - 394.47kb[0m
+[90mGET /services/appuntiService.js [32m200 [90m3ms - 20.12kb[0m
+[90mGET /services/interrogationService.js [32m200 [90m3ms - 762b[0m
+[90mGET /index.js [32m200 [90m3ms - 6.9kb[0m
+[90mGET /login/login.js [32m200 [90m3ms - 1.4kb[0m
+[90mGET /firstEntry/firstEntry.js [32m200 [90m2ms - 549b[0m
+[90mGET /main/main.js [32m200 [90m2ms - 265b[0m
+[90mGET /main/header/header.js [32m200 [90m2ms - 102b[0m
+[90mGET /main/sidenav/sidenav.js [32m200 [90m2ms - 95b[0m
+[90mGET /main/sidenav/sidenavHeader/sidenavHeader.js [32m200 [90m3ms - 678b[0m
+[90mGET /home/home.js [32m200 [90m2ms - 191b[0m
+[90mGET /news/news.js [32m200 [90m3ms - 190b[0m
+[90mGET /accountSettings/accountSettings.js [32m200 [90m3ms - 2.51kb[0m
+[90mGET /surveys/surveys.js [32m200 [90m4ms - 4.96kb[0m
+[90mGET /surveys/surveyPage/surveyPageTMPL.js [32m200 [90m4ms - 3.43kb[0m
+[90mGET /surveys/createSurvey/createSurvey.js [32m200 [90m3ms - 8.81kb[0m
+[90mGET /surveys/updateSurvey/updateSurvey.js [32m200 [90m3ms - 9.36kb[0m
+[90mGET /appunti/appunti.js [32m200 [90m2ms - 844b[0m
+[90mGET /appunti/iMieiAppunti/caricaAppunti/caricaAppunti.js [32m200 [90m3ms - 6.9kb[0m
+[90mGET /appunti/iMieiAppunti/iMieiAppunti.js [32m200 [90m3ms - 945b[0m
+[90mGET /appunti/cercaAppunti/cercaAppunti.js [32m200 [90m3ms - 868b[0m
+[90mGET /appunti/hubAppunti/materiaAppunti/materiaAppunti.js [32m200 [90m3ms - 904b[0m
+[90mGET /appunti/hubAppunti/hubAppunti.js [32m200 [90m3ms - 422b[0m
+[90mGET /appunti/paginaAppunti/paginaAppunti.js [32m200 [90m3ms - 1.92kb[0m
+[90mGET /interrogazioni/interrogazioni.js [32m200 [90m3ms - 1.25kb[0m
+[90mGET /interrogazioni/interrogationDetails/detailsDayTMPL.js [32m200 [90m1ms - 1.26kb[0m
+[90mGET /favicon.ico [33m404 [90m1ms[0m
+[90mGET /main/main.html [32m200 [90m0ms - 530b[0m
+[90mGET /home/home.html [32m200 [90m0ms - 48b[0m
+[90mGET /main/header/header.html [32m200 [90m1ms - 354b[0m
+[90mGET /main/sidenav/sidenav.html [32m200 [90m0ms - 1.21kb[0m
+[90mGET /main/sidenav/sidenavHeader/sidenavHeader.html [32m200 [90m0ms - 750b[0m
+error: Forever detected script was killed by signal: SIGKILL
+[32mExpress server listening on port 8023[39m
+[31mfailed to connect to db at localhost:666[39m
+[31m{ MongoNetworkError: failed to connect to server [localhost:666] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:666][39m
+[31m    at Pool.<anonymous> (/home/fabio/git/CopeAppProject/node_modules/mongodb-core/lib/topologies/server.js:564:11)[39m
+[31m    at emitOne (events.js:116:13)[39m
+[31m    at Pool.emit (events.js:211:7)[39m
+[31m    at Connection.<anonymous> (/home/fabio/git/CopeAppProject/node_modules/mongodb-core/lib/connection/pool.js:317:12)[39m
+[31m    at Object.onceWrapper (events.js:317:30)[39m
+[31m    at emitTwo (events.js:126:13)[39m
+[31m    at Connection.emit (events.js:214:7)[39m
+[31m    at Socket.<anonymous> (/home/fabio/git/CopeAppProject/node_modules/mongodb-core/lib/connection/connection.js:246:50)[39m
+[31m    at Object.onceWrapper (events.js:315:30)[39m
+[31m    at emitOne (events.js:116:13)[39m
+[31m    at Socket.emit (events.js:211:7)[39m
+[31m    at emitErrorNT (internal/streams/destroy.js:64:8)[39m
+[31m    at _combinedTickCallback (internal/process/next_tick.js:138:11)[39m
+[31m    at process._tickCallback (internal/process/next_tick.js:180:9)[39m
+[31m  name: 'MongoNetworkError',[39m
+[31m  errorLabels: [ 'TransientTransactionError' ],[39m
+[31m  [Symbol(mongoErrorContextSymbol)]: {} }[39m
+[90mGET / [36m304 [90m4ms[0m
+[90mGET /node_modules/angular-material/angular-material.min.css [36m304 [90m1ms[0m
+[90mGET /firstEntry/firstEntry.css [36m304 [90m1ms[0m
+[90mGET /login/login.css [36m304 [90m2ms[0m
+[90mGET /directives/calendarDirective.css [36m304 [90m3ms[0m
+[90mGET /main/sidenav/sidenav.css [36m304 [90m3ms[0m
+[90mGET /appunti/appunti.css [36m304 [90m3ms[0m
+[90mGET /node_modules/angular-sanitize/angular-sanitize.min.js [32m200 [90m10ms - 6.46kb[0m
+[90mGET /node_modules/angular-local-storage/dist/angular-local-storage.min.js [32m200 [90m11ms - 6.61kb[0m
+[90mGET /node_modules/jquery/dist/jquery.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/angular-aria/angular-aria.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/angular/angular.min.js [32m200 [90m13ms - 165.4kb[0m
+[90mGET /node_modules/angular-animate/angular-animate.min.js [32m200 [90m8ms - 25.13kb[0m
+[90mGET /node_modules/angular-messages/angular-messages.min.js [32m200 [90m3ms - 2.96kb[0m
+[90mGET /node_modules/angular-ui-router/release/angular-ui-router.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/momentjs/moment.js [32m200 [90m4ms - 143.38kb[0m
+[90mGET /node_modules/momentjs/locale/it.js [32m200 [90m2ms - 2.32kb[0m
+[90mGET /node_modules/angular-momentjs/angular-momentjs.js [32m200 [90m3ms - 6.46kb[0m
+[90mGET /node_modules/ui-tinymce-master/dist/tinymce.min.js [32m200 [90m3ms - 2.25kb[0m
+[90mGET /node_modules/angular-chartjs/angular-chart.min.js [32m200 [90m2ms - 6.34kb[0m
+[90mGET /node_modules/angular-material/angular-material.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/trianglify/dist/trianglify.min.js [36m304 [90m0ms[0m
+[90mGET /node_modules/ngletteravatar/dist/ngletteravatar.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/angular-file-upload/dist/angular-file-upload.js [36m304 [90m1ms[0m
+[90mGET /node_modules/chartJS/Chart.js [36m304 [90m1ms[0m
+[90mGET /app.js [32m200 [90m3ms - 1.25kb[0m
+[90mGET /directives/calendarDirective.js [32m200 [90m4ms - 4.51kb[0m
+[90mGET /services/userService.js [32m200 [90m5ms - 1.26kb[0m
+[90mGET /services/surveyService.js [32m200 [90m5ms - 2.25kb[0m
+[90mGET /services/commonsService.js [32m200 [90m5ms - 312b[0m
+[90mGET /services/appuntiService.js [32m200 [90m5ms - 20.12kb[0m
+[90mGET /services/interrogationService.js [36m304 [90m1ms[0m
+[90mGET /index.js [36m304 [90m1ms[0m
+[90mGET /login/login.js [36m304 [90m1ms[0m
+[90mGET /firstEntry/firstEntry.js [36m304 [90m1ms[0m
+[90mGET /main/main.js [36m304 [90m0ms[0m
+[90mGET /main/header/header.js [36m304 [90m0ms[0m
+[90mGET /main/sidenav/sidenav.js [36m304 [90m1ms[0m
+[90mGET /main/sidenav/sidenavHeader/sidenavHeader.js [36m304 [90m1ms[0m
+[90mGET /home/home.js [36m304 [90m0ms[0m
+[90mGET /news/news.js [36m304 [90m1ms[0m
+[90mGET /accountSettings/accountSettings.js [36m304 [90m0ms[0m
+[90mGET /surveys/surveys.js [36m304 [90m1ms[0m
+[90mGET /surveys/surveyPage/surveyPageTMPL.js [36m304 [90m1ms[0m
+[90mGET /surveys/createSurvey/createSurvey.js [36m304 [90m1ms[0m
+[90mGET /appunti/iMieiAppunti/iMieiAppunti.js [32m200 [90m3ms - 945b[0m
+[90mGET /appunti/cercaAppunti/cercaAppunti.js [32m200 [90m3ms - 868b[0m
+[90mGET /appunti/hubAppunti/materiaAppunti/materiaAppunti.js [32m200 [90m2ms - 904b[0m
+[90mGET /surveys/updateSurvey/updateSurvey.js [36m304 [90m1ms[0m
+[90mGET /appunti/appunti.js [36m304 [90m1ms[0m
+[90mGET /appunti/hubAppunti/hubAppunti.js [32m200 [90m2ms - 422b[0m
+[90mGET /appunti/paginaAppunti/paginaAppunti.js [32m200 [90m3ms - 1.92kb[0m
+[90mGET /interrogazioni/interrogazioni.js [32m200 [90m2ms - 1.25kb[0m
+[90mGET /appunti/iMieiAppunti/caricaAppunti/caricaAppunti.js [36m304 [90m0ms[0m
+[90mGET /interrogazioni/interrogationDetails/detailsDayTMPL.js [32m200 [90m2ms - 1.26kb[0m
+[90mGET /favicon.ico [33m404 [90m1ms[0m
+[90mGET /main/main.html [36m304 [90m0ms[0m
+[90mGET /home/home.html [36m304 [90m0ms[0m
+[90mGET /main/header/header.html [36m304 [90m1ms[0m
+[90mGET /main/sidenav/sidenav.html [36m304 [90m1ms[0m
+[90mGET /main/sidenav/sidenavHeader/sidenavHeader.html [36m304 [90m0ms[0m
+error: Forever detected script was killed by signal: SIGKILL
+[32mExpress server listening on port 8023[39m
+[31mfailed to connect to db at localhost:666[39m
+[31m{ MongoNetworkError: failed to connect to server [localhost:666] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:666][39m
+[31m    at Pool.<anonymous> (/home/fabio/git/CopeAppProject/node_modules/mongodb-core/lib/topologies/server.js:564:11)[39m
+[31m    at emitOne (events.js:116:13)[39m
+[31m    at Pool.emit (events.js:211:7)[39m
+[31m    at Connection.<anonymous> (/home/fabio/git/CopeAppProject/node_modules/mongodb-core/lib/connection/pool.js:317:12)[39m
+[31m    at Object.onceWrapper (events.js:317:30)[39m
+[31m    at emitTwo (events.js:126:13)[39m
+[31m    at Connection.emit (events.js:214:7)[39m
+[31m    at Socket.<anonymous> (/home/fabio/git/CopeAppProject/node_modules/mongodb-core/lib/connection/connection.js:246:50)[39m
+[31m    at Object.onceWrapper (events.js:315:30)[39m
+[31m    at emitOne (events.js:116:13)[39m
+[31m    at Socket.emit (events.js:211:7)[39m
+[31m    at emitErrorNT (internal/streams/destroy.js:64:8)[39m
+[31m    at _combinedTickCallback (internal/process/next_tick.js:138:11)[39m
+[31m    at process._tickCallback (internal/process/next_tick.js:180:9)[39m
+[31m  name: 'MongoNetworkError',[39m
+[31m  errorLabels: [ 'TransientTransactionError' ],[39m
+[31m  [Symbol(mongoErrorContextSymbol)]: {} }[39m
+[90mGET / [36m304 [90m5ms[0m
+[90mGET /node_modules/angular-material/angular-material.min.css [36m304 [90m1ms[0m
+[90mGET /login/login.css [36m304 [90m1ms[0m
+[90mGET /directives/calendarDirective.css [36m304 [90m1ms[0m
+[90mGET /firstEntry/firstEntry.css [36m304 [90m1ms[0m
+[90mGET /node_modules/angular/angular.min.js [36m304 [90m0ms[0m
+[90mGET /main/sidenav/sidenav.css [36m304 [90m1ms[0m
+[90mGET /appunti/appunti.css [36m304 [90m0ms[0m
+[90mGET /node_modules/angular-animate/angular-animate.min.js [36m304 [90m0ms[0m
+[90mGET /node_modules/jquery/dist/jquery.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/angular-sanitize/angular-sanitize.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/angular-local-storage/dist/angular-local-storage.min.js [36m304 [90m0ms[0m
+[90mGET /node_modules/angular-ui-router/release/angular-ui-router.min.js [36m304 [90m0ms[0m
+[90mGET /node_modules/angular-aria/angular-aria.min.js [36m304 [90m0ms[0m
+[90mGET /node_modules/angular-messages/angular-messages.min.js [36m304 [90m0ms[0m
+[90mGET /node_modules/ngletteravatar/dist/ngletteravatar.min.js [36m304 [90m0ms[0m
+[90mGET /node_modules/angular-material/angular-material.min.js [36m304 [90m0ms[0m
+[90mGET /node_modules/trianglify/dist/trianglify.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/momentjs/locale/it.js [36m304 [90m2ms[0m
+[90mGET /node_modules/angular-file-upload/dist/angular-file-upload.js [36m304 [90m1ms[0m
+[90mGET /node_modules/momentjs/moment.js [36m304 [90m1ms[0m
+[90mGET /node_modules/ui-tinymce-master/dist/tinymce.min.js [36m304 [90m3ms[0m
+[90mGET /node_modules/angular-momentjs/angular-momentjs.js [32m200 [90m9ms - 6.46kb[0m
+[90mGET /node_modules/chartJS/Chart.js [36m304 [90m2ms[0m
+[90mGET /node_modules/angular-chartjs/angular-chart.min.js [36m304 [90m2ms[0m
+[90mGET /directives/calendarDirective.js [32m200 [90m8ms - 4.51kb[0m
+[90mGET /services/userService.js [36m304 [90m1ms[0m
+[90mGET /app.js [32m200 [90m7ms - 1.25kb[0m
+[90mGET /services/surveyService.js [36m304 [90m1ms[0m
+[90mGET /services/commonsService.js [36m304 [90m1ms[0m
+[90mGET /services/interrogationService.js [36m304 [90m1ms[0m
+[90mGET /index.js [36m304 [90m1ms[0m
+[90mGET /login/login.js [36m304 [90m1ms[0m
+[90mGET /services/appuntiService.js [32m200 [90m4ms - 20.12kb[0m
+[90mGET /firstEntry/firstEntry.js [36m304 [90m0ms[0m
+[90mGET /main/main.js [36m304 [90m1ms[0m
+[90mGET /main/header/header.js [36m304 [90m1ms[0m
+[90mGET /main/sidenav/sidenav.js [36m304 [90m1ms[0m
+[90mGET /main/sidenav/sidenavHeader/sidenavHeader.js [36m304 [90m1ms[0m
+[90mGET /home/home.js [36m304 [90m1ms[0m
+[90mGET /news/news.js [36m304 [90m0ms[0m
+[90mGET /accountSettings/accountSettings.js [36m304 [90m0ms[0m
+[90mGET /surveys/surveys.js [36m304 [90m1ms[0m
+[90mGET /surveys/surveyPage/surveyPageTMPL.js [36m304 [90m0ms[0m
+[90mGET /surveys/createSurvey/createSurvey.js [36m304 [90m1ms[0m
+[90mGET /surveys/updateSurvey/updateSurvey.js [36m304 [90m1ms[0m
+[90mGET /appunti/appunti.js [36m304 [90m0ms[0m
+[90mGET /appunti/iMieiAppunti/caricaAppunti/caricaAppunti.js [36m304 [90m1ms[0m
+[90mGET /appunti/iMieiAppunti/iMieiAppunti.js [36m304 [90m1ms[0m
+[90mGET /appunti/cercaAppunti/cercaAppunti.js [36m304 [90m1ms[0m
+[90mGET /appunti/hubAppunti/materiaAppunti/materiaAppunti.js [36m304 [90m2ms[0m
+[90mGET /appunti/hubAppunti/hubAppunti.js [36m304 [90m2ms[0m
+[90mGET /appunti/paginaAppunti/paginaAppunti.js [36m304 [90m1ms[0m
+[90mGET /interrogazioni/interrogazioni.js [36m304 [90m1ms[0m
+[90mGET /interrogazioni/interrogationDetails/detailsDayTMPL.js [36m304 [90m0ms[0m
+[90mGET /favicon.ico [33m404 [90m1ms[0m
+[90mGET /main/main.html [36m304 [90m1ms[0m
+[90mGET /home/home.html [36m304 [90m0ms[0m
+[90mGET /main/header/header.html [36m304 [90m1ms[0m
+[90mGET /main/sidenav/sidenav.html [36m304 [90m1ms[0m
+[90mGET /main/sidenav/sidenavHeader/sidenavHeader.html [36m304 [90m1ms[0m
+[90mGET / [36m304 [90m1ms[0m
+[90mGET /directives/calendarDirective.css [36m304 [90m2ms[0m
+[90mGET /node_modules/angular-sanitize/angular-sanitize.min.js [36m304 [90m2ms[0m
+[90mGET /firstEntry/firstEntry.css [36m304 [90m2ms[0m
+[90mGET /main/sidenav/sidenav.css [36m304 [90m1ms[0m
+[90mGET /appunti/appunti.css [36m304 [90m1ms[0m
+[90mGET /node_modules/jquery/dist/jquery.min.js [36m304 [90m2ms[0m
+[90mGET /node_modules/angular/angular.min.js [36m304 [90m2ms[0m
+[90mGET /node_modules/angular-local-storage/dist/angular-local-storage.min.js [36m304 [90m2ms[0m
+[90mGET /node_modules/angular-animate/angular-animate.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/angular-aria/angular-aria.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/angular-messages/angular-messages.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/angular-ui-router/release/angular-ui-router.min.js [36m304 [90m2ms[0m
+[90mGET /node_modules/angular-material/angular-material.min.js [36m304 [90m2ms[0m
+[90mGET /node_modules/trianglify/dist/trianglify.min.js [36m304 [90m2ms[0m
+[90mGET /node_modules/ngletteravatar/dist/ngletteravatar.min.js [36m304 [90m3ms[0m
+[90mGET /node_modules/angular-file-upload/dist/angular-file-upload.js [36m304 [90m2ms[0m
+[90mGET /node_modules/momentjs/moment.js [36m304 [90m2ms[0m
+[90mGET /node_modules/momentjs/locale/it.js [36m304 [90m3ms[0m
+[90mGET /node_modules/angular-momentjs/angular-momentjs.js [36m304 [90m4ms[0m
+[90mGET /services/userService.js [36m304 [90m2ms[0m
+[90mGET /node_modules/ui-tinymce-master/dist/tinymce.min.js [36m304 [90m1ms[0m
+[90mGET /node_modules/chartJS/Chart.js [36m304 [90m1ms[0m
+[90mGET /node_modules/angular-chartjs/angular-chart.min.js [36m304 [90m2ms[0m
+[90mGET /app.js [36m304 [90m2ms[0m
+[90mGET /directives/calendarDirective.js [36m304 [90m2ms[0m
+[90mGET /services/surveyService.js [36m304 [90m2ms[0m
+[90mGET /services/commonsService.js [36m304 [90m1ms[0m
+[90mGET /services/appuntiService.js [36m304 [90m1ms[0m
+[90mGET /services/interrogationService.js [36m304 [90m2ms[0m
+[90mGET /index.js [36m304 [90m3ms[0m
+[90mGET /login/login.js [36m304 [90m2ms[0m
+[90mGET /firstEntry/firstEntry.js [36m304 [90m1ms[0m
+[90mGET /main/main.js [36m304 [90m2ms[0m
+[90mGET /main/header/header.js [36m304 [90m2ms[0m
+[90mGET /main/sidenav/sidenav.js [36m304 [90m1ms[0m
+[90mGET /main/sidenav/sidenavHeader/sidenavHeader.js [36m304 [90m1ms[0m
+[90mGET /home/home.js [36m304 [90m2ms[0m
+[90mGET /news/news.js [36m304 [90m1ms[0m
+[90mGET /accountSettings/accountSettings.js [36m304 [90m1ms[0m
+[90mGET /surveys/surveys.js [36m304 [90m2ms[0m
+[90mGET /surveys/surveyPage/surveyPageTMPL.js [36m304 [90m2ms[0m
+[90mGET /surveys/createSurvey/createSurvey.js [36m304 [90m1ms[0m
+[90mGET /surveys/updateSurvey/updateSurvey.js [36m304 [90m1ms[0m
+[90mGET /appunti/appunti.js [36m304 [90m1ms[0m
+[90mGET /appunti/iMieiAppunti/caricaAppunti/caricaAppunti.js [36m304 [90m0ms[0m
+[90mGET /appunti/iMieiAppunti/iMieiAppunti.js [36m304 [90m1ms[0m
+[90mGET /appunti/cercaAppunti/cercaAppunti.js [36m304 [90m0ms[0m
+[90mGET /appunti/hubAppunti/materiaAppunti/materiaAppunti.js [36m304 [90m1ms[0m
+[90mGET /appunti/hubAppunti/hubAppunti.js [36m304 [90m0ms[0m
+[90mGET /appunti/paginaAppunti/paginaAppunti.js [36m304 [90m1ms[0m
+[90mGET /interrogazioni/interrogazioni.js [36m304 [90m2ms[0m
+[90mGET /interrogazioni/interrogationDetails/detailsDayTMPL.js [36m304 [90m1ms[0m
+[90mGET /node_modules/angular-material/angular-material.min.css [36m304 [90m2ms[0m
+[90mGET /login/login.css [36m304 [90m2ms[0m
+[90mGET /favicon.ico [33m404 [90m0ms[0m
+[90mGET /main/main.html [36m304 [90m0ms[0m
+[90mGET /home/home.html [36m304 [90m0ms[0m
+[90mGET /main/header/header.html [36m304 [90m1ms[0m
+[90mGET /main/sidenav/sidenav.html [36m304 [90m1ms[0m
+[90mGET /main/sidenav/sidenavHeader/sidenavHeader.html [36m304 [90m0ms[0m
+error: Forever detected script was killed by signal: SIGKILL

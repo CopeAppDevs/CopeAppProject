@@ -14,9 +14,9 @@ exports.asPAGE = (req, res, next) ->
 		console.log("No Authentication header found in request")
 		console.log("-----------------------------------------------------------------------------------------------------------".green)
 
-		fs.exists(path.join("views", "unauthorized.jade"), (exists) ->
+		fs.exists(path.join(__dirname, "..", "..", "views", "unauthorized.pug"), (exists) ->
 			if exists
-				res.render(path.join("..", "views", "unauthorized.jade"), {reason: "An authentication header is needed"})
+				res.render(path.join(__dirname, "..", "..", "views", "unauthorized.pug"), {reason: "An authentication header is needed"})
 			else
 				res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
 				res.status(401);

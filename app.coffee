@@ -15,7 +15,7 @@ db = require("./repositories/database")
 app = express()
 
 if argv.dbhost == null or typeof argv.dbhost == "undefined"
-	app.set('dbhost', 'localhost:666')
+	app.set('dbhost', 'localhost:5423')
 else
 	app.set('dbhost', argv.dbhost)
 
@@ -48,7 +48,7 @@ app.use('/', express.static(__dirname + '/public'))
 app.use('/test', express.static(__dirname + '/test'))
 
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 app.use('/views/res', express.static(__dirname + '/views/res'))
 
 router.defineRoutes(app)

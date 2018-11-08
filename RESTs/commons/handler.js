@@ -22,8 +22,7 @@ exports.asJSON = function(error, req, res, next) {
         code: error.errorCode,
         name: error.name,
         message: error.message,
-        stack: error.stack,
-        copyStack: copyStack
+        stack: error.stack
       });
     } else {
       console.log(colors.red("AN ERROR OCCURRED: \n" + copyStack));
@@ -33,8 +32,7 @@ exports.asJSON = function(error, req, res, next) {
         code: 500,
         name: error.name,
         message: error.message,
-        stack: error.stack,
-        copyStack: copyStack
+        stack: error.stack
       });
     }
   } else {
@@ -52,10 +50,10 @@ exports.asPAGE = function(error, req, res, next) {
   if ((error != null) && !(typeof error === "undefined")) {
     if (error.name.startsWith("Express")) {
       console.log(colors.red("AN ERROR OCCURRED WITH CODE " + error.errorCode + ": \n" + copyStack));
-      return fs.exists(path.join("views", "exception.jade"), function(exists) {
+      return fs.exists(path.join(__dirname, "..", "..", "views", "exception.pug"), function(exists) {
         if (exists) {
-          console.log("Responding with a .jade page".green);
-          return res.render(path.join("..", "views", "exception.jade"), {
+          console.log("Responding with a .pug page".green);
+          return res.render(path.join(__dirname, "..", "..", "views", "exception.pug"), {
             code: error.errorCode,
             name: error.name,
             message: error.message,
@@ -63,23 +61,22 @@ exports.asPAGE = function(error, req, res, next) {
             copyStack: copyStack
           });
         } else {
-          console.log("File .jade not found, responding with a json".green);
+          console.log("File .pug not found, responding with a json".green);
           res.status(error.errorCode);
           return res.send({
             code: error.errorCode,
             name: error.name,
             message: error.message,
-            stack: error.stack,
-            copyStack: copyStack
+            stack: copyStack
           });
         }
       });
     } else {
       console.log(colors.red("AN ERROR OCCURRED WITH CODE 500: \n" + copyStack));
-      return fs.exists(path.join("views", "exception.jade"), function(exists) {
+      return fs.exists(path.join(__dirname, "..", "..", "views", "exception.pug"), function(exists) {
         if (exists) {
-          console.log("Responding with a .jade page".green);
-          return res.render(path.join("..", "views", "exception.jade"), {
+          console.log("Responding with a .pug page".green);
+          return res.render(path.join(__dirname, "..", "..", "views", "exception.pug"), {
             code: 500,
             name: error.name,
             message: error.message,
@@ -87,14 +84,13 @@ exports.asPAGE = function(error, req, res, next) {
             copyStack: copyStack
           });
         } else {
-          console.log("File .jade not found, responding with a json".green);
+          console.log("File .pug not found, responding with a json".green);
           res.status(500);
           return res.send({
             code: 500,
             name: error.name,
             message: error.message,
-            stack: error.stack,
-            copyStack: copyStack
+            stack: copyStack
           });
         }
       });
