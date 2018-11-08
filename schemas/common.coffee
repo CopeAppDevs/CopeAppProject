@@ -10,11 +10,12 @@ ClassSchema = new mongoose.Schema({
   section: {type: String, required: [true, "Section for class is required"]},
   grade: {type: String, required: [true, "Grade for class is required"]},
   subject: {type: String, required: [true, "Subject for class is required"]},
-  location: {type: String, required: [true, "Location for class is required"]}
+  location: {type: String, required: [true, "Location for class is required"]},
+  school: {type: mongoose.Schema.Types.ObjectId, ref: 'schools'}
 })
 
 RoleSchema = new mongoose.Schema({
-  role: {type: String, required: [true, "Role for role is required"]},
+  role: {type: String, uppercase:true, required: [true, "Role for role is required"]},
   description: {type: String, required: [true, "Description for role is required"]}
 })
 
@@ -26,7 +27,8 @@ StudentSchema = new mongoose.Schema({
   email: {type: String, required: [true, "Email for student is required"]},
   roles: [{type: mongoose.Schema.Types.ObjectId , ref: 'roles'}],
   clazz: {type: mongoose.Schema.Types.ObjectId , ref: 'classes'},
-  settings: {type: mongoose.Schema.Types.ObjectId, ref: 'settings'}
+  settings: {type: mongoose.Schema.Types.ObjectId, ref: 'settings'},
+  school: {type: mongoose.Schema.Types.ObjectId, ref: 'schools'}
 })
 
 TeacherSchema = new mongoose.Schema({
@@ -37,19 +39,16 @@ TeacherSchema = new mongoose.Schema({
   email: {type: String, required: true},
   roles: [{type: mongoose.Schema.Types.ObjectId , ref: 'roles'}],
   clazzes: [{type: mongoose.Schema.Types.ObjectId , ref: 'classes'}],
-  settings: {type: mongoose.Schema.Types.ObjectId, ref: 'settings'}
+  settings: {type: mongoose.Schema.Types.ObjectId, ref: 'settings'},
+  schools: [{type: mongoose.Schema.Types.ObjectId, ref: 'schools'}]
 })
 
 SchoolSchema = new mongoose.Schema({
   name: {type: String, required: [true, "Name for school is required"]},
-  address: String,
+  address: {type: String, required: [true, "Address for school is required"]},
   phone: String,
   mail: String,
-  website: String,
-
-  students: [StudentSchema],
-  teachers: [TeacherSchema],
-  classes: [ClassSchema]
+  website: String
 })
 
 SettingsSchema.set("minimize": false);
@@ -66,7 +65,6 @@ StudentSchema.plugin(require('mongoose-autopopulate'));
 TeacherSchema.plugin(require('mongoose-autopopulate'));
 SchoolSchema.plugin(require('mongoose-autopopulate'));
 
-exports.Class = mongoose.model('classes', ClassSchema)
 exports.Role = mongoose.model('roles', RoleSchema)
 exports.Student = mongoose.model('students', StudentSchema)
 exports.Teacher = mongoose.model('teachers', TeacherSchema)

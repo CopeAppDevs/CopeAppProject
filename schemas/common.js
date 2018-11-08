@@ -28,12 +28,17 @@ ClassSchema = new mongoose.Schema({
   location: {
     type: String,
     required: [true, "Location for class is required"]
+  },
+  school: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'schools'
   }
 });
 
 RoleSchema = new mongoose.Schema({
   role: {
     type: String,
+    uppercase: true,
     required: [true, "Role for role is required"]
   },
   description: {
@@ -76,6 +81,10 @@ StudentSchema = new mongoose.Schema({
   settings: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'settings'
+  },
+  school: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'schools'
   }
 });
 
@@ -115,7 +124,13 @@ TeacherSchema = new mongoose.Schema({
   settings: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'settings'
-  }
+  },
+  schools: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'schools'
+    }
+  ]
 });
 
 SchoolSchema = new mongoose.Schema({
@@ -123,13 +138,13 @@ SchoolSchema = new mongoose.Schema({
     type: String,
     required: [true, "Name for school is required"]
   },
-  address: String,
+  address: {
+    type: String,
+    required: [true, "Address for school is required"]
+  },
   phone: String,
   mail: String,
-  website: String,
-  students: [StudentSchema],
-  teachers: [TeacherSchema],
-  classes: [ClassSchema]
+  website: String
 });
 
 SettingsSchema.set({
@@ -167,8 +182,6 @@ StudentSchema.plugin(require('mongoose-autopopulate'));
 TeacherSchema.plugin(require('mongoose-autopopulate'));
 
 SchoolSchema.plugin(require('mongoose-autopopulate'));
-
-exports.Class = mongoose.model('classes', ClassSchema);
 
 exports.Role = mongoose.model('roles', RoleSchema);
 
